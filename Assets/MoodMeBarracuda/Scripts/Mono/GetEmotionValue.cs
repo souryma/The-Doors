@@ -10,7 +10,7 @@ namespace MoodMe
     {
         public enum EmotionEnum
         {
-            Neutral, Surprised, Sad, Angry, Disgust, Happy, Scared, EmotionIndex
+            Angry, Disgust, Happy, Neutral, Sad, Scared, Surprised, EmotionIndex
         }
 
         public EmotionEnum Emotion;

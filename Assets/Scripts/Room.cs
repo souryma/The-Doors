@@ -17,7 +17,20 @@ public class Room : MonoBehaviour
         // Get the door gameobject
         _doorObject = transform.Find("Door").gameObject;
 
-        _emotionForOpening = (GetEmotionValue.EmotionEnum) Random.Range(0, 3);
+        int emotion = Random.Range(0, 3);
+        switch (emotion)
+        {
+            case 0:
+                _emotionForOpening = GetEmotionValue.EmotionEnum.Neutral;
+                break;
+            case 1:
+                _emotionForOpening = GetEmotionValue.EmotionEnum.Sad;
+                break;
+            case 2:
+                _emotionForOpening = GetEmotionValue.EmotionEnum.Surprised;
+                break;
+            
+        }
     }
 
     public void OpenDoor()

@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private EmotionsManager emotionsManager;
     [SerializeField] private RoomManager roomManager;
     [Space]
-    [SerializeField] private const float EmotionThreshold = 70f;
+    [SerializeField] private const float EmotionThreshold = 0.70f;
     private void Start()
     {
         
@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        Debug.Log("Update");
         if (roomManager.CurrentRoom && !roomManager.CurrentRoom.IsOpened && CheckIfEmotionIsAttained())
         {
             roomManager.OpenCurrentDoor();

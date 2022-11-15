@@ -57,6 +57,7 @@ public class RoomManager : MonoBehaviour
         Destroy(door);
 
         _currentRoom = Rooms[0];
+      
     }
 
     // Update is called once per frame
@@ -91,6 +92,7 @@ public class RoomManager : MonoBehaviour
             OpenCurrentDoor();
             Debug.Log(_currentRoom.EmotionForOpening);
         }
+        Debug.Log(_currentRoom.EmotionForOpening);
     }
 
     private bool CheckCurrentRoom()
