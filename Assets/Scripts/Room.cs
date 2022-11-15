@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using MoodMe;
 using UnityEngine;
 
-public class Door : MonoBehaviour
+public class Room : MonoBehaviour
 {
     public GetEmotionValue.EmotionEnum EmotionForOpening => _emotionForOpening;
     private GetEmotionValue.EmotionEnum _emotionForOpening;

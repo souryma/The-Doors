@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     [SerializeField] private CameraManager camManager;
     [SerializeField] private EmotionsManager emotionsManager;
-    [SerializeField] private DoorManager doorManager;
+    [SerializeField] private RoomManager roomManager;
     [Space]
     [SerializeField] private const float EmotionThreshold = 70f;
     private void Start()
@@ -20,9 +20,9 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if (!doorManager.CurrentDoor.IsOpened && CheckIfEmotionIsAttained())
+        if (!roomManager.CurrentRoom.IsOpened && CheckIfEmotionIsAttained())
         {
-            doorManager.OpenCurrentDoor();
+            roomManager.OpenCurrentDoor();
             MakeACapture();
         }
 
@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour
     private bool CheckIfEmotionIsAttained()
     {
         bool checkEmotion = false;
-        switch (doorManager.CurrentDoor.EmotionForOpening)
+        switch (roomManager.CurrentRoom.EmotionForOpening)
         {
             case GetEmotionValue.EmotionEnum.Scared:
                 if (emotionsManager.Scared >= EmotionThreshold)

@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DoorManager : MonoBehaviour
+public class RoomManager : MonoBehaviour
 {
     // Start is called before the first frame update
     
-    public Door CurrentDoor => _currentDoor;
-    private Door _currentDoor;
-    public List<Door> Doors;
+    public Room CurrentRoom => _currentRoom;
+    private Room _currentRoom;
+    public List<Room> Rooms;
     void Start()
     {
         
