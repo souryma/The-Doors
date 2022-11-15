@@ -1,4 +1,5 @@
 using System.Collections;
+using DG.Tweening;
 using MoodMe;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -35,21 +36,10 @@ public class Room : MonoBehaviour
 
     public void OpenDoor()
     {
-        IEnumerator coroutine = MoveDoor(_doorObject.transform);
-        StartCoroutine(coroutine);
-
-        _isOpened = true;
-    }
-
-    IEnumerator MoveDoor(Transform tf)
-    {
-        for (int i = 0; i < 100; i++)
-        {
-            tf.position += tf.right * 0.1f;
-        }
-
+        _doorObject.transform.DOMoveX(1.8f, 1);
+        
         Debug.Log("The door is opened.");
 
-        yield return null;
+        _isOpened = true;
     }
 }

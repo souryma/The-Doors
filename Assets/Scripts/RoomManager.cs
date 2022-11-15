@@ -12,9 +12,6 @@ public class RoomManager : MonoBehaviour
     private Room _currentRoom = null;
     private int _roomId;
 
-
-    public GameObject CURRENTROOM;
-
     void Start()
     {
         _roomId = 0;
@@ -57,7 +54,6 @@ public class RoomManager : MonoBehaviour
         Destroy(door);
 
         _currentRoom = Rooms[0];
-      
     }
 
     // Update is called once per frame
@@ -84,14 +80,12 @@ public class RoomManager : MonoBehaviour
             _currentRoom = Rooms[1];
         }
 
-        CURRENTROOM = _currentRoom.gameObject;
-
         //  DEBUG : Force Open door
         if (Input.GetKeyDown(KeyCode.T))
         {
             OpenCurrentDoor();
-            Debug.Log(_currentRoom.EmotionForOpening);
         }
+
         Debug.Log(_currentRoom.EmotionForOpening);
     }
 
