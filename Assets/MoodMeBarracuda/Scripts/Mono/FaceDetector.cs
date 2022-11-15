@@ -30,8 +30,8 @@ namespace MoodMe
 
         public bool GUIPreview = true;
 
-        public GameObject PreviewTrackerPlane;
-        public GameObject PreviewCropPlane;
+        // public GameObject PreviewTrackerPlane;
+        // public GameObject PreviewCropPlane;
 
 
         public bool ExportCrop = true;
@@ -57,7 +57,7 @@ namespace MoodMe
         private Color32[] rgba;
         private float[] tensorData;
         private bool predictDone = false;
-        private Texture2D _staticRectTexture;
+        // private Texture2D _staticRectTexture;
         private GUIStyle _staticRectStyle;
         private float xScale, yScale;
 
@@ -77,11 +77,11 @@ namespace MoodMe
 
 
 
-            _staticRectStyle = new GUIStyle();
-            _staticRectTexture = new Texture2D(1, 1);
-            _staticRectTexture.SetPixel(0, 0, new Color(1f, 0f, 0f, 0.5f));
-            _staticRectTexture.Apply();
-            _staticRectStyle.normal.background = _staticRectTexture;
+            // _staticRectStyle = new GUIStyle();
+            // _staticRectTexture = new Texture2D(1, 1);
+            // _staticRectTexture.SetPixel(0, 0, new Color(1f, 0f, 0f, 0.5f));
+            // _staticRectTexture.Apply();
+            // _staticRectStyle.normal.background = _staticRectTexture;
         }
 
         // Update is called once per frame
@@ -109,7 +109,7 @@ namespace MoodMe
                 previewTexture.SetPixels32(Preprocessing.OutputImage);
                 previewTexture.Apply();
 
-                if (PreviewTrackerPlane != null) PreviewTrackerPlane.GetComponent<MeshRenderer>().material.mainTexture = previewTexture;
+                // if (PreviewTrackerPlane != null) PreviewTrackerPlane.GetComponent<MeshRenderer>().material.mainTexture = previewTexture;
 
                 tensor = new Tensor(1, ImageNetworkHeight, ImageNetworkWidth, ChannelCount, tensorData);
                 DateTime timestamp;
@@ -151,7 +151,7 @@ namespace MoodMe
                             _cropTexture.Apply();
 
 
-                            if (PreviewCropPlane != null) PreviewCropPlane.GetComponent<MeshRenderer>().material.mainTexture = _cropTexture;
+                            // if (PreviewCropPlane != null) PreviewCropPlane.GetComponent<MeshRenderer>().material.mainTexture = _cropTexture;
 
 
                             OutputCrop = _cropTexture.GetPixels32();
@@ -267,12 +267,12 @@ namespace MoodMe
                     //float smallX1 = boxWidth < boxHeight ? (predict_boxes[i][2] * ratio) : ((predict_boxes[i][2] - (bigEdge - smallEdge) / 2) * ratio);
                     //float smallY1 = boxWidth > boxHeight ? (predict_boxes[i][3] * ratio) : ((predict_boxes[i][3] - (bigEdge - smallEdge) / 2) * ratio);
 
-                    Rect rectInst = new Rect(centerSquareWidth + bigX0,
-                                            centerSquareHeight + bigY0,
-                                            bigEdge * ratio,
-                                            bigEdge * ratio);
+                    // Rect rectInst = new Rect(centerSquareWidth + bigX0,
+                    //                         centerSquareHeight + bigY0,
+                    //                         bigEdge * ratio,
+                    //                         bigEdge * ratio);
 
-                    GUI.Box(rectInst, GUIContent.none, _staticRectStyle);
+                    // GUI.Box(rectInst, GUIContent.none, _staticRectStyle);
 
                     //rectInst = new Rect(centerSquareWidth + smallX0,
                     //                                        centerSquareHeight + smallY0,
