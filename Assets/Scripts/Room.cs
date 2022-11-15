@@ -1,7 +1,7 @@
 using System.Collections;
-using System.Collections.Generic;
 using MoodMe;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Room : MonoBehaviour
 {
@@ -10,15 +10,33 @@ public class Room : MonoBehaviour
     private bool _isOpened = false;
     public bool IsOpened => _isOpened;
 
-    // Start is called before the first frame update
-    void Start()
+    private GameObject _doorObject;
+
+    private void Start()
     {
-        
+        // Get the door gameobject
+        _doorObject = transform.Find("Door").gameObject;
+
+        _emotionForOpening = (GetEmotionValue.EmotionEnum) Random.Range(0, 3);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OpenDoor()
     {
-        
+        IEnumerator coroutine = MoveDoor(_doorObject.transform);
+        StartCoroutine(coroutine);
+
+        _isOpened = true;
+    }
+
+    IEnumerator MoveDoor(Transform tf)
+    {
+        for (int i = 0; i < 100; i++)
+        {
+            tf.position += tf.right * 0.1f;
+        }
+
+        Debug.Log("The door is opened.");
+
+        yield return null;
     }
 }
