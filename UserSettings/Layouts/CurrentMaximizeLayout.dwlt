@@ -24,7 +24,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 1047
+  controlID: 6995
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -141,7 +141,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 1048
+  controlID: 6996
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -166,7 +166,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 1049
+  controlID: 6997
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -224,7 +224,7 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: b0720000
+      m_SelectedIDs: c6f8ffff
       m_LastClickedID: 0
       m_ExpandedIDs: b8f8ffffc6f8ffff34fbffff3c610000
       m_RenameOverlay:
@@ -554,9 +554,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: -0.052736443, y: -0.042830057, z: 0.00226402, w: -0.997687}
   m_Size:
-    m_Target: 14.221005
+    m_Target: 16.958813
     speed: 2
-    m_Value: 14.221005
+    m_Value: 16.958813
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -605,7 +605,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 1013
+  controlID: 7039
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -616,7 +616,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: ProjectBrowser
+  m_Name: ConsoleWindow
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
@@ -625,14 +625,14 @@ MonoBehaviour:
     y: 0
     width: 676.8
     height: 283.60004
-  m_MinSize: {x: 231, y: 271}
-  m_MaxSize: {x: 10001, y: 10021}
-  m_ActualView: {fileID: 11}
+  m_MinSize: {x: 100, y: 100}
+  m_MaxSize: {x: 4000, y: 4000}
+  m_ActualView: {fileID: 12}
   m_Panes:
   - {fileID: 11}
   - {fileID: 12}
-  m_Selected: 0
-  m_LastSelected: 1
+  m_Selected: 1
+  m_LastSelected: 0
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -688,7 +688,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 53.399963}
     m_SelectedIDs: 965d0000
     m_LastClickedID: 23958
-    m_ExpandedIDs: ffffffff00000000b45d0000b65d0000b85d0000f85d0000
+    m_ExpandedIDs: ffffffff00000000b45d0000b65d0000b85d0000f25d0000fa5d0000ec690000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 

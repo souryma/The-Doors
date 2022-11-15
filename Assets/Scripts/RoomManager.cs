@@ -9,7 +9,7 @@ public class RoomManager : MonoBehaviour
     public List<Room> Rooms;
     [Range(0, 0.05f)] public float RoomSpeed = 0.001f;
 
-    private Room _currentRoom;
+    private Room _currentRoom = null;
     private int _roomId;
 
 

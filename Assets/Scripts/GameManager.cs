@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if (!roomManager.CurrentRoom.IsOpened && CheckIfEmotionIsAttained())
+        if (roomManager.CurrentRoom && !roomManager.CurrentRoom.IsOpened && CheckIfEmotionIsAttained())
         {
             roomManager.OpenCurrentDoor();
             MakeACapture();
@@ -68,6 +68,6 @@ public class GameManager : MonoBehaviour
 
     private void MakeACapture()
     {
-        
+        Texture2D texture2D = Instantiate(camManager.WebcamTexture);
     }
 }
