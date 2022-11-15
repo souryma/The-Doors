@@ -637,8 +637,7 @@ MonoBehaviour:
   RoomPrefab: {fileID: 133013521216784427, guid: 972e645d3b12b314dbd836cf0a84ca5c, type: 3}
   NumberofRoomsActives: 3
   Rooms: []
-  RoomSpeed: 0
-  CURRENTROOM: {fileID: 0}
+  RoomSpeed: 0.007
 --- !u!4 &371631616
 Transform:
   m_ObjectHideFlags: 0
