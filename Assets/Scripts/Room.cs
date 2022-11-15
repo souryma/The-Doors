@@ -10,7 +10,7 @@ public class Room : MonoBehaviour
     private bool _isOpened = false;
     public bool IsOpened => _isOpened;
 
-        // Start is called before the first frame update
+    // Start is called before the first frame update
     void Start()
     {
         
