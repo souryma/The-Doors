@@ -634,10 +634,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ecec89645e1c3840a3141f4f614cdb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RoomPrefab: {fileID: 133013521216784427, guid: 972e645d3b12b314dbd836cf0a84ca5c, type: 3}
-  NumberofRoomsActives: 3
+  _roomPrefab: {fileID: 133013521216784427, guid: 972e645d3b12b314dbd836cf0a84ca5c, type: 3}
+  _numberOfRoomsActives: 3
   Rooms: []
-  RoomSpeed: 0.007
 --- !u!4 &371631616
 Transform:
   m_ObjectHideFlags: 0
@@ -1482,6 +1481,7 @@ GameObject:
   - component: {fileID: 733613822}
   - component: {fileID: 733613821}
   - component: {fileID: 733613820}
+  - component: {fileID: 733613823}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1555,6 +1555,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &733613823
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 733613819}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &819512310
 GameObject:
   m_ObjectHideFlags: 0
@@ -2227,6 +2241,7 @@ MonoBehaviour:
   camManager: {fileID: 643950073}
   emotionsManager: {fileID: 1833194510}
   roomManager: {fileID: 371631615}
+  _gameSpeed: 0.007
 --- !u!4 &1152528028
 Transform:
   m_ObjectHideFlags: 0
