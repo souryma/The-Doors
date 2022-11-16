@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class RoomManager : MonoBehaviour
@@ -6,6 +7,7 @@ public class RoomManager : MonoBehaviour
     // Static instance of the RoomManager
     private static RoomManager _instance;
     [SerializeField] private GameObject _roomPrefab;
+    [SerializeField] private TextMeshProUGUI _roomNumber;
     // Number of rooms at the same time
     [SerializeField] private int _numberOfRoomsActives = 0;
     private Room _currentRoom = null;
@@ -15,8 +17,8 @@ public class RoomManager : MonoBehaviour
     public List<Room> Rooms;
     public static RoomManager Instance => _instance;
     public Room CurrentRoom => _currentRoom;
-
-
+    
+    
     private void Start()
     {
         if (_instance != null)
@@ -43,12 +45,6 @@ public class RoomManager : MonoBehaviour
         {
             _instance = null;
         }
-    }
-
-    public void StopGame()
-    {
-        GameManager.Instance.GameSpeed = 0;
-        Debug.Log("GAME OVER");
     }
 
     /// <summary>
@@ -93,7 +89,7 @@ public class RoomManager : MonoBehaviour
             MoveOnZ(door.transform);
         }
 
-        // Detect if the first element in the list is still see by the player
+        // Remove behind room and add a new one 
         if (Rooms[0].transform.position.z <= -10)
         {
             DeleteFirstRoomInList();
@@ -107,7 +103,9 @@ public class RoomManager : MonoBehaviour
         {
             _currentRoom = Rooms[1];
         }
-
+        
+        UpdateUIRoomNumber();
+        
         //  DEBUG : Force Open door
         if (Input.GetKeyDown(KeyCode.T))
         {
@@ -116,6 +114,11 @@ public class RoomManager : MonoBehaviour
 
         // DEBUG : Display emotion in console
         Debug.Log(_currentRoom.EmotionForOpening);
+    }
+
+    private void UpdateUIRoomNumber()
+    {
+        _roomNumber.text = "Room number " + _currentRoom.DoorId;
     }
 
     private bool CheckCurrentRoom()

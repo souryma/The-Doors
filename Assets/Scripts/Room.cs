@@ -40,7 +40,7 @@ public class Room : MonoBehaviour
         Debug.Log("The door "+ DoorId+" has been touched !");
         _doorObject.GetComponent<Renderer>().material.color = Color.black;
 
-        RoomManager.Instance.StopGame();
+        GameManager.Instance.StopGame();
     }
 
     public void OpenDoor()

@@ -1,4 +1,5 @@
 using MoodMe;
+using TMPro;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -8,6 +9,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private CameraManager camManager;
     [SerializeField] private EmotionsManager emotionsManager;
     [SerializeField] private RoomManager roomManager;
+    [SerializeField] private TextMeshProUGUI _gameOverUi;
     [Space]
     [SerializeField] private const float EmotionThreshold = 0.70f;
     // The speed of the doors (0 = no movement)
@@ -39,6 +41,12 @@ public class GameManager : MonoBehaviour
             MakeACapture();
         }
 
+    }
+    
+    public void StopGame()
+    {
+        _gameSpeed = 0;
+        _gameOverUi.text = "GAME OVER";
     }
     
     private void OnDestroy()
