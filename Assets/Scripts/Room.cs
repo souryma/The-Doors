@@ -1,4 +1,3 @@
-using System.Collections;
 using DG.Tweening;
 using MoodMe;
 using UnityEngine;
@@ -6,18 +5,21 @@ using Random = UnityEngine.Random;
 
 public class Room : MonoBehaviour
 {
-    public GetEmotionValue.EmotionEnum EmotionForOpening => _emotionForOpening;
     private GetEmotionValue.EmotionEnum _emotionForOpening;
     private bool _isOpened = false;
-    public bool IsOpened => _isOpened;
-
     private GameObject _doorObject;
+
+    public bool IsOpened => _isOpened;
+    public GetEmotionValue.EmotionEnum EmotionForOpening => _emotionForOpening;
+    public int DoorId { get; set; }
+
 
     private void Start()
     {
         // Get the door gameobject
         _doorObject = transform.Find("Door").gameObject;
 
+        // Give a random emotion to te door
         int emotion = Random.Range(0, 3);
         switch (emotion)
         {
@@ -30,14 +32,21 @@ public class Room : MonoBehaviour
             case 2:
                 _emotionForOpening = GetEmotionValue.EmotionEnum.Surprised;
                 break;
-            
         }
+    }
+
+    public void DoorHasBeenTouched()
+    {
+        Debug.Log("The door "+ DoorId+" has been touched !");
+        _doorObject.GetComponent<Renderer>().material.color = Color.black;
+
+        RoomManager.Instance.StopGame();
     }
 
     public void OpenDoor()
     {
         _doorObject.transform.DOMoveX(1.8f, 1);
-        
+
         Debug.Log("The door is opened.");
 
         _isOpened = true;

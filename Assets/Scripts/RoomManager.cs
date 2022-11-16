@@ -3,21 +3,33 @@ using UnityEngine;
 
 public class RoomManager : MonoBehaviour
 {
-    public GameObject RoomPrefab;
-    public int NumberofRoomsActives = 0;
-    public Room CurrentRoom => _currentRoom;
-    public List<Room> Rooms;
-    [Range(0, 0.05f)] public float RoomSpeed = 0.001f;
-
+    // Static instance of the RoomManager
+    private static RoomManager _instance;
+    [SerializeField] private GameObject _roomPrefab;
+    // Number of rooms at the same time
+    [SerializeField] private int _numberOfRoomsActives = 0;
     private Room _currentRoom = null;
-    private int _roomId;
+    // Incrementing value used to give an id to each doors
+    private int _roomId = 1;
 
-    void Start()
+    public List<Room> Rooms;
+    public static RoomManager Instance => _instance;
+    public Room CurrentRoom => _currentRoom;
+
+
+    private void Start()
     {
-        _roomId = 0;
+        if (_instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        _instance = this;
+
         Rooms = new List<Room>();
 
-        for (int i = 0; i < NumberofRoomsActives; i++)
+        for (int i = 0; i < _numberOfRoomsActives; i++)
         {
             CreateRoom();
         }
@@ -25,14 +37,30 @@ public class RoomManager : MonoBehaviour
         _currentRoom = Rooms[0];
     }
 
+    private void OnDestroy()
+    {
+        if (_instance == this)
+        {
+            _instance = null;
+        }
+    }
+
+    public void StopGame()
+    {
+        GameManager.Instance.GameSpeed = 0;
+        Debug.Log("GAME OVER");
+    }
+
     /// <summary>
     /// Creates a room behind the last one in the list
     /// </summary>
     private void CreateRoom()
     {
-        GameObject roomGO = Instantiate(RoomPrefab);
+        GameObject roomGO = Instantiate(_roomPrefab);
         Room room = roomGO.AddComponent<Room>();
         roomGO.name = "Room" + _roomId;
+        room.DoorId = _roomId;
+        
         _roomId += 1;
 
         if (Rooms.Count > 0)
@@ -57,7 +85,7 @@ public class RoomManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         // Makes the doors move to the player
         foreach (var door in Rooms)
@@ -86,6 +114,7 @@ public class RoomManager : MonoBehaviour
             OpenCurrentDoor();
         }
 
+        // DEBUG : Display emotion in console
         Debug.Log(_currentRoom.EmotionForOpening);
     }
 
@@ -96,7 +125,7 @@ public class RoomManager : MonoBehaviour
 
     private void MoveOnZ(Transform tf)
     {
-        tf.position -= tf.forward * RoomSpeed;
+        tf.position -= tf.forward * GameManager.Instance.GameSpeed;
     }
 
     public void OpenCurrentDoor()
