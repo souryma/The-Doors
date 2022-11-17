@@ -1,5 +1,6 @@
 using DG.Tweening;
 using MoodMe;
+using TMPro;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -8,6 +9,7 @@ public class Room : MonoBehaviour
     private GetEmotionValue.EmotionEnum _emotionForOpening;
     private bool _isOpened = false;
     private GameObject _doorObject;
+    [SerializeField] private TextMeshPro _emotionRoomText;
 
     public bool IsOpened => _isOpened;
     public GetEmotionValue.EmotionEnum EmotionForOpening => _emotionForOpening;
@@ -18,6 +20,9 @@ public class Room : MonoBehaviour
     {
         // Get the door gameobject
         _doorObject = transform.Find("Door").gameObject;
+        
+        // Get emotion text UI
+        _emotionRoomText = transform.Find("EmotionText").GetComponent<TextMeshPro>();
 
         // Give a random emotion to te door
         int emotion = Random.Range(0, 3);
@@ -33,6 +38,26 @@ public class Room : MonoBehaviour
                 _emotionForOpening = GetEmotionValue.EmotionEnum.Surprised;
                 break;
         }
+        
+        SetEmotionText();
+    }
+
+    private void SetEmotionText()
+    {
+        string text = "";
+        switch (_emotionForOpening)
+        {
+            case GetEmotionValue.EmotionEnum.Neutral:
+                text = "Neutral";
+                break;
+            case GetEmotionValue.EmotionEnum.Sad:
+                text = "Sad ...";
+                break;
+            case GetEmotionValue.EmotionEnum.Surprised:
+                text = "Surprised !";
+                break;
+        }
+        _emotionRoomText.text = text;
     }
 
     public void DoorHasBeenTouched()

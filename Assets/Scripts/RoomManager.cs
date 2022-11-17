@@ -111,9 +111,6 @@ public class RoomManager : MonoBehaviour
         {
             OpenCurrentDoor();
         }
-
-        // DEBUG : Display emotion in console
-        Debug.Log(_currentRoom.EmotionForOpening);
     }
 
     private void UpdateUIRoomNumber()
