@@ -16,6 +16,8 @@ public class FaceManager : MonoBehaviour
     Face.Capturer capturer;
     Face.EmotionsEstimator emotions_estimator;
 
+    public EmotionsController _emotionsController;
+
     ThreadedJob job;
     Face.RawImage ri_frame;
     List<Face.RawSample> samples;
@@ -43,39 +45,20 @@ public class FaceManager : MonoBehaviour
     bool firstInit = false;
 
     [Header("Face object options")]
-    // [SerializeField] List<GameObject> facePrefabs;
-    // [SerializeField] Transform spawnTransform;
-
-    // 
+    
+    
     [Space]
-    // [SerializeField] ComputeShader convertShader;
+    [SerializeField] ComputeShader convertShader;
 
-    List<FaceController> faceControllers = new List<FaceController>();
-    int currentFaceID;
+
 
     [Header("UI")]
-    // [SerializeField] Toggle firstMaskToggle;
-    [SerializeField] MessageBox messageBox;
-
-    [Space]
-    // [SerializeField] Slider opacitySlider;
-    // [SerializeField] Text opacityVal;
-    // [SerializeField] float opacity = 0.41f;
-
-    [Space]
-    [SerializeField] Slider lerpSlider;
-    [SerializeField] Text lerpVal;
 
     [Space]
     [SerializeField] float minLerp = 16f;
     [SerializeField] float maxLerp = 86f;
     [SerializeField] float lerpFactor = 24f;
-
-    [Space]
-    [SerializeField] Dropdown resolutionDrop;
-
-    [Space]
-    [SerializeField] Dropdown deviceDrop;
+    
 
     Dictionary<string, string> errorDecoding = new Dictionary<string, string>
     {
@@ -100,10 +83,10 @@ public class FaceManager : MonoBehaviour
         catch (System.Exception e)
         {
 #if UNITY_EDITOR
-            messageBox.ShowMessage(e.Message + "/n Check SDK files. Start by launching the Awake scene (FaceSDKLoader).",
-                "Failed to initialize FaceSDK.");
+            Debug.Log(e.Message + "/n Check SDK files. Start by launching the Awake scene (FaceSDKLoader). " +
+                      "Failed to initialize FaceSDK.");
 #else
-            messageBox.ShowMessage(e.Message, "Failed to initialize FaceSDK.");
+             Debug.Log(e.Message + "Failed to initialize FaceSDK.");
 #endif
 
             return false;
@@ -120,60 +103,40 @@ public class FaceManager : MonoBehaviour
     {
         Application.logMessageReceived += HandleLog;
 
-        if (!SystemInfo.supportsComputeShaders)
-        {
-#if UNITY_EDITOR && !UNITY_STANDALONE
-            messageBox.ShowMessage("Compute shaders are not supported for the Android platform in the editor. " +
-                "Switch the platform to Standalone (this is not relevant for the assembled project).", "Compute shaders error");
-#else
-            messageBox.ShowMessage("This device does not support Compute Shaders", "Compute shaders error");
-#endif
-            return;
-        }
+     
 
         if (!InitSevices())
             return;
 
         if (WebCamTexture.devices.Length == 0)
         {
-            messageBox.ShowMessage("Couldn't find the camera.", "Error starting camera");
+            Debug.Log("Couldn't find the camera." + " Error starting camera");
             return;
         }
 
         job = new ThreadedJob(Process);
 
-        firstMaskToggle.isOn = true;
+        // firstMaskToggle.isOn = true;
 
         WebCamDevice device;
-
-#if UNITY_STANDALONE || UNITY_EDITOR
+        
         string deviceName = UserSettings.DeviceName;
 
         if (deviceName != null)
         {
             Dictionary<string, WebCamDevice> deviceDict = WebCamTexture.devices.ToDictionary(k => k.name, v => v);
+            Debug.Log(deviceDict.Keys);
             device = deviceDict.ContainsKey(deviceName) ? deviceDict[deviceName] : WebCamTexture.devices[0];
         }
         else
             device = WebCamTexture.devices[0];
 
-#else
-        device = WebCamTexture.devices[0];
-
-        for (int i = 0; i < WebCamTexture.devices.Length; i++)
-            if (WebCamTexture.devices[i].isFrontFacing)
-            {
-                device = WebCamTexture.devices[i];
-                break;
-            }
-
-#endif
+        
 
         InitDevice(device);
-        InitUI();
         InitVisual();
         InitJob();
-
+        _emotionsController = new EmotionsController();
         firstInit = true;
     }
 
@@ -188,9 +151,9 @@ public class FaceManager : MonoBehaviour
         if (type == LogType.Error || type == LogType.Assert || type == LogType.Exception)
         {
             if (errorDecoding.ContainsKey(message))
-                messageBox.ShowMessage(errorDecoding[message], "System error", true, MessageBox.ButtonAction.Close);
+                Debug.Log(errorDecoding[message]);
             else
-                messageBox.ShowMessage(message, "Unknown error", true, MessageBox.ButtonAction.Close);
+                Debug.Log(message);
         }
     }
 
@@ -200,70 +163,14 @@ public class FaceManager : MonoBehaviour
     {
         currentDevice = device;
         // Start streaming from the camera
-#if UNITY_STANDALONE || UNITY_EDITOR
 
         webcamTexture = new WebCamTexture(currentDevice.name);
         webcamTexture.Play();
 
-#elif UNITY_ANDROID && !UNITY_EDITOR
-
-        int resolutionItem = UserSettings.GetResolution(currentDevice.name);
-
-        if (resolutionItem != -1)
-        {
-            Resolution resolution = currentDevice.availableResolutions[resolutionItem];
-            webcamTexture = new WebCamTexture(currentDevice.name, resolution.width, resolution.height);
-        }
-        else
-            webcamTexture = new WebCamTexture(currentDevice.name, targetWidth, targetHeigh);
-
-        webcamTexture.Play();
-#endif
+        
     }
 
-    void InitUI()
-    {
-        // Preparing parameters and UI
 
-        float lerp = UserSettings.LerpFactor;
-        lerpFactor = Mathf.Lerp(minLerp, maxLerp, lerp);
-        lerpSlider.value = lerp;
-
-#if UNITY_STANDALONE || UNITY_EDITOR
-
-        resolutionDrop.interactable = false;
-        deviceDrop.interactable = true;
-
-        deviceDrop.ClearOptions();
-        List<string> devices = (from device in WebCamTexture.devices select device.name).ToList();
-        deviceDrop.AddOptions(devices);
-
-        for (int i = 0; i < WebCamTexture.devices.Length; i++)
-            if (currentDevice.name == WebCamTexture.devices[i].name)
-            {
-                deviceDrop.value = i;
-                break;
-            }
-
-#elif UNITY_ANDROID && !UNITY_EDITOR
-
-        deviceDrop.interactable = false;
-
-        // Fill resolutions in resolutionDrop
-
-        resolutionDrop.ClearOptions();
-        List<string> options = (from res in currentDevice.availableResolutions select res.width + "x" + res.height).ToList();
-        resolutionDrop.AddOptions(options);
-
-        for (int i = 0; i < currentDevice.availableResolutions.Length; i++)
-            if (currentDevice.availableResolutions[i].width == webcamTexture.width && currentDevice.availableResolutions[i].height == webcamTexture.height)
-            {
-                resolutionDrop.value = i;
-                break;
-            }
-
-#endif
-    }
 
     void InitVisual()
     {
@@ -309,7 +216,6 @@ public class FaceManager : MonoBehaviour
         Rect riRect = rawImage.rectTransform.rect;
 
         meshScale = new Vector3(riRect.width, riRect.height, (riRect.width + riRect.height) / 2);
-        spawnTransform.localPosition = new Vector3(riRect.x + riRect.width / 2, riRect.y + riRect.height / 2, spawnTransform.localPosition.z);
     }
 
     void InitJob()
@@ -329,18 +235,7 @@ public class FaceManager : MonoBehaviour
 
     #endregion
 
-    FaceController CreateFaceController()
-    {
-        GameObject newFace = Instantiate(facePrefabs[currentFaceID], spawnTransform);
-        newFace.transform.localScale = meshScale;
-
-        FaceController faceController = newFace.GetComponent<FaceController>();
-
-        faceController.Opacity = opacity;
-        faceController.LerpFactor = lerpFactor;
-
-        return faceController;
-    }
+   
 
     void Update()
     {
@@ -371,24 +266,17 @@ public class FaceManager : MonoBehaviour
 
         for (int i = 0; i < samples.Count; i++)
         {
-            if (i >= faceControllers.Count)
-                faceControllers.Add(CreateFaceController());
+    
 
             Face.RawSample sample = samples[i];
 
             List<Vector3> points = ToListVector3(sample.getLandmarks());
-
-            if (faceControllers[i].EmotionVisible)
-                faceControllers[i].UpdateFace(points, true, emotions_estimator.estimateEmotions(sample));
-            else
-                faceControllers[i].UpdateFace(points, true);
+            List<Face.EmotionsEstimator.EmotionConfidence> emotions = emotions_estimator.estimateEmotions(sample);
+            _emotionsController.UpdateEmotion(emotions);
+     
         }
 
-        for (int i = samples.Count; i < faceControllers.Count; i++)
-        {
-            Destroy(faceControllers[i].gameObject);
-            faceControllers.Remove(faceControllers[i]);
-        }
+     
 
         InitJob();
     }
@@ -411,29 +299,7 @@ public class FaceManager : MonoBehaviour
 
     #region UI controller
 
-    public void SetAvatar(int id)
-    {
-        if (!firstInit)
-            return;
 
-        currentFaceID = id;
-
-        float opacity = UserSettings.GetOpacity(currentFaceID, 0.47f);
-        opacitySlider.value = opacity;
-
-        List<FaceController> lastFaceControllers = faceControllers;
-        faceControllers = new List<FaceController>();
-
-        foreach (FaceController fc in lastFaceControllers)
-        {
-            FaceController faceController = CreateFaceController();
-            faceControllers.Add(faceController);
-
-            faceController.UpdateFace(fc.Points, true, fc.Emotions);
-
-            Destroy(fc.gameObject);
-        }
-    }
 
     public void SetResolution(int item)
     {
@@ -487,7 +353,7 @@ public class FaceManager : MonoBehaviour
         if (device.name != currentDevice.name)
             ChangeCameraDevice(device);
         else
-            messageBox.ShowMessage("Couldn't switch to another camera.", "Switch camera failed", buttonAction: MessageBox.ButtonAction.Close);
+            Debug.Log("Couldn't switch to another camera. Switch camera failed");
     }
 
     void ChangeCameraDevice(WebCamDevice device)
@@ -500,41 +366,12 @@ public class FaceManager : MonoBehaviour
         webcamTexture = null;
 
         InitDevice(device);
-        InitUI();
         InitVisual();
 
         InitJob();
     }
 
-    public void SetOpacity(float val)
-    {
-        if (!firstInit)
-            return;
-
-        UserSettings.SetOpacity(currentFaceID, val);
-
-        opacity = val;
-        opacityVal.text = opacity.ToString("F2");
-
-        foreach (FaceController fc in faceControllers)
-            fc.Opacity = opacity;
-    }
-
-    public void SetLerpFactor(float val)
-    {
-        if (!firstInit)
-            return;
-
-        UserSettings.LerpFactor = val;
-
-        float realVal = 1 - val;
-
-        lerpVal.text = val.ToString("F2");
-        lerpFactor = Mathf.Lerp(minLerp, maxLerp, realVal);
-
-        foreach (FaceController fc in faceControllers)
-            fc.LerpFactor = lerpFactor;
-    }
-
+   
+  
     #endregion
 }

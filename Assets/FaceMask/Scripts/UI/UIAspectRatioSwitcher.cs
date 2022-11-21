@@ -30,7 +30,7 @@ public class UIAspectRatioSwitcher : MonoBehaviour
         else
             return EditorUserBuildSettings.activeBuildTarget == BuildTarget.Android ? ScreenOrientation.Portrait : ScreenOrientation.LandscapeLeft;
 #else
-        return Application.platform == RuntimePlatform.Android ? ScreenOrientation.Portrait : ScreenOrientation.Landscape;
+        return Application.platform == RuntimePlatform.Android ? ScreenOrientation.Portrait : ScreenOrientation.LandscapeLeft;
 #endif
     }
 

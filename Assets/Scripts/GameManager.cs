@@ -1,13 +1,15 @@
 using MoodMe;
 using TMPro;
 using UnityEngine;
+using VDT.FaceRecognition.SDK;
 
 public class GameManager : MonoBehaviour
 {
     // Static instance of the GameManager
     private static GameManager _instance;
-    [SerializeField] private CameraManager camManager;
-    [SerializeField] private EmotionsManager emotionsManager;
+    // [SerializeField] private CameraManager camManager;
+    // [SerializeField] private EmotionsManager emotionsManager;
+    [SerializeField] private FaceManager faceManager;
     [SerializeField] private RoomManager roomManager;
     [SerializeField] private TextMeshProUGUI _gameOverUi;
     [Space]
@@ -29,6 +31,7 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
+        
 
         _instance = this;
     }
@@ -60,43 +63,48 @@ public class GameManager : MonoBehaviour
     private bool CheckIfEmotionIsAttained()
     {
         bool checkEmotion = false;
-        switch (roomManager.CurrentRoom.EmotionForOpening)
+        EmotionsEstimator.Emotion current_emotion = faceManager._emotionsController.get_current_emotion();
+        if (current_emotion == roomManager.CurrentRoom.EmotionForOpening)
         {
-            case GetEmotionValue.EmotionEnum.Scared:
-                if (emotionsManager.Scared >= EmotionThreshold)
-                    checkEmotion = true;
-                break;
-            case GetEmotionValue.EmotionEnum.Angry:
-                if (emotionsManager.Angry >= EmotionThreshold)
-                    checkEmotion = true;
-                break;
-            case GetEmotionValue.EmotionEnum.Surprised:
-                if (emotionsManager.Surprised >= EmotionThreshold)
-                    checkEmotion = true;
-                break;
-            case GetEmotionValue.EmotionEnum.Sad:
-                if (emotionsManager.Sad >= EmotionThreshold)
-                    checkEmotion = true;
-                break;
-            case GetEmotionValue.EmotionEnum.Neutral:
-                if (emotionsManager.Neutral >= EmotionThreshold)
-                    checkEmotion = true;
-                break;
-            case GetEmotionValue.EmotionEnum.Disgust:
-                if (emotionsManager.Disgust >= EmotionThreshold)
-                    checkEmotion = true;
-                break;
-            case GetEmotionValue.EmotionEnum.Happy:
-                if (emotionsManager.Happy >= EmotionThreshold)
-                    checkEmotion = true;
-                break;
+            checkEmotion = true;
         }
+        // switch (roomManager.CurrentRoom.EmotionForOpening)
+        // {
+        //     case GetEmotionValue.EmotionEnum.Scared:
+        //         if (emotionsManager.Scared >= EmotionThreshold)
+        //             checkEmotion = true;
+        //         break;
+        //     case GetEmotionValue.EmotionEnum.Angry:
+        //         if (emotionsManager.Angry >= EmotionThreshold)
+        //             checkEmotion = true;
+        //         break;
+        //     case GetEmotionValue.EmotionEnum.Surprised:
+        //         if (emotionsManager.Surprised >= EmotionThreshold)
+        //             checkEmotion = true;
+        //         break;
+        //     case GetEmotionValue.EmotionEnum.Sad:
+        //         if (emotionsManager.Sad >= EmotionThreshold)
+        //             checkEmotion = true;
+        //         break;
+        //     case GetEmotionValue.EmotionEnum.Neutral:
+        //         if (emotionsManager.Neutral >= EmotionThreshold)
+        //             checkEmotion = true;
+        //         break;
+        //     case GetEmotionValue.EmotionEnum.Disgust:
+        //         if (emotionsManager.Disgust >= EmotionThreshold)
+        //             checkEmotion = true;
+        //         break;
+        //     case GetEmotionValue.EmotionEnum.Happy:
+        //         if (emotionsManager.Happy >= EmotionThreshold)
+        //             checkEmotion = true;
+        //         break;
+        // }
 
         return checkEmotion;
     }
 
     private void MakeACapture()
     {
-        Texture2D texture2D = Instantiate(camManager.WebcamTexture);
+        // Texture2D texture2D = Instantiate(camManager.WebcamTexture);
     }
 }

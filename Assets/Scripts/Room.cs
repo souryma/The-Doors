@@ -2,17 +2,18 @@ using DG.Tweening;
 using MoodMe;
 using TMPro;
 using UnityEngine;
+using VDT.FaceRecognition.SDK;
 using Random = UnityEngine.Random;
 
 public class Room : MonoBehaviour
 {
-    private GetEmotionValue.EmotionEnum _emotionForOpening;
+    private EmotionsEstimator.Emotion _emotionForOpening;
     private bool _isOpened = false;
     private GameObject _doorObject;
     [SerializeField] private TextMeshPro _emotionRoomText;
 
     public bool IsOpened => _isOpened;
-    public GetEmotionValue.EmotionEnum EmotionForOpening => _emotionForOpening;
+    public EmotionsEstimator.Emotion EmotionForOpening=> _emotionForOpening;
     public int DoorId { get; set; }
 
 
@@ -25,19 +26,20 @@ public class Room : MonoBehaviour
         _emotionRoomText = transform.Find("EmotionText").GetComponent<TextMeshPro>();
 
         // Give a random emotion to te door
-        int emotion = Random.Range(0, 3);
-        switch (emotion)
-        {
-            case 0:
-                _emotionForOpening = GetEmotionValue.EmotionEnum.Neutral;
-                break;
-            case 1:
-                _emotionForOpening = GetEmotionValue.EmotionEnum.Sad;
-                break;
-            case 2:
-                _emotionForOpening = GetEmotionValue.EmotionEnum.Surprised;
-                break;
-        }
+        int emotionIndex = Random.Range(0, 4);
+        _emotionForOpening = (EmotionsEstimator.Emotion) emotionIndex;
+        // switch (emotion)
+        // {
+        //     case 0:
+        //         _emotionForOpening = GetEmotionValue.EmotionEnum.Neutral;
+        //         break;
+        //     case 1:
+        //         _emotionForOpening = GetEmotionValue.EmotionEnum.Sad;
+        //         break;
+        //     case 2:
+        //         _emotionForOpening = GetEmotionValue.EmotionEnum.Surprised;
+        //         break;
+        // }
         
         SetEmotionText();
     }
@@ -47,14 +49,17 @@ public class Room : MonoBehaviour
         string text = "";
         switch (_emotionForOpening)
         {
-            case GetEmotionValue.EmotionEnum.Neutral:
+            case EmotionsEstimator.Emotion.EMOTION_NEUTRAL:
                 text = "Neutral";
                 break;
-            case GetEmotionValue.EmotionEnum.Sad:
-                text = "Sad ...";
+            case EmotionsEstimator.Emotion.EMOTION_ANGRY:
+                text = "Angry !";
                 break;
-            case GetEmotionValue.EmotionEnum.Surprised:
-                text = "Surprised !";
+            case EmotionsEstimator.Emotion.EMOTION_HAPPY:
+                text = "Happy :)";
+                break; 
+            case EmotionsEstimator.Emotion.EMOTION_SURPRISE:
+                text = "Surprised :0";
                 break;
         }
         _emotionRoomText.text = text;
