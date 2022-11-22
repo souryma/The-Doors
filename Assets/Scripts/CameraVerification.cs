@@ -23,6 +23,6 @@ public class CameraVerification : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _imageObject.texture = GameManager.Instance.CamManager.VideoTexure;
+        _imageObject.texture = GameManager.Instance.CamManager.WebcamTexture;
     }
 }
