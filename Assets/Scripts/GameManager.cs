@@ -5,6 +5,13 @@ using VDT.FaceRecognition.SDK;
 
 public class GameManager : MonoBehaviour
 {
+    public enum Difficulty
+    {
+        Easy,
+        Medium,
+        Hard
+    }
+
     // Static instance of the GameManager
     private static GameManager _instance;
     // [SerializeField] private CameraManager camManager;
@@ -12,17 +19,28 @@ public class GameManager : MonoBehaviour
     [SerializeField] private FaceManager faceManager;
     [SerializeField] private RoomManager roomManager;
     [SerializeField] private TextMeshProUGUI _gameOverUi;
-    [Space]
-    [SerializeField] private const float EmotionThreshold = 0.70f;
+
+    [Space] [SerializeField] private const float EmotionThreshold = 0.70f;
+
     // The speed of the doors (0 = no movement)
     [SerializeField] [Range(0, 0.1f)] private float _gameSpeed = 0.007f;
+    [SerializeField] private Difficulty _gameDifficulty;
 
     public static GameManager Instance => _instance;
+
     public float GameSpeed
     {
         get => _gameSpeed;
         set => _gameSpeed = value;
     }
+
+    public Difficulty GameDifficulty
+    {
+        get => _gameDifficulty;
+        set => _gameDifficulty = value;
+    }
+
+    public CameraManager CamManager => camManager;
 
     private void Start()
     {
@@ -34,6 +52,21 @@ public class GameManager : MonoBehaviour
         
 
         _instance = this;
+
+        switch (_gameDifficulty)
+        {
+            case Difficulty.Easy:
+                _gameSpeed = 0.007f;
+                break;
+            case Difficulty.Medium:
+                _gameSpeed = 0.02f;
+                break;
+            case Difficulty.Hard:
+                _gameSpeed = 0.05f;
+                break;
+        }
+
+        RoomManager.OnNewRoom += UpdateGameSpeed;
     }
 
     private void Update()
@@ -43,15 +76,20 @@ public class GameManager : MonoBehaviour
             roomManager.OpenCurrentDoor();
             MakeACapture();
         }
-
     }
-    
+
+    private void UpdateGameSpeed()
+    {
+        // Debug.Log("NEW ROOM");
+        // _gameSpeed += 0.001f;
+    }
+
     public void StopGame()
     {
         _gameSpeed = 0;
         _gameOverUi.text = "GAME OVER";
     }
-    
+
     private void OnDestroy()
     {
         if (_instance == this)

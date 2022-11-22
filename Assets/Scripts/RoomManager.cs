@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -7,18 +8,26 @@ public class RoomManager : MonoBehaviour
     // Static instance of the RoomManager
     private static RoomManager _instance;
     [SerializeField] private GameObject _roomPrefab;
+
     [SerializeField] private TextMeshProUGUI _roomNumber;
+
     // Number of rooms at the same time
     [SerializeField] private int _numberOfRoomsActives = 0;
+
     private Room _currentRoom = null;
+
     // Incrementing value used to give an id to each doors
     private int _roomId = 1;
 
     public List<Room> Rooms;
     public static RoomManager Instance => _instance;
+
     public Room CurrentRoom => _currentRoom;
-    
-    
+
+    // Invoked when the play is in a new room
+    public static Action OnNewRoom;
+
+
     private void Start()
     {
         if (_instance != null)
@@ -56,7 +65,7 @@ public class RoomManager : MonoBehaviour
         Room room = roomGO.AddComponent<Room>();
         roomGO.name = "Room" + _roomId;
         room.DoorId = _roomId;
-        
+
         _roomId += 1;
 
         if (Rooms.Count > 0)
@@ -102,10 +111,11 @@ public class RoomManager : MonoBehaviour
         if (CheckCurrentRoom() == false)
         {
             _currentRoom = Rooms[1];
+            OnNewRoom?.Invoke();
         }
-        
+
         UpdateUIRoomNumber();
-        
+
         //  DEBUG : Force Open door
         if (Input.GetKeyDown(KeyCode.T))
         {
