@@ -1,0 +1,36 @@
+﻿#pragma kernel PortaintFrontCamera
+#pragma kernel LandscapeFrontCamera
+
+#pragma kernel PortaintBackwardCamera
+#pragma kernel LandscapeBackwardCamera
+
+RWTexture2D<float4> Result;
+Texture2D<float4> ImageInput;
+
+int textureWidth;
+int textureHeigth;
+
+[numthreads(8, 8, 1)]
+void PortaintFrontCamera(uint3 id : SV_DispatchThreadID)
+{
+	Result[id.xy] = ImageInput[float2(textureWidth, textureHeigth) - id.yx];
+}
+
+[numthreads(8, 8, 1)]
+void LandscapeFrontCamera(uint3 id : SV_DispatchThreadID)
+{
+	Result[id.xy] = ImageInput[float2(textureWidth, textureHeigth) - id.xy];
+}
+
+
+[numthreads(8, 8, 1)]
+void PortaintBackwardCamera(uint3 id : SV_DispatchThreadID)
+{
+	Result[id.xy] = ImageInput[float2(id.y, textureHeigth - id.x)];
+}
+
+[numthreads(8, 8, 1)]
+void LandscapeBackwardCamera(uint3 id : SV_DispatchThreadID)
+{
+	Result[id.xy] = ImageInput[float2(id.x, textureHeigth - id.y)];
+}
