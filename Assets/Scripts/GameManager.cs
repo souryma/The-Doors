@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     // The speed of the doors (0 = no movement)
     [SerializeField] [Range(0, 0.1f)] private float _gameSpeed = 0.007f;
     private bool _isVerificationDone = false;
+    private bool _gameHasStopped = false;
 
     public static GameManager Instance => _instance;
 
@@ -49,7 +50,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (_isVerificationDone == false)
+        if (_isVerificationDone == false || _gameHasStopped)
         {
             return;
         }
@@ -64,11 +65,16 @@ public class GameManager : MonoBehaviour
 
     private void UpdateGameSpeed()
     {
+        // Don't increase speed if game is over
+        if (_gameHasStopped)
+            return; 
+        
         _gameSpeed += 0.01f;
     }
 
     public void StopGame()
     {
+        _gameHasStopped = true;
         _gameSpeed = 0;
         _gameOverUi.text = "GAME OVER";
     }
