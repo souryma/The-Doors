@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using VDT.FaceRecognition.SDK;
@@ -12,6 +11,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private FaceManager faceManager;
     [SerializeField] private RoomManager roomManager;
     [SerializeField] private TextMeshProUGUI _gameOverUi;
+    [SerializeField] private GameObject _gameoverObject;
 
     [Space] [SerializeField] private const float EmotionThreshold = 0.70f;
 
@@ -76,7 +76,16 @@ public class GameManager : MonoBehaviour
     {
         _gameHasStopped = true;
         _gameSpeed = 0;
+        _gameoverObject.SetActive(true);
+        _gameoverObject.GetComponent<Gameover>().SetScore(RoomManager.Instance.CurrentRoom.DoorId - 1);
         _gameOverUi.text = "GAME OVER";
+    }
+
+    public void RestartGame()
+    {
+        RoomManager.Instance.RestartRoom();
+        _gameHasStopped = false;
+        _gameSpeed = 0.007f;
     }
 
     private void OnDestroy()

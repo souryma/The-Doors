@@ -55,6 +55,33 @@ public class RoomManager : MonoBehaviour
         _previousRoom = CurrentRoom;
     }
 
+    public void RestartRoom()
+    {
+        _roomId = 1;
+        
+        Destroy(_currentRoom.gameObject);
+        foreach (var room in Rooms)
+        {
+            Destroy(room.gameObject);
+        }
+        if (_previousRoomExists)
+        {
+            Destroy(_previousRoom.gameObject);
+        }
+        
+        
+        Rooms = new List<Room>();
+
+        for (int i = 0; i < _numberOfRoomsActives; i++)
+        {
+            CreateRoom();
+        }
+
+        _currentRoom = Rooms[0];
+        _previousRoom = CurrentRoom;
+        
+    }
+
     private void OnDestroy()
     {
         if (_instance == this)
