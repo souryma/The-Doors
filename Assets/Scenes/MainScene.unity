@@ -286,7 +286,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ecec89645e1c3840a3141f4f614cdb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _roomPrefab: {fileID: 133013521216784427, guid: 972e645d3b12b314dbd836cf0a84ca5c, type: 3}
+  _roomPrefab: {fileID: 3482029818780263534, guid: 34e468c5992cd6b439208d3576eba48f, type: 3}
   _roomNumber: {fileID: 1930620858}
   _numberOfRoomsActives: 3
   Rooms: []
