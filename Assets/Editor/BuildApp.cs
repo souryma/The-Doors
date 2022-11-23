@@ -64,9 +64,9 @@ public class BuildApp
         {
             case BuildTarget.StandaloneWindows:
             case BuildTarget.StandaloneWindows64:
-            case BuildTarget.StandaloneLinux:
+            // case BuildTarget.StandaloneLinux:
             case BuildTarget.StandaloneLinux64:
-            case BuildTarget.StandaloneLinuxUniversal:
+            // case BuildTarget.StandaloneLinuxUniversal:
 
                 Debug.Log("BuildApp: Removing unnecessary files from the build.");
 

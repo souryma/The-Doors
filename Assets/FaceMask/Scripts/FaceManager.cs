@@ -27,9 +27,9 @@ public class FaceManager : MonoBehaviour
     [SerializeField] AspectRatioFitter aspectRatioFitter;
     // [SerializeField] new Camera camera;
 
-    [Header("Camera device options")]
-    [SerializeField] int targetWidth = 800;
-    [SerializeField] int targetHeigh = 600;
+    // [Header("Camera device options")]
+    // [SerializeField] int targetWidth = 800;
+    // [SerializeField] int targetHeigh = 600;
 
     WebCamDevice currentDevice;
     WebCamTexture webcamTexture;
@@ -54,11 +54,11 @@ public class FaceManager : MonoBehaviour
 
     [Header("UI")]
 
-    [Space]
-    [SerializeField] float minLerp = 16f;
-    [SerializeField] float maxLerp = 86f;
-    [SerializeField] float lerpFactor = 24f;
-    
+    // [Space]
+    // [SerializeField] float minLerp = 16f;
+    // [SerializeField] float maxLerp = 86f;
+    // [SerializeField] float lerpFactor = 24f;
+    //
 
     Dictionary<string, string> errorDecoding = new Dictionary<string, string>
     {
@@ -175,10 +175,10 @@ public class FaceManager : MonoBehaviour
     void InitVisual()
     {
         // Switch width and height if use portrait camera orientation (actual for Android devices)
-        bool portraitCam = Application.platform == RuntimePlatform.Android;
+        // bool portraitCam = Application.platform == RuntimePlatform.Android;
 
-        int width = portraitCam ? webcamTexture.height : webcamTexture.width;
-        int height = portraitCam ? webcamTexture.width : webcamTexture.height;
+        int width =  webcamTexture.width;
+        int height = webcamTexture.height;
 
         // Initializing RenderTexture to output the result of ComputeShader execution
 
@@ -194,8 +194,8 @@ public class FaceManager : MonoBehaviour
         // Preparing ComputeShader
         // Compute Shader rotates the image and flips it horizontally to match the FaceSDK data format
 
-        string kernelName = portraitCam ? "Portaint" : "Landscape";
-        kernelName += currentDevice.isFrontFacing ? "FrontCamera" : "BackwardCamera";
+        string kernelName =  "Landscape";
+        kernelName +=currentDevice.isFrontFacing ? "FrontCamera" : "BackwardCamera";
 
         kernelIndex = convertShader.FindKernel(kernelName);
         convertShader.GetKernelThreadGroupSizes(kernelIndex, out x, out y, out z);

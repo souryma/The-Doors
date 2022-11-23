@@ -1,28 +1,146 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="edb936a3-a9b7-48f0-afb2-48dc694432d2" name="Changes" comment="scene" />
+    <list default="true" id="edb936a3-a9b7-48f0-afb2-48dc694432d2" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.The-Doors - Copie/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.The-Doors - Copie/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor/BuildApp.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/BuildApp.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FaceMask/Scripts/FaceManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FaceMask/Scripts/FaceManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FaceSDKLoader/Awake.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FaceSDKLoader/Awake.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MoodMeBarracuda.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MoodMeBarracuda/Images.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MoodMeBarracuda/Images/Preview.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MoodMeBarracuda/Images/Preview.jpg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MoodMeBarracuda/Images/background.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MoodMeBarracuda/Images/background.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MoodMeBarracuda/Images/gradient.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MoodMeBarracuda/Images/gradient.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MoodMeBarracuda/Images/moodme.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MoodMeBarracuda/Images/moodme.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MoodMeBarracuda/Images/webcam_image.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MoodMeBarracuda/Images/webcam_image.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MoodMeBarracuda/Materials.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MoodMeBarracuda/Materials/Camera Material.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MoodMeBarracuda/Materials/Camera Material.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MoodMeBarracuda/Materials/Preview.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MoodMeBarracuda/Materials/Preview.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MoodMeBarracuda/Materials/PreviewMaterial.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MoodMeBarracuda/Materials/PreviewMaterial.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MoodMeBarracuda/MoodMe Unity Barracuda Insights SDK Manual 2021 v1.0.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MoodMeBarracuda/MoodMe Unity Barracuda Insights SDK Manual 2021 v1.0.pdf.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MoodMeBarracuda/Networks.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MoodMeBarracuda/Networks/emotions_3.onnx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MoodMeBarracuda/Networks/emotions_3.onnx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MoodMeBarracuda/Networks/version-RFB-320.onnx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MoodMeBarracuda/Networks/version-RFB-320.onnx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MoodMeBarracuda/Prefabs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MoodMeBarracuda/Prefabs/CameraManager.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MoodMeBarracuda/Prefabs/CameraManager.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MoodMeBarracuda/Prefabs/MoodMe Camera Portrait.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MoodMeBarracuda/Prefabs/MoodMe Camera Portrait.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MoodMeBarracuda/Prefabs/MoodMeEmotionManager.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MoodMeBarracuda/Prefabs/MoodMeEmotionManager.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MoodMeBarracuda/Prefabs/NetworkAgent.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MoodMeBarracuda/Prefabs/NetworkAgent.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MoodMeBarracuda/Prefabs/VideoInput.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MoodMeBarracuda/Prefabs/VideoInput.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MoodMeBarracuda/RenderTextures.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MoodMeBarracuda/RenderTextures/VideoTexture.renderTexture" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MoodMeBarracuda/RenderTextures/VideoTexture.renderTexture.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MoodMeBarracuda/Scenes.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MoodMeBarracuda/Scenes/Demo.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MoodMeBarracuda/Scenes/Demo.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MoodMeBarracuda/Scripts.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MoodMeBarracuda/Scripts/Mono.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MoodMeBarracuda/Scripts/Mono/AutoRotate.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MoodMeBarracuda/Scripts/Mono/AutoRotate.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MoodMeBarracuda/Scripts/Mono/CameraManager.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MoodMeBarracuda/Scripts/Mono/CameraManager.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MoodMeBarracuda/Scripts/Mono/Editor.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MoodMeBarracuda/Scripts/Mono/Editor/CameraManagerEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MoodMeBarracuda/Scripts/Mono/Editor/CameraManagerEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MoodMeBarracuda/Scripts/Mono/EmotionInterface.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MoodMeBarracuda/Scripts/Mono/EmotionInterface.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MoodMeBarracuda/Scripts/Mono/EmotionsManager.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MoodMeBarracuda/Scripts/Mono/EmotionsManager.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MoodMeBarracuda/Scripts/Mono/FaceDetector.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MoodMeBarracuda/Scripts/Mono/FaceDetector.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MoodMeBarracuda/Scripts/Mono/GetEmotionValue.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MoodMeBarracuda/Scripts/Mono/GetEmotionValue.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MoodMeBarracuda/Scripts/Mono/ManageEmotionsNetwork.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MoodMeBarracuda/Scripts/Mono/ManageEmotionsNetwork.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MoodMeBarracuda/Scripts/Mono/MoodMeEmotions.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MoodMeBarracuda/Scripts/Mono/MoodMeEmotions.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MoodMeBarracuda/Scripts/Mono/MorphController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MoodMeBarracuda/Scripts/Mono/MorphController.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MoodMeBarracuda/Scripts/Scriptable.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MoodMeBarracuda/Scripts/Scriptable/FaceDetectorPostProcessing.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MoodMeBarracuda/Scripts/Scriptable/FaceDetectorPostProcessing.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MoodMeBarracuda/Scripts/Scriptable/Preprocessing.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MoodMeBarracuda/Scripts/Scriptable/Preprocessing.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MoodMeBarracuda/Shaders.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MoodMeBarracuda/Shaders/Unlit-Normal.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MoodMeBarracuda/Shaders/Unlit-Normal.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MoodMeBarracuda/Videos.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MoodMeBarracuda/Videos/squared_emotions.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MoodMeBarracuda/Videos/squared_emotions.mp4.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MoodMeBarracuda/Videos/test_ls.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MoodMeBarracuda/Videos/test_ls.mp4.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MoodMeBarracuda/readme.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MoodMeBarracuda/readme.txt.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/PB.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/PB.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/EmotionScreenShot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/EmotionScreenShot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Room.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Room.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="3divi_implementation" />
+      </map>
+    </option>
+  </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/713111eef85a446fa716abbb474708a117e00/2d/9fa28d43/EmotionsEstimator.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://E:/Projets/The-Doors - Copie/Assets/FaceMask/Scripts/EmotionsController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://E:/Projets/The-Doors - Copie/Assets/FaceMask/Scripts/EmotionsController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://E:/Projets/The-Doors - Copie/Assets/FaceMask/Scripts/FaceManager.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://E:/Projets/The-Doors - Copie/Assets/FaceMask/Scripts/FaceManager.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://E:/Projets/The-Doors - Copie/Assets/Scenes/PB.unity" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://E:/Projets/The-Doors - Copie/Assets/Scenes/PB.unity" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://E:/Projets/The-Doors - Copie/Assets/Scenes/PB.unity" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://E:/Projets/The-Doors - Copie/Assets/Scenes/PB.unity" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.burst@1.6.6/Tests/Editor/EditmodeTest.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/c399efc08928422d8828d74a2b19ffba158600/06/1240e7f4/ComputeShader.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.collab-proxy@1.17.6/Editor/PlasticSCM/AssetMenu/AssetOperations.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.collab-proxy@1.17.6/Editor/PlasticSCM/AssetsUtils/AssetsPath.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Editor/EventSystem/EventTriggerEditor.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2HwZU6JJ656Cvrv2GDSY9B1d8Mu" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Discover.Launch.Via.Unity": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+    <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="$PROJECT_DIR$/../the doors buid\The Doors.exe" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="E:\Projets\the doors buid" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <method v="2" />
+    </configuration>
     <configuration name="UnitTests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="E:\apps\2021.3.13f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath &quot;E:\Projets\The-Doors - Copie&quot; -testResults Logs/results.xml -testPlatform EditMode -debugCodeOptimization" />
@@ -52,10 +170,33 @@
       <method v="2" />
     </configuration>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="edb936a3-a9b7-48f0-afb2-48dc694432d2" name="Changes" comment="" />
+      <created>1669198124966</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1669198124966</updated>
+      <workItem from="1669198142596" duration="2123000" />
+    </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="UnityCheckinConfiguration" checkUnsavedScenes="false" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
-  <component name="UnityUnitTestConfiguration" currentTestLauncher="Both" />
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
 </project>

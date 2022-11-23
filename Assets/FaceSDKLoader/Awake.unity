@@ -1576,7 +1576,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   messageBox: {fileID: 1263466736}
-  sceneToLoad: PB
+  sceneToLoad: Menu
 --- !u!95 &1607106828
 Animator:
   serializedVersion: 4
