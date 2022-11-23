@@ -1,17 +1,10 @@
-
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using VDT.FaceRecognition.SDK;
 
 public class GameManager : MonoBehaviour
 {
-    public enum Difficulty
-    {
-        Easy,
-        Medium,
-        Hard
-    }
-
     // Static instance of the GameManager
     private static GameManager _instance;
     // [SerializeField] private CameraManager camManager;
@@ -24,7 +17,6 @@ public class GameManager : MonoBehaviour
 
     // The speed of the doors (0 = no movement)
     [SerializeField] [Range(0, 0.1f)] private float _gameSpeed = 0.007f;
-    [SerializeField] private Difficulty _gameDifficulty;
     private bool _isVerificationDone = false;
 
     public static GameManager Instance => _instance;
@@ -41,12 +33,6 @@ public class GameManager : MonoBehaviour
         set => _gameSpeed = value;
     }
 
-    public Difficulty GameDifficulty
-    {
-        get => _gameDifficulty;
-        set => _gameDifficulty = value;
-    }
-
     //public CameraManager CamManager => camManager;
 
     private void Start()
@@ -56,23 +42,9 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-        
 
         _isVerificationDone = false;
         _instance = this;
-
-        switch (_gameDifficulty)
-        {
-            case Difficulty.Easy:
-                _gameSpeed = 0.007f;
-                break;
-            case Difficulty.Medium:
-                _gameSpeed = 0.02f;
-                break;
-            case Difficulty.Hard:
-                _gameSpeed = 0.05f;
-                break;
-        }
     }
 
     private void Update()
