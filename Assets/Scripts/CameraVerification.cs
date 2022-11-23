@@ -18,6 +18,7 @@ public class CameraVerification : MonoBehaviour
     {
         GameManager.Instance.GameSpeed = 0.007f;
         gameObject.SetActive(false);
+        GameManager.Instance.IsVerificationDone = true;
     }
 
     // Update is called once per frame
