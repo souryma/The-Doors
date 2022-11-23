@@ -83,14 +83,16 @@ public class Room : MonoBehaviour
 
     public void OpenDoor()
     {
-        _doorObject.transform.DOMoveX(1.8f, 1);
+        // Open door
+        // _doorObject.transform.DOMoveX(1.8f, 1);
+        _doorObject.SetActive(false);
         
         // Open curtain
         _leftCurtainsObject.transform.DOScaleY(20f, 1);
         _rightCurtainsObject.transform.DOScaleY(-20f, 1);
         _middleCurtainsObject.transform.DOScaleZ(1f, 2f);
         
-        AudioManager.instance.Play("CurtainOpening");
+        AudioManager.instance.Play("CurtainOpen");
 
         Debug.Log("The door is opened.");
 

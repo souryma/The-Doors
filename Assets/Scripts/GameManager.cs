@@ -73,8 +73,6 @@ public class GameManager : MonoBehaviour
                 _gameSpeed = 0.05f;
                 break;
         }
-
-        RoomManager.OnNewRoom += UpdateGameSpeed;
     }
 
     private void Update()
@@ -88,13 +86,13 @@ public class GameManager : MonoBehaviour
         {
             roomManager.OpenCurrentDoor();
             MakeACapture();
+            UpdateGameSpeed();
         }
     }
 
     private void UpdateGameSpeed()
     {
-        // Debug.Log("NEW ROOM");
-        // _gameSpeed += 0.001f;
+        _gameSpeed += 0.01f;
     }
 
     public void StopGame()
