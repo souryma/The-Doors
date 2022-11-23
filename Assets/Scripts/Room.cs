@@ -9,6 +9,8 @@ public class Room : MonoBehaviour
     private EmotionsEstimator.Emotion _emotionForOpening;
     private bool _isOpened = false;
     private GameObject _doorObject;
+    private GameObject _leftCurtainsObject;
+    private GameObject _rightCurtainsObject;
     [SerializeField] private TextMeshPro _emotionRoomText;
 
     public bool IsOpened => _isOpened;
@@ -20,6 +22,11 @@ public class Room : MonoBehaviour
     {
         // Get the door gameobject
         _doorObject = transform.Find("Door").gameObject;
+        
+        // Get the curtain gameobject
+        GameObject curtains = transform.Find("Curtain").gameObject;
+        _leftCurtainsObject = curtains.transform.Find("LeftCurtain").gameObject;
+        _rightCurtainsObject = curtains.transform.Find("RightCurtain").gameObject;
         
         // Get emotion text UI
         _emotionRoomText = transform.Find("EmotionText").GetComponent<TextMeshPro>();
@@ -75,6 +82,10 @@ public class Room : MonoBehaviour
     public void OpenDoor()
     {
         _doorObject.transform.DOMoveX(1.8f, 1);
+        
+        // Open curtain
+        _leftCurtainsObject.transform.DOScaleY(20f, 1);
+        _rightCurtainsObject.transform.DOScaleY(-20f, 1);
 
         Debug.Log("The door is opened.");
 
