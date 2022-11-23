@@ -1395,7 +1395,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6805165b8a5d7844e8cfd6646f85dd50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sounds: []
+  sounds:
+  - name: curtainOpen
+    clip: {fileID: 8300000, guid: efa5fe5243883ce44be09f7a5ac76751, type: 3}
+    volume: 0
+    pitch: 0
+    outputAudioMixerGroup: {fileID: 2323703797519231150, guid: 399ed20f681aca54c82387bea0ad3d80, type: 2}
+    loop: 0
+    source: {fileID: 0}
 --- !u!4 &1486561629
 Transform:
   m_ObjectHideFlags: 0
