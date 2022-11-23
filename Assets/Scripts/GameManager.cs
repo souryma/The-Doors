@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour
         set => _gameDifficulty = value;
     }
 
-    public CameraManager CamManager => camManager;
+    //public CameraManager CamManager => camManager;
 
     private void Start()
     {
