@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     // The speed of the doors (0 = no movement)
     [SerializeField] [Range(0, 0.1f)] private float _gameSpeed = 0.007f;
     private bool _isVerificationDone = false;
+    private bool _musicIsStarted = false;
 
     public static GameManager Instance => _instance;
 
@@ -45,7 +46,7 @@ public class GameManager : MonoBehaviour
 
         _isVerificationDone = false;
         _instance = this;
-        AudioManager.instance.Play(RoomManager.Instance.CurrentRoom.getRoomMusic());
+        
 
     }
 
@@ -54,6 +55,11 @@ public class GameManager : MonoBehaviour
         if (_isVerificationDone == false)
         {
             return;
+        }
+        if (!_musicIsStarted)
+        {
+            AudioManager.instance.Play(RoomManager.Instance.CurrentRoom.getRoomMusic());
+            _musicIsStarted = true;
         }
         
         if (roomManager.CurrentRoom && !roomManager.CurrentRoom.IsOpened && CheckIfEmotionIsAttained())

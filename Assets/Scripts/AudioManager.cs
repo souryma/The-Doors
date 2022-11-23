@@ -43,10 +43,11 @@ public class AudioManager : MonoBehaviour
         {
             return null;
         }
+        Debug.Log("Playing " + soundToPlay.name);
         soundToPlay.source.Play();
         if (duration > -1f)
         { 
-            StartCoroutine(StopSoundAfterTime(soundToPlay.source, duration));
+            StartCoroutine(StopSoundAfterTime(soundName, duration));
         }
         return soundToPlay.source;
     }
@@ -70,20 +71,25 @@ public class AudioManager : MonoBehaviour
         return sound;
     }
 
-    public IEnumerator StopSoundAfterTime(AudioSource source, float time, float fadeDuration = 0.3f)
+    public IEnumerator StopSoundAfterTime(string source, float time, float fadeDuration = 0.3f)
     {
         yield return new WaitForSeconds(time);
         StopSound(source, fadeDuration);
         
     }
 
-    private void StopSound(AudioSource source, float fadeDuration)
+    private void StopSound(string source, float fadeDuration)
     {
-        float volume = source.volume;
-        source.DOFade(0f, fadeDuration).OnComplete(() =>
+        Sound sound = GetSound(source);
+        if (sound != null)
         {
-            source.Stop();
-            source.volume = volume;
-        });
+            sound.source.DOFade(0f, fadeDuration).OnComplete(() =>
+            {
+                
+                sound.source.Stop();
+                sound.source.volume = sound.volume;
+            });
+        }
+       
     }
 }

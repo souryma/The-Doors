@@ -149,13 +149,18 @@ public class RoomManager : MonoBehaviour
 
     private void startNextRoomMusic()
     {
-        // Sound musicToStart = AudioManager.instance.GetSound(Rooms[0].getRoomMusic());
-        Sound musicToEnd = AudioManager.instance.GetSound(_currentRoom.getRoomMusic());
+        string musicToStart = Rooms[0].getRoomMusic();
+        string musicToEnd = _currentRoom.getRoomMusic();
         // Sound applause = AudioManager.instance.GetSound("applause");
 
-        StartCoroutine(AudioManager.instance.StopSoundAfterTime(musicToEnd.source, 1f));
         AudioManager.instance.Play("applause", 3f);
-        AudioManager.instance.PlayAfterTime(Rooms[1].getRoomMusic(), 2f);
+        Debug.Log("Starting "+ Rooms[1].getRoomMusic());
+        if (musicToEnd != musicToStart)
+        {
+            StartCoroutine(AudioManager.instance.StopSoundAfterTime(musicToEnd, 1f));
+            StartCoroutine(AudioManager.instance.PlayAfterTime(Rooms[1].getRoomMusic(), 2f));
+        }
+       
 
         
     }
