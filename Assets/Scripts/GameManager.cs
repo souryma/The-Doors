@@ -25,8 +25,15 @@ public class GameManager : MonoBehaviour
     // The speed of the doors (0 = no movement)
     [SerializeField] [Range(0, 0.1f)] private float _gameSpeed = 0.007f;
     [SerializeField] private Difficulty _gameDifficulty;
+    private bool _isVerificationDone = false;
 
     public static GameManager Instance => _instance;
+
+    public bool IsVerificationDone
+    {
+        get => _isVerificationDone;
+        set => _isVerificationDone = value;
+    }
 
     public float GameSpeed
     {
@@ -51,6 +58,7 @@ public class GameManager : MonoBehaviour
         }
         
 
+        _isVerificationDone = false;
         _instance = this;
 
         switch (_gameDifficulty)
@@ -71,6 +79,11 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        if (_isVerificationDone == false)
+        {
+            return;
+        }
+        
         if (roomManager.CurrentRoom && !roomManager.CurrentRoom.IsOpened && CheckIfEmotionIsAttained())
         {
             roomManager.OpenCurrentDoor();
