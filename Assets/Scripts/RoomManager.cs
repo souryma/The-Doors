@@ -1,7 +1,10 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
+using VDT.FaceRecognition.SDK;
 
 public class RoomManager : MonoBehaviour
 {
@@ -141,5 +144,20 @@ public class RoomManager : MonoBehaviour
     public void OpenCurrentDoor()
     {
         CurrentRoom.OpenDoor();
+        startNextRoomMusic();
     }
+
+    private void startNextRoomMusic()
+    {
+        // Sound musicToStart = AudioManager.instance.GetSound(Rooms[0].getRoomMusic());
+        Sound musicToEnd = AudioManager.instance.GetSound(_currentRoom.getRoomMusic());
+        // Sound applause = AudioManager.instance.GetSound("applause");
+
+        StartCoroutine(AudioManager.instance.StopSoundAfterTime(musicToEnd.source, 1f));
+        AudioManager.instance.Play("applause", 3f);
+        AudioManager.instance.PlayAfterTime(Rooms[1].getRoomMusic(), 2f);
+
+        
+    }
+    
 }

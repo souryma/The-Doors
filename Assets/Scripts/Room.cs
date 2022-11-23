@@ -81,6 +81,8 @@ public class Room : MonoBehaviour
 
     public void OpenDoor()
     {
+        AudioManager.instance.Play("curtainOpen", 1f);
+        
         _doorObject.transform.DOMoveX(1.8f, 1);
         
         // Open curtain
@@ -90,5 +92,26 @@ public class Room : MonoBehaviour
         Debug.Log("The door is opened.");
 
         _isOpened = true;
+    }
+
+    public string getRoomMusic()
+    {
+        switch (this._emotionForOpening)
+        {
+            case EmotionsEstimator.Emotion.EMOTION_ANGRY:
+                return "musicangry";
+                break;
+            case EmotionsEstimator.Emotion.EMOTION_HAPPY:
+                return "musichappy";
+                break;
+            case EmotionsEstimator.Emotion.EMOTION_SURPRISE:
+                return "musicsurprised";
+                break;
+            case EmotionsEstimator.Emotion.EMOTION_NEUTRAL:
+                return "musicneutral";
+                break;
+        }
+
+        return "";
     }
 }

@@ -74,6 +74,7 @@ public class GameManager : MonoBehaviour
                 break;
         }
 
+        AudioManager.instance.Play(RoomManager.Instance.CurrentRoom.getRoomMusic());
         RoomManager.OnNewRoom += UpdateGameSpeed;
     }
 

@@ -1398,8 +1398,43 @@ MonoBehaviour:
   sounds:
   - name: curtainOpen
     clip: {fileID: 8300000, guid: efa5fe5243883ce44be09f7a5ac76751, type: 3}
-    volume: 0
-    pitch: 0
+    volume: 1
+    pitch: 1
+    outputAudioMixerGroup: {fileID: 2323703797519231150, guid: 399ed20f681aca54c82387bea0ad3d80, type: 2}
+    loop: 0
+    source: {fileID: 0}
+  - name: musicangry
+    clip: {fileID: 8300000, guid: a8d335a21e1a77747b57a3cc76e4e318, type: 3}
+    volume: 1
+    pitch: 1
+    outputAudioMixerGroup: {fileID: 2323703797519231150, guid: 399ed20f681aca54c82387bea0ad3d80, type: 2}
+    loop: 0
+    source: {fileID: 0}
+  - name: musicsurprised
+    clip: {fileID: 8300000, guid: 23a6acbc6d93a934fa0fccd7fb721896, type: 3}
+    volume: 1
+    pitch: 1
+    outputAudioMixerGroup: {fileID: 2323703797519231150, guid: 399ed20f681aca54c82387bea0ad3d80, type: 2}
+    loop: 0
+    source: {fileID: 0}
+  - name: musicneutral
+    clip: {fileID: 8300000, guid: 7c1de11b43916e042bc890d470986bb0, type: 3}
+    volume: 1
+    pitch: 1
+    outputAudioMixerGroup: {fileID: 2323703797519231150, guid: 399ed20f681aca54c82387bea0ad3d80, type: 2}
+    loop: 0
+    source: {fileID: 0}
+  - name: musichappy
+    clip: {fileID: 8300000, guid: 3b6c9db0ef79ac944a4064f057850717, type: 3}
+    volume: 1
+    pitch: 1
+    outputAudioMixerGroup: {fileID: 2323703797519231150, guid: 399ed20f681aca54c82387bea0ad3d80, type: 2}
+    loop: 0
+    source: {fileID: 0}
+  - name: applause
+    clip: {fileID: 8300000, guid: 1aace7c0c016f5142aab6715a58ff4aa, type: 3}
+    volume: 1
+    pitch: 1
     outputAudioMixerGroup: {fileID: 2323703797519231150, guid: 399ed20f681aca54c82387bea0ad3d80, type: 2}
     loop: 0
     source: {fileID: 0}
