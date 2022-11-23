@@ -14,11 +14,17 @@ public class RoomManager : MonoBehaviour
     // Number of rooms at the same time
     [SerializeField] private int _numberOfRoomsActives = 0;
 
-    private Room _currentRoom = null;
+    // The room where the player is
+    [SerializeField] private Room _currentRoom = null;
 
     // Incrementing value used to give an id to each doors
     private int _roomId = 1;
 
+    // Used to keep the previous current room before it is deleted
+    [SerializeField] private Room _previousRoom;
+    private bool _previousRoomExists = true;
+
+    // List of the next room to come
     public List<Room> Rooms;
     public static RoomManager Instance => _instance;
 
@@ -46,6 +52,7 @@ public class RoomManager : MonoBehaviour
         }
 
         _currentRoom = Rooms[0];
+        _previousRoom = CurrentRoom;
     }
 
     private void OnDestroy()
@@ -80,28 +87,32 @@ public class RoomManager : MonoBehaviour
         Rooms.Add(room);
     }
 
-    private void DeleteFirstRoomInList()
+    private void DeleteOldRoom()
     {
-        GameObject door = Rooms[0].gameObject;
-        Rooms.RemoveAt(0);
+        GameObject door = _previousRoom.gameObject;
         Destroy(door);
-
-        _currentRoom = Rooms[0];
+        _previousRoomExists = false;
     }
 
     // Update is called once per frame
     private void Update()
     {
         // Makes the doors move to the player
+        MoveOnZ(_currentRoom.transform);
         foreach (var door in Rooms)
         {
             MoveOnZ(door.transform);
         }
+        if (_previousRoomExists)
+        {
+            MoveOnZ(_previousRoom.transform);
+        }
+
 
         // Remove behind room and add a new one 
-        if (Rooms[0].transform.position.z <= -10)
+        if (_previousRoomExists && _previousRoom.transform.position.z <= -10)
         {
-            DeleteFirstRoomInList();
+            DeleteOldRoom();
 
             // If a door is removed, add a new one after the remaining ones
             CreateRoom();
@@ -110,7 +121,11 @@ public class RoomManager : MonoBehaviour
         // Check current room
         if (CheckCurrentRoom() == false)
         {
-            _currentRoom = Rooms[1];
+            _previousRoom = _currentRoom;
+            _previousRoomExists = true;
+            _currentRoom = Rooms[0];
+            Rooms.RemoveAt(0);
+            
             OnNewRoom?.Invoke();
         }
 
@@ -130,7 +145,7 @@ public class RoomManager : MonoBehaviour
 
     private bool CheckCurrentRoom()
     {
-        return Rooms[0].transform.position.z > -5;
+        return _currentRoom.transform.position.z > -5;
     }
 
     private void MoveOnZ(Transform tf)
