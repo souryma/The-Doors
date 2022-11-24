@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using VDT.FaceRecognition.SDK;
@@ -12,12 +11,14 @@ public class GameManager : MonoBehaviour
     [SerializeField] private FaceManager faceManager;
     [SerializeField] private RoomManager roomManager;
     [SerializeField] private TextMeshProUGUI _gameOverUi;
+    [SerializeField] private GameObject _gameoverObject;
 
     [Space] [SerializeField] private const float EmotionThreshold = 0.70f;
 
     // The speed of the doors (0 = no movement)
     [SerializeField] [Range(0, 0.1f)] private float _gameSpeed = 0.007f;
     private bool _isVerificationDone = false;
+    private bool _gameHasStopped = false;
     private bool _musicIsStarted = false;
 
     public static GameManager Instance => _instance;
@@ -46,13 +47,11 @@ public class GameManager : MonoBehaviour
 
         _isVerificationDone = false;
         _instance = this;
-        
-
     }
 
     private void Update()
     {
-        if (_isVerificationDone == false)
+        if (_isVerificationDone == false || _gameHasStopped)
         {
             return;
         }
@@ -72,13 +71,27 @@ public class GameManager : MonoBehaviour
 
     private void UpdateGameSpeed()
     {
+        // Don't increase speed if game is over
+        if (_gameHasStopped)
+            return; 
+        
         _gameSpeed += 0.01f;
     }
 
     public void StopGame()
     {
+        _gameHasStopped = true;
         _gameSpeed = 0;
+        _gameoverObject.SetActive(true);
+        _gameoverObject.GetComponent<Gameover>().SetScore(RoomManager.Instance.CurrentRoom.DoorId - 1);
         _gameOverUi.text = "GAME OVER";
+    }
+
+    public void RestartGame()
+    {
+        RoomManager.Instance.RestartRoom();
+        _gameHasStopped = false;
+        _gameSpeed = 0.007f;
     }
 
     private void OnDestroy()
