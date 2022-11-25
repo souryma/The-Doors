@@ -13,6 +13,7 @@ public class Room : MonoBehaviour
     private GameObject _rightCurtainsObject;
     private GameObject _middleCurtainsObject;
     [SerializeField] private TextMeshPro _emotionRoomText;
+    [SerializeField] private GameObject _emotionImage;
 
     public bool IsOpened => _isOpened;
     public EmotionsEstimator.Emotion EmotionForOpening=> _emotionForOpening;
@@ -33,23 +34,37 @@ public class Room : MonoBehaviour
         // Get emotion text UI
         _emotionRoomText = transform.Find("EmotionText").GetComponent<TextMeshPro>();
 
+        _emotionImage = transform.Find("EmotionImage").gameObject;
+
         // Give a random emotion to te door
         int emotionIndex = Random.Range(0, 4);
         _emotionForOpening = (EmotionsEstimator.Emotion) emotionIndex;
-        // switch (emotion)
-        // {
-        //     case 0:
-        //         _emotionForOpening = GetEmotionValue.EmotionEnum.Neutral;
-        //         break;
-        //     case 1:
-        //         _emotionForOpening = GetEmotionValue.EmotionEnum.Sad;
-        //         break;
-        //     case 2:
-        //         _emotionForOpening = GetEmotionValue.EmotionEnum.Surprised;
-        //         break;
-        // }
+
         
         SetEmotionText();
+        SetEmotionImage();
+    }
+
+    private void SetEmotionImage()
+    {
+        Texture text = new Texture2D(300, 300);
+        switch (_emotionForOpening)
+        {
+            case EmotionsEstimator.Emotion.EMOTION_NEUTRAL:
+                text = GameManager.Instance.NeutralFace;
+                break;
+            case EmotionsEstimator.Emotion.EMOTION_ANGRY:
+                text = GameManager.Instance.AngryFace;
+                break;
+            case EmotionsEstimator.Emotion.EMOTION_HAPPY:
+                text = GameManager.Instance.HappyFace;
+                break; 
+            case EmotionsEstimator.Emotion.EMOTION_SURPRISE:
+                text = GameManager.Instance.SurprisedFace;
+                break;
+        }
+
+        _emotionImage.GetComponent<MeshRenderer>().material.mainTexture = text;
     }
 
     private void SetEmotionText()
@@ -94,7 +109,7 @@ public class Room : MonoBehaviour
         
         AudioManager.instance.Play("CurtainOpen");
 
-        Debug.Log("The door is opened.");
+        // Debug.Log("The door is opened.");
 
         _isOpened = true;
     }

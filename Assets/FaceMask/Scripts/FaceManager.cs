@@ -23,7 +23,7 @@ public class FaceManager : MonoBehaviour
     List<Face.RawSample> samples;
 
     [Header("View")]
-    [SerializeField] RawImage rawImage;
+    [SerializeField] public RawImage rawImage;
     [SerializeField] AspectRatioFitter aspectRatioFitter;
     // [SerializeField] new Camera camera;
 

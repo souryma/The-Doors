@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -46,6 +47,13 @@ public class RoomManager : MonoBehaviour
 
         Rooms = new List<Room>();
 
+        StartCoroutine("createStartingRooms");
+    }
+
+    private IEnumerator createStartingRooms()
+    {
+        yield return new WaitForSeconds(1);
+        
         for (int i = 0; i < _numberOfRoomsActives; i++)
         {
             CreateRoom();
@@ -124,6 +132,9 @@ public class RoomManager : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        if (!GameManager.Instance.IsVerificationDone)
+            return;
+        
         // Makes the doors move to the player
         MoveOnZ(_currentRoom.transform);
         foreach (var door in Rooms)

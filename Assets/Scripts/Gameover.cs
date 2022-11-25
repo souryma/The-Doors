@@ -1,9 +1,12 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class Gameover : MonoBehaviour
 {
     public TextMeshProUGUI Score;
+    public GameObject BackGroundImage;
 
     public void SetScore(int score)
     {
@@ -13,5 +16,10 @@ public class Gameover : MonoBehaviour
     {
         gameObject.SetActive(false);
         GameManager.Instance.RestartGame();
+    }
+
+    public void SetGameoverBG(Texture image)
+    {
+        BackGroundImage.GetComponent<RawImage>().texture = image;
     }
 }
