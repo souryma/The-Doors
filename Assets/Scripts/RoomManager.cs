@@ -52,7 +52,7 @@ public class RoomManager : MonoBehaviour
 
     private IEnumerator createStartingRooms()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitUntil(GameManager.Instance.AreAllEmotionsReady);
         
         for (int i = 0; i < _numberOfRoomsActives; i++)
         {
