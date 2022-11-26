@@ -51,6 +51,17 @@ public class RoomManager : MonoBehaviour
 
         Rooms = new List<Room>();
 
+        StartCoroutine("createStartingRooms");
+    }
+
+    private IEnumerator createStartingRooms()
+    {
+        // Wait for game manager to be instanciated
+        yield return new WaitForSeconds(1);
+        
+        // Wait until all emotions are ready
+        yield return new WaitUntil(() => GameManager.Instance.AreAllEmotionsReady() == true);
+        
         for (int i = 0; i < _numberOfRoomsActives; i++)
         {
             CreateRoom();
@@ -129,6 +140,9 @@ public class RoomManager : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        if (!GameManager.Instance.IsVerificationDone)
+            return;
+        
         // Makes the doors move to the player
         MoveOnZ(_currentRoom.transform);
         foreach (var door in Rooms)
