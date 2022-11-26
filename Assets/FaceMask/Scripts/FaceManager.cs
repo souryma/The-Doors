@@ -4,7 +4,9 @@ using UnityEngine.UI;
 using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
-
+using System.IO;
+using System.IO.Compression;
+using VDT.FaceRecognition.SDK.Pbio.Facerec;
 using Face = VDT.FaceRecognition.SDK;
 
 
@@ -23,7 +25,8 @@ public class FaceManager : MonoBehaviour
     List<Face.RawSample> samples;
 
     [Header("View")]
-    [SerializeField] RawImage rawImage;
+    [SerializeField] public RawImage rawImage;
+    [SerializeField] RawImage cropImage;
     [SerializeField] AspectRatioFitter aspectRatioFitter;
     // [SerializeField] new Camera camera;
 

@@ -119,6 +119,7 @@ public class GameManager : MonoBehaviour
         }
 
         if (_isVerificationDone == false)
+        {
             return;
         }
         if (!_gameIsStarted)

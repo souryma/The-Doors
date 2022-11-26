@@ -1,11 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="edb936a3-a9b7-48f0-afb2-48dc694432d2" name="Changes" comment="ajout musique and applause">
+    <list default="true" id="edb936a3-a9b7-48f0-afb2-48dc694432d2" name="Changes" comment="debug script musique salle">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.The-Doors - Copie/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.The-Doors - Copie/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FaceMask/Scripts/FaceManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FaceMask/Scripts/FaceManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FaceSDKLoader/Awake.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FaceSDKLoader/Awake.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/AudioManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AudioManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CameraVerification.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CameraVerification.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Room.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Room.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/RoomManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/RoomManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shaders/ConvertShader.compute" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Shaders/ConvertShader.compute" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sounds/Master.mixer" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sounds/Master.mixer" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/FaceSDK/conf/facerec/emotions_estimator.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/FaceSDK/conf/facerec/emotions_estimator.xml.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/FaceSDK/conf/facerec/fda_tracker_capturer_mesh.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/FaceSDK/conf/facerec/fda_tracker_capturer_mesh.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/FaceSDK/conf/facerec/fda_tracker_capturer_mesh.xml.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/FaceSDK/conf/facerec/fda_tracker_capturer_mesh.xml.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/FaceSDK/share/faceanalysis.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/FaceSDK/share/faceanalysis.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/FaceSDK/share/faceanalysis/age_heavy.enc.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/FaceSDK/share/faceanalysis/age_heavy.enc.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/FaceSDK/share/faceanalysis/age_light.enc.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/FaceSDK/share/faceanalysis/age_light.enc.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/FaceSDK/share/faceanalysis/analysis_a.bin.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/FaceSDK/share/faceanalysis/analysis_a.bin.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/FaceSDK/share/faceanalysis/analysis_g.bin.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/FaceSDK/share/faceanalysis/analysis_g.bin.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/FaceSDK/share/faceanalysis/emotion.enc.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/FaceSDK/share/faceanalysis/emotion.enc.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/FaceSDK/share/faceanalysis/emotion_analysis.bin.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/FaceSDK/share/faceanalysis/emotion_analysis.bin.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/FaceSDK/share/faceanalysis/gender_heavy.enc.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/FaceSDK/share/faceanalysis/gender_heavy.enc.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/FaceSDK/share/faceanalysis/gender_light.enc.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/FaceSDK/share/faceanalysis/gender_light.enc.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/FaceSDK/share/facedetectors.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/FaceSDK/share/facedetectors.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/FaceSDK/share/facedetectors/blf.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/FaceSDK/share/facedetectors/blf.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/FaceSDK/share/facedetectors/blf/back_model.enc.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/FaceSDK/share/facedetectors/blf/back_model.enc.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/FaceSDK/share/facedetectors/blf/front_model.enc.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/FaceSDK/share/facedetectors/blf/front_model.enc.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/FaceSDK/share/facedetectors/config_lbf.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/FaceSDK/share/facedetectors/config_lbf.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/FaceSDK/share/facedetectors/config_lbf/lbf_detector.data.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/FaceSDK/share/facedetectors/config_lbf/lbf_detector.data.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/FaceSDK/share/facedetectors/config_lbf/lbf_detector_gamma.data.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/FaceSDK/share/facedetectors/config_lbf/lbf_detector_gamma.data.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/FaceSDK/share/facedetectors/config_lbf_noise.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/FaceSDK/share/facedetectors/config_lbf_noise/lbf_detector.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/FaceSDK/share/facedetectors/config_lbf_noise/lbf_detector.data.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/FaceSDK/share/facedetectors/face.enc.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/FaceSDK/share/facedetectors/face.enc.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/FaceSDK/share/facedetectors/opencv.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/FaceSDK/share/facedetectors/opencv/haarcascade_eye.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/FaceSDK/share/facedetectors/opencv/haarcascade_eye.xml.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/FaceSDK/share/facedetectors/opencv/lbpcascade_frontalface.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/FaceSDK/share/facedetectors/opencv/lbpcascade_frontalface.xml.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/FaceSDK/share/facedetectors/uld.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/FaceSDK/share/facedetectors/uld.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/FaceSDK/share/facedetectors/uld/uld_part1.enc.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/FaceSDK/share/facedetectors/uld/uld_part1.enc.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/FaceSDK/share/facedetectors/uld/uld_part2.enc.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/FaceSDK/share/facedetectors/uld/uld_part2.enc.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/FaceSDK/share/facedetectors/uld/uld_part3.enc.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/FaceSDK/share/facedetectors/uld/uld_part3.enc.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/FaceSDK/share/mesh.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/FaceSDK/share/mesh.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/FaceSDK/share/mesh/face_mesh.enc.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/FaceSDK/share/mesh/face_mesh.enc.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/StreamingAssetsList.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/StreamingAssetsList.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,17 +67,11 @@
     </option>
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/ILViewer/713111eef85a446fa716abbb474708a117e00/3d/73f9bdad/02000009.il" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/713111eef85a446fa716abbb474708a117e00/2d/9fa28d43/EmotionsEstimator.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/713111eef85a446fa716abbb474708a117e00/bf/2e2fccdd/RawSample.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/c399efc08928422d8828d74a2b19ffba158600/06/1240e7f4/ComputeShader.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://E:/Projets/The-Doors - Copie/Assets/FaceSDKLoader/Awake.unity" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://E:/Projets/The-Doors - Copie/Assets/FaceSDKLoader/Awake.unity" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://E:/Projets/The-Doors - Copie/Assets/Scripts/AudioManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/AudioManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://E:/Projets/The-Doors - Copie/Assets/Scripts/GameManager.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://E:/Projets/The-Doors - Copie/Assets/Scripts/GameManager.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://E:/Projets/The-Doors - Copie/Assets/Scripts/Room.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://E:/Projets/The-Doors - Copie/Assets/Scripts/Room.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://E:/Projets/The-Doors - Copie/Assets/Scripts/Sound.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.collab-proxy@1.17.6/Editor/PlasticSCM/AssetMenu/AssetOperations.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.collab-proxy@1.17.6/Editor/PlasticSCM/AssetsUtils/AssetsPath.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Editor/EventSystem/EventTriggerEditor.cs" root0="SKIP_HIGHLIGHTING" />
@@ -43,15 +84,15 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Discover.Launch.Via.Unity": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Discover.Launch.Via.Unity&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="$PROJECT_DIR$/../the doors buid\The Doors.exe" />
@@ -98,7 +139,10 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1669198124966</updated>
-      <workItem from="1669198142596" duration="17344000" />
+      <workItem from="1669198142596" duration="30584000" />
+      <workItem from="1669376716071" duration="5553000" />
+      <workItem from="1669388993841" duration="1681000" />
+      <workItem from="1669391280078" duration="1388000" />
     </task>
     <task id="LOCAL-00001" summary="Removed Moodme">
       <created>1669201040601</created>
@@ -135,7 +179,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669227297477</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="debug script musique salle">
+      <created>1669231123763</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1669231123763</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -160,6 +211,7 @@
     <MESSAGE value="Added AudioManager" />
     <MESSAGE value="audio mixer group test" />
     <MESSAGE value="ajout musique and applause" />
-    <option name="LAST_COMMIT_MESSAGE" value="ajout musique and applause" />
+    <MESSAGE value="debug script musique salle" />
+    <option name="LAST_COMMIT_MESSAGE" value="debug script musique salle" />
   </component>
 </project>

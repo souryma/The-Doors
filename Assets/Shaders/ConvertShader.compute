@@ -8,29 +8,29 @@ RWTexture2D<float4> Result;
 Texture2D<float4> ImageInput;
 
 int textureWidth;
-int textureHeigth;
+int textureHeight;
 
 [numthreads(8, 8, 1)]
 void PortaintFrontCamera(uint3 id : SV_DispatchThreadID)
 {
-	Result[id.xy] = ImageInput[float2(textureWidth, textureHeigth) - id.yx];
+	Result[id.xy] = ImageInput[float2(textureWidth, textureHeight) - id.yx];
 }
 
 [numthreads(8, 8, 1)]
 void LandscapeFrontCamera(uint3 id : SV_DispatchThreadID)
 {
-	Result[id.xy] = ImageInput[float2(textureWidth, textureHeigth) - id.xy];
+	Result[id.xy] = ImageInput[float2(textureWidth, textureHeight) - id.xy];
 }
 
 
 [numthreads(8, 8, 1)]
 void PortaintBackwardCamera(uint3 id : SV_DispatchThreadID)
 {
-	Result[id.xy] = ImageInput[float2(id.y, textureHeigth - id.x)];
+	Result[id.xy] = ImageInput[float2(id.y, textureHeight - id.x)];
 }
 
 [numthreads(8, 8, 1)]
 void LandscapeBackwardCamera(uint3 id : SV_DispatchThreadID)
 {
-	Result[id.xy] = ImageInput[float2(id.x, textureHeigth - id.y)];
+	Result[id.xy] = ImageInput[float2(id.x, textureHeight - id.y)];
 }
