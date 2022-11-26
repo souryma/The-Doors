@@ -7,9 +7,12 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
+    public AudioMixer audioMixer;
     public Sound[] sounds;
 
     public static AudioManager instance;
+
+  
     // Start is called before the first frame update
     void Awake()
     {
@@ -44,7 +47,9 @@ public class AudioManager : MonoBehaviour
             return null;
         }
         Debug.Log("Playing " + soundToPlay.name);
+        soundToPlay.source.volume = 0f;
         soundToPlay.source.Play();
+        soundToPlay.source.DOFade(soundToPlay.volume, 0.3f);
         if (duration > -1f)
         { 
             StartCoroutine(StopSoundAfterTime(soundName, duration));
@@ -78,7 +83,7 @@ public class AudioManager : MonoBehaviour
         
     }
 
-    private void StopSound(string source, float fadeDuration)
+    public void StopSound(string source, float fadeDuration = 0.3f)
     {
         Sound sound = GetSound(source);
         if (sound != null)
@@ -91,5 +96,11 @@ public class AudioManager : MonoBehaviour
             });
         }
        
+    }
+
+    public IEnumerator ChangeFloatMixerAfterTime(string property, float  value, float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        audioMixer.SetFloat(property, value);
     }
 }

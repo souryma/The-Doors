@@ -1,3 +1,5 @@
+using System.Collections;
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using VDT.FaceRecognition.SDK;
@@ -12,14 +14,15 @@ public class GameManager : MonoBehaviour
     [SerializeField] private RoomManager roomManager;
     [SerializeField] private TextMeshProUGUI _gameOverUi;
     [SerializeField] private GameObject _gameoverObject;
+    // [SerializeField] private CameraVerification _camera;
 
     [Space] [SerializeField] private const float EmotionThreshold = 0.70f;
 
     // The speed of the doors (0 = no movement)
     [SerializeField] [Range(0, 0.1f)] private float _gameSpeed = 0.007f;
     private bool _isVerificationDone = false;
-    private bool _gameHasStopped = false;
-    private bool _musicIsStarted = false;
+    private bool _gameHasStopped = true;
+    private bool _gameIsStarted = false;
 
     public static GameManager Instance => _instance;
 
@@ -47,21 +50,22 @@ public class GameManager : MonoBehaviour
 
         _isVerificationDone = false;
         _instance = this;
+
+        AudioManager.instance.Play("crowdmumbling");
     }
 
     private void Update()
     {
-        if (_isVerificationDone == false || _gameHasStopped)
+        if (_isVerificationDone == false)
         {
             return;
         }
-        if (!_musicIsStarted)
+        if (!_gameIsStarted)
         {
-            AudioManager.instance.Play(RoomManager.Instance.CurrentRoom.getRoomMusic());
-            _musicIsStarted = true;
+            LaunchGame();
         }
         
-        if (roomManager.CurrentRoom && !roomManager.CurrentRoom.IsOpened && CheckIfEmotionIsAttained())
+        if (!_gameHasStopped && roomManager.CurrentRoom && !roomManager.CurrentRoom.IsOpened && CheckIfEmotionIsAttained())
         {
             roomManager.OpenCurrentDoor();
             MakeACapture();
@@ -75,7 +79,16 @@ public class GameManager : MonoBehaviour
         if (_gameHasStopped)
             return; 
         
-        _gameSpeed += 0.01f;
+        _gameSpeed += 0.002f;
+    }
+
+    private void LaunchGame()
+    {
+        _gameIsStarted = true;
+        AudioManager.instance.GetSound("crowdmumbling").source.DOFade(0.3f, 4f);
+        AudioManager.instance.Play("threestrikes");
+        AudioManager.instance.PlayAfterTime(RoomManager.Instance.CurrentRoom.getRoomMusic(), 7f);
+        StartCoroutine(StartGameAfterTime());
     }
 
     public void StopGame()
@@ -85,13 +98,18 @@ public class GameManager : MonoBehaviour
         _gameoverObject.SetActive(true);
         _gameoverObject.GetComponent<Gameover>().SetScore(RoomManager.Instance.CurrentRoom.DoorId - 1);
         _gameOverUi.text = "GAME OVER";
+        AudioManager.instance.StopSound(roomManager.CurrentRoom.getRoomMusic(), 0f);
+        AudioManager.instance.StopSound(roomManager.Rooms[0].getRoomMusic(), 0f);
+        AudioManager.instance.Play("cheers");
     }
 
     public void RestartGame()
     {
+        // _gameIsStarted = false;
         RoomManager.Instance.RestartRoom();
-        _gameHasStopped = false;
-        _gameSpeed = 0.007f;
+        // _gameHasStopped = false;
+        // _gameSpeed = 0.007f;
+        LaunchGame();
     }
 
     private void OnDestroy()
@@ -145,8 +163,17 @@ public class GameManager : MonoBehaviour
         return checkEmotion;
     }
 
+    private IEnumerator StartGameAfterTime()
+    {
+        yield return new WaitForSeconds(7f);
+        _gameHasStopped = false;
+        _gameSpeed = 0.007f;
+        
+    }
     private void MakeACapture()
     {
         // Texture2D texture2D = Instantiate(camManager.WebcamTexture);
     }
+    
+    
 }

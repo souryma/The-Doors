@@ -105,16 +105,13 @@ public class Room : MonoBehaviour
         {
             case EmotionsEstimator.Emotion.EMOTION_ANGRY:
                 return "musicangry";
-                break;
             case EmotionsEstimator.Emotion.EMOTION_HAPPY:
                 return "musichappy";
-                break;
             case EmotionsEstimator.Emotion.EMOTION_SURPRISE:
                 return "musicsurprised";
-                break;
             case EmotionsEstimator.Emotion.EMOTION_NEUTRAL:
                 return "musicneutral";
-                break;
+                
         }
 
         return "";

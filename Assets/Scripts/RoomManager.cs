@@ -33,6 +33,8 @@ public class RoomManager : MonoBehaviour
 
     public Room CurrentRoom => _currentRoom;
 
+    // private bool _isAbleCutLowPass = true;
+
     // Invoked when the play is in a new room
     public static Action OnNewRoom;
 
@@ -196,14 +198,16 @@ public class RoomManager : MonoBehaviour
         // Sound applause = AudioManager.instance.GetSound("applause");
 
         AudioManager.instance.Play("applause", 3f);
-        Debug.Log("Starting "+ Rooms[1].getRoomMusic());
         if (musicToEnd != musicToStart)
         {
-            StartCoroutine(AudioManager.instance.StopSoundAfterTime(musicToEnd, 1f));
-            StartCoroutine(AudioManager.instance.PlayAfterTime(Rooms[1].getRoomMusic(), 2f));
+            StartCoroutine(AudioManager.instance.StopSoundAfterTime(musicToEnd, 1f, 0.5f));
+            StartCoroutine(AudioManager.instance.PlayAfterTime(musicToStart, 2f));
+            // if(IsAbleToCutLowPass())
+                // StartCoroutine(AudioManager.instance.ChangeFloatMixerAfterTime("CutoffLowPass", 5000f, 1f));
+
         }
        
-
+        
         
     }
     

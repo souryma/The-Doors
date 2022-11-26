@@ -16,7 +16,7 @@ public class CameraVerification : MonoBehaviour
 
     public void OnVerificationValid()
     {
-        GameManager.Instance.GameSpeed = 0.007f;
+        
         gameObject.SetActive(false);
         GameManager.Instance.IsVerificationDone = true;
     }
