@@ -23,7 +23,7 @@ public class MainMenu : MonoBehaviour
         // Open curtain
         _leftCurtainsObject.transform.DOScaleY(13f, 1);
         _rightCurtainsObject.transform.DOScaleY(-13f, 1);
-        _middleCurtainsObject.transform.DOScaleZ(1f, 2f);
+        _middleCurtainsObject.transform.DOScaleZ(1f, 1f);
 
         StartCoroutine("startGame");
     }
