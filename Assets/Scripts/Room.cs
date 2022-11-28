@@ -104,7 +104,7 @@ public class Room : MonoBehaviour
         // Open curtain
         _leftCurtainsObject.transform.DOScaleX(-0.04f, 1);
         _rightCurtainsObject.transform.DOScaleX(-0.04f, 1);
-        _blind000.transform.DOScaleZ(0.3f, 2);
+        _blind000.transform.DOScaleZ(7f, 2);
         
         AudioManager.instance.Play("curtainOpen", 1f);
 
