@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
 
     // [SerializeField] private CameraManager camManager;
     // [SerializeField] private EmotionsManager emotionsManager;
-    [SerializeField] private FaceManager faceManager;
+    [SerializeField] public FaceManager faceManager;
     [SerializeField] private RoomManager roomManager;
     [SerializeField] private TextMeshProUGUI _gameOverUi;
     [SerializeField] private GameObject _gameoverObject;

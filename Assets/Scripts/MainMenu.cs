@@ -9,23 +9,27 @@ public class MainMenu : MonoBehaviour
     public GameObject _leftCurtainsObject;
     public GameObject _rightCurtainsObject;
     public GameObject _middleCurtainsObject;
-    public GameObject _background;
-
-    public Texture2D image;
-
-    private void Start()
-    {
-        _background.GetComponent<MeshRenderer>().material.mainTexture = image;
-    }
+    public GameObject PlayButton;
+    public GameObject Quitbutton;
+    public GameObject CreditButton;
 
     public void PlayGame()
     {
-        // Open curtain
-        _leftCurtainsObject.transform.DOScaleY(13f, 1);
-        _rightCurtainsObject.transform.DOScaleY(-13f, 1);
-        _middleCurtainsObject.transform.DOScaleZ(1f, 1f);
+        PlayButton.SetActive(false);
+        Quitbutton.SetActive(false);
+        CreditButton.SetActive(false);
+        
+        // // Open curtain
+        // _leftCurtainsObject.transform.DOScaleY(13f, 1);
+        // _rightCurtainsObject.transform.DOScaleY(-13f, 1);
+        // _middleCurtainsObject.transform.DOScaleZ(1f, 1f);
 
         StartCoroutine("startGame");
+    }
+
+    public void ShowCredits()
+    {
+        Debug.Log("CREDITS");
     }
 
     private IEnumerator startGame()
