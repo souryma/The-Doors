@@ -5,7 +5,7 @@ using System;
 using System.IO;
 using System.Collections;
 using System.Collections.Generic;
-
+using DG.Tweening;
 #if UNITY_ANDROID || UNITY_EDITOR
 using UnityEngine.Android;
 using UnityEngine.Networking;
@@ -25,6 +25,10 @@ public class FaceSDKLoader : MonoBehaviour
 {
     [SerializeField]private MessageBox messageBox;
     [SerializeField]private string sceneToLoad;
+    [SerializeField]private GameObject Menu;
+    public GameObject _leftCurtainsObject;
+    public GameObject _rightCurtainsObject;
+    public GameObject _middleCurtainsObject;
 
 #if UNITY_EDITOR
 
@@ -280,8 +284,23 @@ public class FaceSDKLoader : MonoBehaviour
     {
         while (!animationComplate)
             yield return null;
+        
+        // Open curtain
+        _leftCurtainsObject.transform.DOScaleY(13f, 1);
+        _rightCurtainsObject.transform.DOScaleY(-13f, 1);
+        _middleCurtainsObject.transform.DOScaleZ(1f, 1f);
 
-        SceneManager.LoadSceneAsync(sceneToLoad, LoadSceneMode.Single);
+        StartCoroutine("ShowMenu");
+
+        //SceneManager.LoadSceneAsync(sceneToLoad, LoadSceneMode.Single);
+    }
+    
+    private IEnumerator ShowMenu()
+    {
+        yield return new WaitForSeconds(1);
+        
+        Menu.SetActive(true);
+        gameObject.SetActive(false);
     }
 
 #region Animation events (see Animation time line)
