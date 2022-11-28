@@ -1418,15 +1418,8 @@ MonoBehaviour:
     outputAudioMixerGroup: {fileID: 4335580652040673449, guid: 399ed20f681aca54c82387bea0ad3d80, type: 2}
     loop: 0
     source: {fileID: 0}
-  - name: musicneutral
-    clip: {fileID: 8300000, guid: 7c1de11b43916e042bc890d470986bb0, type: 3}
-    volume: 1
-    pitch: 1
-    outputAudioMixerGroup: {fileID: 4335580652040673449, guid: 399ed20f681aca54c82387bea0ad3d80, type: 2}
-    loop: 0
-    source: {fileID: 0}
   - name: musichappy
-    clip: {fileID: 8300000, guid: 3b6c9db0ef79ac944a4064f057850717, type: 3}
+    clip: {fileID: 8300000, guid: 0cee8e06c00c95546aebd3811c6f3049, type: 3}
     volume: 1
     pitch: 1
     outputAudioMixerGroup: {fileID: 4335580652040673449, guid: 399ed20f681aca54c82387bea0ad3d80, type: 2}
@@ -1455,6 +1448,20 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: cheers
     clip: {fileID: 8300000, guid: 9dedc6e9cf0c28a4ab133855acc1ac8e, type: 3}
+    volume: 1
+    pitch: 1
+    outputAudioMixerGroup: {fileID: -1224757426727495226, guid: 399ed20f681aca54c82387bea0ad3d80, type: 2}
+    loop: 0
+    source: {fileID: 0}
+  - name: cough_male
+    clip: {fileID: 8300000, guid: e553f2f5362082b448defbcf868db40c, type: 3}
+    volume: 1
+    pitch: 1
+    outputAudioMixerGroup: {fileID: -1224757426727495226, guid: 399ed20f681aca54c82387bea0ad3d80, type: 2}
+    loop: 0
+    source: {fileID: 0}
+  - name: cough_female
+    clip: {fileID: 8300000, guid: e7d3f61b9186f4d4b91c96e500525a0f, type: 3}
     volume: 1
     pitch: 1
     outputAudioMixerGroup: {fileID: -1224757426727495226, guid: 399ed20f681aca54c82387bea0ad3d80, type: 2}

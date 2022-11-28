@@ -122,7 +122,13 @@ public class GameManager : MonoBehaviour
         {
             LaunchGame();
         }
-        
+
+        int playingCough = Random.Range(0, 10000);
+        if (playingCough < 5)
+        {
+            string coughType = playingCough > 2 ? "cough_male" : "cough_female";
+            AudioManager.instance.Play(coughType);
+        }
         if (!_gameHasStopped && roomManager.CurrentRoom && !roomManager.CurrentRoom.IsOpened && CheckIfEmotionIsAttained())
         {
             roomManager.OpenCurrentDoor();
@@ -136,13 +142,13 @@ public class GameManager : MonoBehaviour
         if (_gameHasStopped)
             return; 
         
-        _gameSpeed += 0.2f;
+        _gameSpeed += 0.3f;
     }
 
     private void LaunchGame()
     {
         _gameIsStarted = true;
-        AudioManager.instance.GetSound("crowdmumbling").source.DOFade(0.1f, 4f);
+        AudioManager.instance.GetSound("crowdmumbling").source.DOFade(0.2f, 4f);
         AudioManager.instance.StopSound("cheers", 1f);
 
         AudioManager.instance.Play("threestrikes");
@@ -162,7 +168,7 @@ public class GameManager : MonoBehaviour
         AudioManager.instance.StopSound(roomManager.CurrentRoom.getRoomMusic(), 0f);
         AudioManager.instance.GetSound("crowdmumbling").source.DOFade(1f, 4f);
         AudioManager.instance.StopSound(roomManager.Rooms[0].getRoomMusic(), 0f);
-        AudioManager.instance.Play("cheers", 3f, 1f);
+        AudioManager.instance.Play("cheers", 5f, 1f);
     }
 
     public void RestartGame()
