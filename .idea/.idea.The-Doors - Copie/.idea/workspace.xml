@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="edb936a3-a9b7-48f0-afb2-48dc694432d2" name="Changes" comment="debug after merge">
+    <list default="true" id="edb936a3-a9b7-48f0-afb2-48dc694432d2" name="Changes" comment="up facemanager to debug + some music work">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.The-Doors - Copie/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.The-Doors - Copie/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/FaceMask/Scripts/FaceManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FaceMask/Scripts/FaceManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/FaceSDKLoader/Awake.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FaceSDKLoader/Awake.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AudioManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AudioManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/RoomManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/RoomManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,6 +36,8 @@
     <setting file="mock://E:/Projets/The-Doors - Copie/Assets/Scenes/MainScene.unity" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://E:/Projets/The-Doors - Copie/Assets/Scripts/AudioManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/AudioManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://E:/Projets/The-Doors - Copie/Assets/Scripts/GameManager.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://E:/Projets/The-Doors - Copie/Assets/Scripts/GameManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://E:/Projets/The-Doors - Copie/Assets/Scripts/GameManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://E:/Projets/The-Doors - Copie/Assets/Scripts/RoomManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://E:/Projets/The-Doors - Copie/Assets/StreamingAssets/FaceSDK/share/faceanalysis/age_heavy.enc.meta" root0="FORCE_HIGHLIGHTING" />
@@ -111,7 +112,7 @@
       <workItem from="1669376716071" duration="5553000" />
       <workItem from="1669388993841" duration="1681000" />
       <workItem from="1669391280078" duration="1388000" />
-      <workItem from="1669464156870" duration="15963000" />
+      <workItem from="1669464156870" duration="21245000" />
     </task>
     <task id="LOCAL-00001" summary="Removed Moodme">
       <created>1669201040601</created>
@@ -162,7 +163,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669464218084</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="up facemanager to debug + some music work">
+      <created>1669623196525</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1669623196525</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -189,6 +197,26 @@
     <MESSAGE value="ajout musique and applause" />
     <MESSAGE value="debug script musique salle" />
     <MESSAGE value="debug after merge" />
-    <option name="LAST_COMMIT_MESSAGE" value="debug after merge" />
+    <MESSAGE value="up facemanager to debug + some music work" />
+    <option name="LAST_COMMIT_MESSAGE" value="up facemanager to debug + some music work" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/FaceMask/Scripts/FaceManager.cs</url>
+          <line>133</line>
+          <properties documentPath="E:\Projets\The-Doors - Copie\Assets\FaceMask\Scripts\FaceManager.cs" initialLine="132" containingFunctionPresentation="method 'Start'">
+            <startOffsets>
+              <option value="3822" />
+            </startOffsets>
+            <endOffsets>
+              <option value="3823" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

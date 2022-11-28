@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
     [Space] [SerializeField] private const float EmotionThreshold = 0.70f;
 
     // The speed of the doors (0 = no movement)
-    [SerializeField] [Range(0, 0.1f)] private float _gameSpeed = 0.007f;
+    [SerializeField] [Range(0, 0.1f)] private float _gameSpeed = 1f;
 
     [SerializeField] private Texture _happyFace;
     [SerializeField] private Texture _neutralFace;
@@ -29,6 +29,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Texture _angryFace;
 
     public bool GameHasStopped => _gameHasStopped;
+
+    private float timerForVerif = 0f;
     
     private bool _isVerificationDone = false;
     private bool _gameHasStopped = true;
@@ -105,19 +107,11 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (!AreAllEmotionsReady())
+        
+        timerForVerif += timerForVerif <= 1 ? Time.deltaTime : 0;
+        if (!AreAllEmotionsReady() && timerForVerif > 1)
         {
-            if (!_hasHappy)
-                _hasHappy = GetEmotionFace(EmotionsEstimator.Emotion.EMOTION_HAPPY);
-            
-            if (!_hasAngry)
-                _hasAngry = GetEmotionFace(EmotionsEstimator.Emotion.EMOTION_ANGRY);
-    
-            if (!_hasNeutral)
-                _hasNeutral = GetEmotionFace(EmotionsEstimator.Emotion.EMOTION_NEUTRAL);
-    
-            if (!_hasSurprised)
-                _hasSurprised = GetEmotionFace(EmotionsEstimator.Emotion.EMOTION_SURPRISE);
+            GetEmotionsFace();
         }
 
         if (_isVerificationDone == false)
@@ -142,7 +136,7 @@ public class GameManager : MonoBehaviour
         if (_gameHasStopped)
             return; 
         
-        _gameSpeed += 0.002f;
+        _gameSpeed += 0.2f;
     }
 
     private void LaunchGame()
@@ -152,6 +146,7 @@ public class GameManager : MonoBehaviour
         AudioManager.instance.StopSound("cheers", 1f);
 
         AudioManager.instance.Play("threestrikes");
+        // Debug.Log(RoomManager.Instance.CurrentRoom.getRoomMusic());
         AudioManager.instance.PlayAfterTime(RoomManager.Instance.CurrentRoom.getRoomMusic(), 7f);
         StartCoroutine(StartGameAfterTime());
     }
@@ -187,17 +182,30 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private bool GetEmotionFace(EmotionsEstimator.Emotion emotionToGet)
+    private void GetEmotionsFace()
     {
-        bool checkEmotion = false;
         EmotionsEstimator.Emotion current_emotion = faceManager._emotionsController.get_current_emotion();
-        if (current_emotion == emotionToGet)
+        if (!_hasAngry && EmotionsEstimator.Emotion.EMOTION_ANGRY == current_emotion)
         {
-            checkEmotion = true;
             MakeACapture(current_emotion);
+            _hasAngry = true;
+        }
+        else if(!_hasHappy && EmotionsEstimator.Emotion.EMOTION_HAPPY == current_emotion)
+        {
+            MakeACapture(current_emotion);
+            _hasHappy = true;
+        }
+        else if(!_hasNeutral && EmotionsEstimator.Emotion.EMOTION_NEUTRAL == current_emotion)
+        {
+            MakeACapture(current_emotion);
+            _hasNeutral = true;
+        }
+        else if(!_hasSurprised && EmotionsEstimator.Emotion.EMOTION_SURPRISE == current_emotion)
+        {
+            MakeACapture(current_emotion);
+            _hasSurprised = true;
         }
 
-        return checkEmotion;
     }
 
     public bool AreAllEmotionsReady()
@@ -222,14 +230,15 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(7f);
         _gameHasStopped = false;
-        _gameSpeed = 0.007f;
+        _gameSpeed = 1f;
         
     }
     private void MakeACapture(EmotionsEstimator.Emotion emotion)
     {
         // Get a shot copy of the camera texture into our happy texture
         Texture2D copyTexture = new Texture2D(faceManager.rawImage.texture.width, faceManager.rawImage.texture.height);
-        copyTexture.SetPixels(((Texture2D)faceManager.rawImage.texture).GetPixels());
+        // copyTexture.SetPixels(((Texture2D)faceManager.rawImage.texture).GetPixels());
+        copyTexture.SetPixels(faceManager.webcamTexture.GetPixels());
         copyTexture.Apply();
         
         switch (emotion)

@@ -6,6 +6,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
+using Unity.VisualScripting;
 using VDT.FaceRecognition.SDK.Pbio.Facerec;
 using Face = VDT.FaceRecognition.SDK;
 
@@ -17,7 +18,10 @@ public class FaceManager : MonoBehaviour
 
     Face.Capturer capturer;
     Face.EmotionsEstimator emotions_estimator;
+    public Face.RawSample.Rectangle FaceRectangle;
+    // public Rect FaceRectangle2;
 
+    public string webcamName;
     public EmotionsController _emotionsController;
 
     ThreadedJob job;
@@ -34,13 +38,14 @@ public class FaceManager : MonoBehaviour
     // [SerializeField] int targetWidth = 800;
     // [SerializeField] int targetHeigh = 600;
 
-    WebCamDevice currentDevice;
-    WebCamTexture webcamTexture;
+    public WebCamDevice currentDevice;
+    public WebCamTexture webcamTexture;
 
     int kernelIndex;
     uint x, y, z;
     RenderTexture convertedTexture;
     Texture2D rgbTexture;
+    Texture2D cropImg;
 
     Rect rect;
     Vector3 meshScale;
@@ -106,7 +111,7 @@ public class FaceManager : MonoBehaviour
     {
         Application.logMessageReceived += HandleLog;
 
-     
+        FaceRectangle = new Face.RawSample.Rectangle(0, 0, 0, 0);
 
         if (!InitSevices())
             return;
@@ -123,12 +128,15 @@ public class FaceManager : MonoBehaviour
 
         WebCamDevice device;
         
-        string deviceName = UserSettings.DeviceName;
+        string deviceName = webcamName;
 
         if (deviceName != null)
         {
             Dictionary<string, WebCamDevice> deviceDict = WebCamTexture.devices.ToDictionary(k => k.name, v => v);
-            Debug.Log(deviceDict.Keys);
+            // foreach (var VARIABLE in deviceDict.Keys)
+            // {
+            //     Debug.Log(VARIABLE);
+            // }
             device = deviceDict.ContainsKey(deviceName) ? deviceDict[deviceName] : WebCamTexture.devices[0];
         }
         else
@@ -182,6 +190,9 @@ public class FaceManager : MonoBehaviour
 
         int width =  webcamTexture.width;
         int height = webcamTexture.height;
+        
+        // int width = FaceRectangle.width;
+        // int height = FaceRectangle.height;
 
         // Initializing RenderTexture to output the result of ComputeShader execution
 
@@ -192,6 +203,8 @@ public class FaceManager : MonoBehaviour
         rawImage.texture = convertedTexture;
 
         rect = new Rect(0, 0, convertedTexture.width, convertedTexture.height);
+        // rect = new Rect(FaceRectangle.x, FaceRectangle.y, convertedTexture.width, convertedTexture.height);
+
         aspectRatioFitter.aspectRatio = (float)convertedTexture.width / convertedTexture.height;
 
         // Preparing ComputeShader
@@ -211,8 +224,9 @@ public class FaceManager : MonoBehaviour
         
         // Initializing Texture2D, the result from convertedTexture will be rewritten to It, 
         // since it is impossible to get an array of bytes from RenderTexture
-
+        
         rgbTexture = new Texture2D(convertedTexture.width, convertedTexture.height, TextureFormat.RGB24, false);
+        cropImg = new Texture2D(FaceRectangle.width, FaceRectangle.height, TextureFormat.RGB24, false);
 
         // Due to the different aspect ratio of the screen and camera, you need to adjust the Mesh scale and spawn position
 
@@ -232,7 +246,10 @@ public class FaceManager : MonoBehaviour
 
         // Image preparation and processing
         ri_frame = new Face.RawImage(rgbTexture.width, rgbTexture.height, Face.RawImage.Format.FORMAT_RGB, rgbTexture.GetRawTextureData());
-
+        
+        Face.RawImage imageCropped = ri_frame.crop(new Face.RawSample.Rectangle(webcamTexture.width / 3, 0, webcamTexture.requestedWidth/3, webcamTexture.height));
+        // Face.RawImage imageCropped = ri_frame.crop(FaceRectangle);
+        // rgbTexture.LoadRawTextureData(imageCropped.data);
         job.Start();
     }
 
@@ -262,22 +279,54 @@ public class FaceManager : MonoBehaviour
         {
             // Update texture on GPU and apply to rawImage
             rgbTexture.Apply();
+         
             rawImage.texture = rgbTexture;
         }
-        else // Fast updating
+        else
+        {
+            
+            // Color[] pixels = convertedTexture.Get(FaceRectangle.x, FaceRectangle.y, FaceRectangle.width, FaceRectangle.height);
+            // Texture2D cropImg = new Texture2D(FaceRectangle.width, FaceRectangle.height, TextureFormat.RGB24, false);
+            // cropImg.SetPixels(0,0, FaceRectangle.width, FaceRectangle.height,pixels, 0);
+            // cropImg.Apply();
+            
+            
             rawImage.texture = convertedTexture;
+
+        }// Fast updating
 
         for (int i = 0; i < samples.Count; i++)
         {
     
 
             Face.RawSample sample = samples[i];
+            // // Stream stream = new StreamReader();
+            // // RawSampleImpl test;
+            //
+            // List<Face.Point> listPoint = sample.getFaceCutRectangle(Face.RawSample.FaceCutType.FACE_CUT_BASE);
+            // // listPoint.ForEach(point => Debug.Log(point.x +  " " + point.y + " " + point.z));
+            // sample.cutFaceRawImage(Face.RawImage.Format.FORMAT_BGR, Face.RawSample.FaceCutType.FACE_CUT_FULL_FRONTAL);
+            // FaceRectangle = new Face.RawSample.Rectangle((int) listPoint[0].x, (int) listPoint[0].y, 
+            // (int)(listPoint[1].x - listPoint[0].x), (int)(listPoint[2].y - listPoint [0].y));
+            // FaceRectangle2 = new Rect( listPoint[0].x,  listPoint[0].y, 
+                // (listPoint[1].x - listPoint[0].x), (listPoint[2].y - listPoint [0].y));
+            // Debug.Log(FaceRectangle.x + " " + FaceRectangle.y + " " + FaceRectangle.width + " " + FaceRectangle.height);
+            // FaceRectangle = sample.getRectangle();
+            // Debug.Log(FaceRectangle.x + " " + FaceRectangle.y + " " + FaceRectangle.width + " " + FaceRectangle.height);
 
+            //
+            // // RawImage rawImageCrop = sample.cutFaceRawImage(Face.RawImage.Format.FORMAT_BGR, Face.RawSample.FaceCutType.FACE_CUT_BASE );
             List<Vector3> points = ToListVector3(sample.getLandmarks());
             List<Face.EmotionsEstimator.EmotionConfidence> emotions = emotions_estimator.estimateEmotions(sample);
             _emotionsController.UpdateEmotion(emotions);
      
         }
+        // Debug.Log(FaceRectangle.x + " " + FaceRectangle.y + " " + FaceRectangle.width + " " + FaceRectangle.height);
+        // Color[] pixels = webcamTexture.GetPixels(FaceRectangle.x, FaceRectangle.y, FaceRectangle.width, FaceRectangle.height);
+        // cropImg.SetPixels(pixels);
+        //
+        // cropImage.texture = cropImg;
+        // cropImg.Apply();
 
      
 

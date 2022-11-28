@@ -68,8 +68,9 @@ public class RoomManager : MonoBehaviour
         }
 
         _currentRoom = Rooms[0];
-        // _previousRoom = CurrentRoom;
-        _previousRoomExists = false;
+        Rooms.RemoveAt(0);
+        _previousRoom = CurrentRoom;
+        // _previousRoomExists = false;
     }
 
     public void RestartRoom()
@@ -95,8 +96,9 @@ public class RoomManager : MonoBehaviour
         }
 
         _currentRoom = Rooms[0];
-        // _previousRoom = CurrentRoom;
-        _previousRoomExists = false;
+        Rooms.RemoveAt(0);
+        _previousRoom = CurrentRoom;
+        // _previousRoomExists = false;
     }
 
     private void OnDestroy()
@@ -150,7 +152,7 @@ public class RoomManager : MonoBehaviour
         {
             MoveOnZ(door.transform);
         }
-        if (_previousRoomExists)
+        if (_previousRoomExists && _previousRoom != _currentRoom)
         {
             MoveOnZ(_previousRoom.transform);
         }
@@ -197,7 +199,7 @@ public class RoomManager : MonoBehaviour
 
     private void MoveOnZ(Transform tf)
     {
-        tf.position -= tf.forward * GameManager.Instance.GameSpeed;
+        tf.position -= tf.forward * Time.deltaTime * GameManager.Instance.GameSpeed;
     }
 
     public void OpenCurrentDoor()
@@ -215,8 +217,8 @@ public class RoomManager : MonoBehaviour
         AudioManager.instance.Play("applause", 1.5f, fadeDuration: 1f);
         if (musicToEnd != musicToStart)
         {
-            StartCoroutine(AudioManager.instance.StopSoundAfterTime(musicToEnd, 1f, 0.5f));
-            StartCoroutine(AudioManager.instance.PlayAfterTime(musicToStart, 2f));
+            StartCoroutine(AudioManager.instance.StopSoundAfterTime(musicToEnd, 0.5f, 0.5f));
+            StartCoroutine(AudioManager.instance.PlayAfterTime(musicToStart, 1.5f));
             // if(IsAbleToCutLowPass())
                 // StartCoroutine(AudioManager.instance.ChangeFloatMixerAfterTime("CutoffLowPass", 5000f, 1f));
 
