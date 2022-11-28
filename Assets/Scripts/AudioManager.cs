@@ -39,7 +39,7 @@ public class AudioManager : MonoBehaviour
         
     }
 
-    public AudioSource Play(string soundName, float duration = -1f)
+    public AudioSource Play(string soundName, float duration = -1f, float fadeDuration = 0.3f )
     {
         Sound soundToPlay = GetSound(soundName);
         if (soundToPlay == null)
@@ -52,15 +52,16 @@ public class AudioManager : MonoBehaviour
         soundToPlay.source.DOFade(soundToPlay.volume, 0.3f);
         if (duration > -1f)
         { 
-            StartCoroutine(StopSoundAfterTime(soundName, duration));
+            StartCoroutine(StopSoundAfterTime(soundName, duration, fadeDuration));
         }
         return soundToPlay.source;
     }
     
-    public IEnumerator PlayAfterTime(string soundName, float durationToWait, float durationToStop = -1f)
+    public IEnumerator PlayAfterTime(string soundName, float durationToWait, float durationToStop = -1f, float fadeDuration = 0.3f)
     {
         yield return new WaitForSeconds(durationToWait);
-        Play(soundName, durationToStop);
+        if(!GameManager.Instance.GameHasStopped)
+            Play(soundName, durationToStop, fadeDuration);
     }
 
 

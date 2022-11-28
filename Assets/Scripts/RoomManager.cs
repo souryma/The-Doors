@@ -68,7 +68,8 @@ public class RoomManager : MonoBehaviour
         }
 
         _currentRoom = Rooms[0];
-        _previousRoom = CurrentRoom;
+        // _previousRoom = CurrentRoom;
+        _previousRoomExists = false;
     }
 
     public void RestartRoom()
@@ -94,8 +95,8 @@ public class RoomManager : MonoBehaviour
         }
 
         _currentRoom = Rooms[0];
-        _previousRoom = CurrentRoom;
-        
+        // _previousRoom = CurrentRoom;
+        _previousRoomExists = false;
     }
 
     private void OnDestroy()
@@ -211,7 +212,7 @@ public class RoomManager : MonoBehaviour
         string musicToEnd = _currentRoom.getRoomMusic();
         // Sound applause = AudioManager.instance.GetSound("applause");
 
-        AudioManager.instance.Play("applause", 3f);
+        AudioManager.instance.Play("applause", 1.5f, fadeDuration: 1f);
         if (musicToEnd != musicToStart)
         {
             StartCoroutine(AudioManager.instance.StopSoundAfterTime(musicToEnd, 1f, 0.5f));

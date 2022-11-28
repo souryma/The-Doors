@@ -28,6 +28,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Texture _surprisedFace;
     [SerializeField] private Texture _angryFace;
 
+    public bool GameHasStopped => _gameHasStopped;
+    
     private bool _isVerificationDone = false;
     private bool _gameHasStopped = true;
     private bool _gameIsStarted = false;
@@ -146,7 +148,9 @@ public class GameManager : MonoBehaviour
     private void LaunchGame()
     {
         _gameIsStarted = true;
-        AudioManager.instance.GetSound("crowdmumbling").source.DOFade(0.3f, 4f);
+        AudioManager.instance.GetSound("crowdmumbling").source.DOFade(0.1f, 4f);
+        AudioManager.instance.StopSound("cheers", 1f);
+
         AudioManager.instance.Play("threestrikes");
         AudioManager.instance.PlayAfterTime(RoomManager.Instance.CurrentRoom.getRoomMusic(), 7f);
         StartCoroutine(StartGameAfterTime());
@@ -161,8 +165,9 @@ public class GameManager : MonoBehaviour
         _gameoverObject.GetComponent<Gameover>().SetScore(RoomManager.Instance.CurrentRoom.DoorId - 1);
         _gameOverUi.text = "GAME OVER";
         AudioManager.instance.StopSound(roomManager.CurrentRoom.getRoomMusic(), 0f);
+        AudioManager.instance.GetSound("crowdmumbling").source.DOFade(1f, 4f);
         AudioManager.instance.StopSound(roomManager.Rooms[0].getRoomMusic(), 0f);
-        AudioManager.instance.Play("cheers");
+        AudioManager.instance.Play("cheers", 3f, 1f);
     }
 
     public void RestartGame()

@@ -207,8 +207,8 @@ public class FaceManager : MonoBehaviour
         convertShader.SetTexture(kernelIndex, "Result", convertedTexture);
 
         convertShader.SetInt("textureWidth", webcamTexture.width);
-        convertShader.SetInt("textureHeigth", webcamTexture.height);
-
+        convertShader.SetInt("textureHeight", webcamTexture.height);
+        
         // Initializing Texture2D, the result from convertedTexture will be rewritten to It, 
         // since it is impossible to get an array of bytes from RenderTexture
 
