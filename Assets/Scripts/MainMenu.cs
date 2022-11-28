@@ -12,6 +12,7 @@ public class MainMenu : MonoBehaviour
     public GameObject PlayButton;
     public GameObject Quitbutton;
     public GameObject CreditButton;
+    public GameObject Credits;
 
     public void PlayGame()
     {
@@ -19,17 +20,64 @@ public class MainMenu : MonoBehaviour
         Quitbutton.SetActive(false);
         CreditButton.SetActive(false);
         
-        // // Open curtain
-        // _leftCurtainsObject.transform.DOScaleY(13f, 1);
-        // _rightCurtainsObject.transform.DOScaleY(-13f, 1);
-        // _middleCurtainsObject.transform.DOScaleZ(1f, 1f);
+        // Close curtain
+        _leftCurtainsObject.transform.DOScaleY(32f, 1);
+        _rightCurtainsObject.transform.DOScaleY(-32f, 1);
+        _middleCurtainsObject.transform.DOScaleZ(53.6f, 1f);
 
         StartCoroutine("startGame");
     }
 
     public void ShowCredits()
     {
-        Debug.Log("CREDITS");
+        PlayButton.SetActive(false);
+        Quitbutton.SetActive(false);
+        CreditButton.SetActive(false);
+        
+        // Close curtain
+        _leftCurtainsObject.transform.DOScaleY(32f, 1);
+        _rightCurtainsObject.transform.DOScaleY(-32f, 1);
+        _middleCurtainsObject.transform.DOScaleZ(53.6f, 1f);
+        
+        StartCoroutine("displayCredits");
+    }
+
+    public void backToMenu()
+    {
+        Credits.SetActive(false);
+
+        // Close curtain
+        _leftCurtainsObject.transform.DOScaleY(32f, 1);
+        _rightCurtainsObject.transform.DOScaleY(-32f, 1);
+        _middleCurtainsObject.transform.DOScaleZ(53.6f, 1f);
+        
+        StartCoroutine("BackToMenu");
+    }
+
+    private IEnumerator BackToMenu()
+    {
+        yield return new WaitForSeconds(1);
+        
+        // Open curtain
+        _leftCurtainsObject.transform.DOScaleY(13f, 1);
+        _rightCurtainsObject.transform.DOScaleY(-13f, 1);
+        _middleCurtainsObject.transform.DOScaleZ(1f, 1f);
+        
+        PlayButton.SetActive(true);
+        Quitbutton.SetActive(true);
+        CreditButton.SetActive(true);
+    }
+
+    private IEnumerator displayCredits()
+    {
+        yield return new WaitForSeconds(1);
+        
+        // Open curtain
+        _leftCurtainsObject.transform.DOScaleY(13f, 1);
+        _rightCurtainsObject.transform.DOScaleY(-13f, 1);
+        _middleCurtainsObject.transform.DOScaleZ(1f, 1f);
+        
+        Credits.SetActive(true);
     }
 
     private IEnumerator startGame()

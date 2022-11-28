@@ -32,6 +32,8 @@ public class CameraVerification : MonoBehaviour
 
         _playButton.SetActive(false);
         GameManager.Instance.GameSpeed = 0;
+        
+        GameManager.Instance.OpenCurtains();
     }
 
     private void Update()
@@ -44,7 +46,7 @@ public class CameraVerification : MonoBehaviour
             _neutralQuad.material.mainTexture = GameManager.Instance.NeutralFace;
         if (GameManager.Instance.HasSurprised)
             _surprisedQuad.material.mainTexture = GameManager.Instance.SurprisedFace;
-        
+
         _mirror.material.mainTexture = GameManager.Instance.faceManager.webcamTexture;
 
         if (GameManager.Instance.AreAllEmotionsReady())
@@ -52,7 +54,6 @@ public class CameraVerification : MonoBehaviour
             _playButton.SetActive(true);
         }
     }
-
 
     public void OnVerificationValid()
     {

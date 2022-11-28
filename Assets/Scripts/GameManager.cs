@@ -16,8 +16,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] public FaceManager faceManager;
     [SerializeField] private RoomManager roomManager;
     [SerializeField] private TextMeshProUGUI _gameOverUi;
+
     [SerializeField] private GameObject _gameoverObject;
+
     // [SerializeField] private CameraVerification _camera;
+    [SerializeField] private GameObject _transitionCurtains;
 
     [Space] [SerializeField] private const float EmotionThreshold = 0.70f;
 
@@ -33,10 +36,14 @@ public class GameManager : MonoBehaviour
     
   
 
+    private GameObject _leftTransitionCurtains;
+    private GameObject _rightTransitionCurtains;
+    private GameObject _middleTransitionCurtains;
+
     public bool GameHasStopped => _gameHasStopped;
 
     private float timerForVerif = 0f;
-    
+
     private bool _isVerificationDone = false;
     private bool _gameHasStopped = true;
     private bool _gameIsStarted = false;
@@ -45,7 +52,7 @@ public class GameManager : MonoBehaviour
     private bool _hasAngry = false;
     private bool _hasNeutral = false;
     private bool _hasSurprised = false;
-    
+
     public bool HasHappy => _hasHappy;
 
     public bool HasAngry => _hasAngry;
@@ -109,16 +116,18 @@ public class GameManager : MonoBehaviour
         }
 
         _imageLoaderSaver = gameObject.AddComponent<ImageLoaderSaver>();
+        _leftTransitionCurtains = _transitionCurtains.transform.Find("LeftCurtain").gameObject;
+        _rightTransitionCurtains = _transitionCurtains.transform.Find("RightCurtain").gameObject;
+        _middleTransitionCurtains = _transitionCurtains.transform.Find("MiddleCurtain").gameObject;
+
         _isVerificationDone = false;
         _instance = this;
         AudioManager.instance.Play("crowdmumbling");
     }
 
 
-
     private void Update()
     {
-        
         timerForVerif += timerForVerif <= 1 ? Time.deltaTime : 0;
         if (!AreAllEmotionsReady() && timerForVerif > 1)
         {
@@ -129,6 +138,7 @@ public class GameManager : MonoBehaviour
         {
             return;
         }
+
         if (!_gameIsStarted)
         {
             LaunchGame();
@@ -140,7 +150,9 @@ public class GameManager : MonoBehaviour
             string coughType = playingCough > 2 ? "cough_male" : "cough_female";
             AudioManager.instance.Play(coughType);
         }
-        if (!_gameHasStopped && roomManager.CurrentRoom && !roomManager.CurrentRoom.IsOpened && CheckIfEmotionIsAttained())
+
+        if (!_gameHasStopped && roomManager.CurrentRoom && !roomManager.CurrentRoom.IsOpened &&
+            CheckIfEmotionIsAttained())
         {
             MakeACapture(roomManager.CurrentRoom.EmotionForOpening);
             roomManager.OpenCurrentDoor();
@@ -152,8 +164,8 @@ public class GameManager : MonoBehaviour
     {
         // Don't increase speed if game is over
         if (_gameHasStopped)
-            return; 
-        
+            return;
+
         _gameSpeed += 0.3f;
     }
 
@@ -206,6 +218,23 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void OpenCurtains()
+    {
+        // Open curtain
+        _leftTransitionCurtains.transform.DOScaleY(13f, 1);
+        _rightTransitionCurtains.transform.DOScaleY(-13f, 1);
+        _middleTransitionCurtains.transform.DOScaleZ(1f, 1f);
+
+        StartCoroutine("HideCurtains");
+    }
+
+    private IEnumerator HideCurtains()
+    {
+        yield return new WaitForSeconds(1);
+        
+        _transitionCurtains.SetActive(false);
+    }
+
     private void GetEmotionsFace()
     {
         EmotionsEstimator.Emotion current_emotion = faceManager._emotionsController.get_current_emotion();
@@ -214,22 +243,21 @@ public class GameManager : MonoBehaviour
             MakeACapture(current_emotion);
             _hasAngry = true;
         }
-        else if(!_hasHappy && EmotionsEstimator.Emotion.EMOTION_HAPPY == current_emotion)
+        else if (!_hasHappy && EmotionsEstimator.Emotion.EMOTION_HAPPY == current_emotion)
         {
             MakeACapture(current_emotion);
             _hasHappy = true;
         }
-        else if(!_hasNeutral && EmotionsEstimator.Emotion.EMOTION_NEUTRAL == current_emotion)
+        else if (!_hasNeutral && EmotionsEstimator.Emotion.EMOTION_NEUTRAL == current_emotion)
         {
             MakeACapture(current_emotion);
             _hasNeutral = true;
         }
-        else if(!_hasSurprised && EmotionsEstimator.Emotion.EMOTION_SURPRISE == current_emotion)
+        else if (!_hasSurprised && EmotionsEstimator.Emotion.EMOTION_SURPRISE == current_emotion)
         {
             MakeACapture(current_emotion);
             _hasSurprised = true;
         }
-
     }
 
     public bool AreAllEmotionsReady()
@@ -249,14 +277,14 @@ public class GameManager : MonoBehaviour
         return checkEmotion;
     }
 
-   
+
     private IEnumerator StartGameAfterTime()
     {
         yield return new WaitForSeconds(7f);
         _gameHasStopped = false;
         _gameSpeed = 1f;
-        
     }
+
     private void MakeACapture(EmotionsEstimator.Emotion emotion)
     {
         // Get a shot copy of the camera texture into our happy texture
@@ -264,6 +292,7 @@ public class GameManager : MonoBehaviour
         // copyTexture.SetPixels(((Texture2D)faceManager.rawImage.texture).GetPixels());
         copyTexture.SetPixels(faceManager.webcamTexture.GetPixels());
         copyTexture.Apply();
+
         _imageLoaderSaver.SavePictureToGallery(copyTexture, emotion);
         switch (emotion)
         {
@@ -281,6 +310,4 @@ public class GameManager : MonoBehaviour
                 break;
         }
     }
-    
-    
 }
