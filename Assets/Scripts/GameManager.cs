@@ -108,7 +108,7 @@ public class GameManager : MonoBehaviour
             return;
         }
 
-        _imageLoaderSaver = new ImageLoaderSaver();
+        _imageLoaderSaver = gameObject.AddComponent<ImageLoaderSaver>();
         _isVerificationDone = false;
         _instance = this;
         AudioManager.instance.Play("crowdmumbling");
@@ -186,7 +186,7 @@ public class GameManager : MonoBehaviour
             AudioManager.instance.StopSound("musichappy" + i, 0f);
         }
         
-        AudioManager.instance.Play("cheers", 5f, 1f);
+        AudioManager.instance.Play("cheers", 6f, 1f);
     }
 
     public void RestartGame()

@@ -178,7 +178,7 @@ public class FaceManager : MonoBehaviour
         currentDevice = device;
         // Start streaming from the camera
 
-        webcamTexture = new WebCamTexture(currentDevice.name, 1920, 1080, 60);
+        webcamTexture = new WebCamTexture(currentDevice.name, 1080, 720, 60);
         webcamTexture.Play();
 
         
@@ -199,7 +199,7 @@ public class FaceManager : MonoBehaviour
 
         // Initializing RenderTexture to output the result of ComputeShader execution
 
-        convertedTexture = new RenderTexture(width, height, 0, RenderTextureFormat.ARGB32);
+        convertedTexture = new RenderTexture(width, height, 0);
         convertedTexture.enableRandomWrite = true;
         convertedTexture.Create();
 

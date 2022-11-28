@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="edb936a3-a9b7-48f0-afb2-48dc694432d2" name="Changes" comment="added new musics">
+    <list default="true" id="edb936a3-a9b7-48f0-afb2-48dc694432d2" name="Changes" comment="added loading images from disk">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.The-Doors - Copie/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.The-Doors - Copie/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/FaceMask/Scripts/FaceManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FaceMask/Scripts/FaceManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Menu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Menu.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Room.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Room.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ImageLoaderSaver.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ImageLoaderSaver.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/RoomManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/RoomManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -26,6 +28,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/713111eef85a446fa716abbb474708a117e00/bf/2e2fccdd/RawSample.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/c399efc08928422d8828d74a2b19ffba158600/06/1240e7f4/ComputeShader.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/c399efc08928422d8828d74a2b19ffba158600/9e/b2b143df/RenderTexture.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://E:/Projets/The-Doors - Copie/Assets/FaceMask/Scripts/FaceManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://E:/Projets/The-Doors - Copie/Assets/FaceMask/Scripts/FaceManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://E:/Projets/The-Doors - Copie/Assets/FaceMask/Scripts/FaceManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://E:/Projets/The-Doors - Copie/Assets/FaceMask/Scripts/FaceManager.cs" root0="SKIP_HIGHLIGHTING" />
@@ -126,7 +129,7 @@
       <workItem from="1669376716071" duration="5553000" />
       <workItem from="1669388993841" duration="1681000" />
       <workItem from="1669391280078" duration="1388000" />
-      <workItem from="1669464156870" duration="39682000" />
+      <workItem from="1669464156870" duration="43183000" />
     </task>
     <task id="LOCAL-00001" summary="Removed Moodme">
       <created>1669201040601</created>
@@ -226,7 +229,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669649043594</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="added loading images from disk">
+      <created>1669664385232</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1669664385232</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -260,6 +270,7 @@
     <MESSAGE value="added more music" />
     <MESSAGE value="removed unused variation of head bobble" />
     <MESSAGE value="added new musics" />
-    <option name="LAST_COMMIT_MESSAGE" value="added new musics" />
+    <MESSAGE value="added loading images from disk" />
+    <option name="LAST_COMMIT_MESSAGE" value="added loading images from disk" />
   </component>
 </project>

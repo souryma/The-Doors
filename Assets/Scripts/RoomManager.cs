@@ -212,11 +212,11 @@ public class RoomManager : MonoBehaviour
         string musicToEnd = _currentRoom.getRoomMusic();
         // Sound applause = AudioManager.instance.GetSound("applause");
 
-        AudioManager.instance.Play("applause", 1.5f, fadeDuration: 1f);
+        AudioManager.instance.Play("applause", 1.5f/GameManager.Instance.GameSpeed, fadeDuration: 1f/GameManager.Instance.GameSpeed);
         if (musicToEnd != musicToStart)
         {
-            StartCoroutine(AudioManager.instance.StopSoundAfterTime(musicToEnd, 0.5f, 0.5f));
-            StartCoroutine(AudioManager.instance.PlayAfterTime(musicToStart, 1.5f));
+            StartCoroutine(AudioManager.instance.StopSoundAfterTime(musicToEnd, 0.5f/GameManager.Instance.GameSpeed, 0.5f/GameManager.Instance.GameSpeed));
+            StartCoroutine(AudioManager.instance.PlayAfterTime(musicToStart, 1.5f/GameManager.Instance.GameSpeed));
             // if(IsAbleToCutLowPass())
                 // StartCoroutine(AudioManager.instance.ChangeFloatMixerAfterTime("CutoffLowPass", 5000f, 1f));
 
