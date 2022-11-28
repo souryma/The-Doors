@@ -3,6 +3,7 @@ using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Experimental.Rendering;
+using UnityEngine.UI;
 using VDT.FaceRecognition.SDK;
 
 public class GameManager : MonoBehaviour
@@ -27,6 +28,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Texture _neutralFace;
     [SerializeField] private Texture _surprisedFace;
     [SerializeField] private Texture _angryFace;
+    
+    
+    [SerializeField] private AspectRatioFitter _happyFitter;
+    [SerializeField] private AspectRatioFitter _neutralFitter;
+    [SerializeField] private AspectRatioFitter _surprisedFitter;
+    [SerializeField] private AspectRatioFitter _angryFitter;
 
     public bool GameHasStopped => _gameHasStopped;
 
@@ -99,10 +106,19 @@ public class GameManager : MonoBehaviour
 
         _isVerificationDone = false;
         _instance = this;
-
+        initAspectRatioFitters();
         AudioManager.instance.Play("crowdmumbling");
     }
 
+    private void initAspectRatioFitters()
+    {
+        float ratio = (float)faceManager.webcamTexture.width / faceManager.webcamTexture.height;
+        _happyFitter.aspectRatio = ratio;
+        _angryFitter.aspectRatio = ratio;
+        _neutralFitter.aspectRatio = ratio;
+        _surprisedFitter.aspectRatio = ratio;
+
+    }
     
 
     private void Update()
@@ -123,7 +139,7 @@ public class GameManager : MonoBehaviour
             LaunchGame();
         }
 
-        int playingCough = Random.Range(0, 10000);
+        int playingCough = Random.Range(0, 5000);
         if (playingCough < 5)
         {
             string coughType = playingCough > 2 ? "cough_male" : "cough_female";
