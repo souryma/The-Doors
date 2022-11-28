@@ -1,10 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using DG.Tweening;
 using TMPro;
 using UnityEngine;
-using VDT.FaceRecognition.SDK;
 
 public class RoomManager : MonoBehaviour
 {
@@ -199,7 +197,7 @@ public class RoomManager : MonoBehaviour
 
     private void MoveOnZ(Transform tf)
     {
-        tf.position -= tf.forward * Time.deltaTime * GameManager.Instance.GameSpeed;
+        tf.position -= Vector3.forward * Time.deltaTime * GameManager.Instance.GameSpeed;
     }
 
     public void OpenCurrentDoor()
