@@ -8,7 +8,7 @@ public class RoomManager : MonoBehaviour
 {
     // Static instance of the RoomManager
     private static RoomManager _instance;
-    [SerializeField] private GameObject _roomPrefab;
+    [SerializeField] private List<GameObject> _roomPrefabs;
 
     [SerializeField] private TextMeshProUGUI _roomNumber;
 
@@ -112,7 +112,8 @@ public class RoomManager : MonoBehaviour
     /// </summary>
     private void CreateRoom()
     {
-        GameObject roomGO = Instantiate(_roomPrefab);
+        int prefab_number = UnityEngine.Random.Range(0, _roomPrefabs.Count);
+        GameObject roomGO = Instantiate(_roomPrefabs[prefab_number]);
         Room room = roomGO.AddComponent<Room>();
         roomGO.name = "Room" + _roomId;
         room.DoorId = _roomId;

@@ -859,7 +859,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ecec89645e1c3840a3141f4f614cdb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _roomPrefab: {fileID: 1513612310848585284, guid: ba42cb8feb5425845bbae9dc46754e22, type: 3}
+  _roomPrefabs:
+  - {fileID: 1513612310848585284, guid: ba42cb8feb5425845bbae9dc46754e22, type: 3}
+  - {fileID: 1513612310848585284, guid: 3fede1fff1423ea439fe9a0b164f372c, type: 3}
+  - {fileID: 1513612310848585284, guid: a3e6e42b0cd3cc84294698c78cf00e13, type: 3}
+  - {fileID: 1513612310848585284, guid: 3d15f96d2996c25448ef09e1d07016d9, type: 3}
+  - {fileID: 1513612310848585284, guid: 1936dcc3c442a89419ab1ffc13b7c90e, type: 3}
   _roomNumber: {fileID: 1930620858}
   _numberOfRoomsActives: 3
   _currentRoom: {fileID: 0}

@@ -118,7 +118,8 @@ public class CameraVerification : MonoBehaviour
                 break;
         }
 
-        if (GameManager.Instance.AreAllEmotionsReady() && _step > 5 && GameManager.Instance.CheckForEmotion(EmotionsEstimator.Emotion.EMOTION_HAPPY))
+        if (GameManager.Instance.AreAllEmotionsReady() && _step > 5 &&
+            GameManager.Instance.CheckForEmotion(EmotionsEstimator.Emotion.EMOTION_HAPPY))
         {
             // _playButton.SetActive(true);
             OnVerificationValid();

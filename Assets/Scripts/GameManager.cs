@@ -2,8 +2,6 @@ using System.Collections;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Experimental.Rendering;
-using UnityEngine.UI;
 using VDT.FaceRecognition.SDK;
 
 public class GameManager : MonoBehaviour
@@ -41,8 +39,6 @@ public class GameManager : MonoBehaviour
     private GameObject _middleTransitionCurtains;
 
     public bool GameHasStopped => _gameHasStopped;
-
-    private float timerForVerif = 0f;
 
     private bool _isVerificationDone = false;
     private bool _gameHasStopped = true;
@@ -215,7 +211,7 @@ public class GameManager : MonoBehaviour
     public void OpenCurtains()
     {
         _transitionCurtains.SetActive(true);
-        
+
         // Open curtain
         _leftTransitionCurtains.transform.DOScaleY(13f, 1);
         _rightTransitionCurtains.transform.DOScaleY(-13f, 1);
@@ -223,11 +219,11 @@ public class GameManager : MonoBehaviour
 
         StartCoroutine("HideCurtains");
     }
-    
+
     public void CloseCurtains()
     {
         _transitionCurtains.SetActive(true);
-        
+
         // Close curtain
         _leftTransitionCurtains.transform.DOScaleY(32f, 1);
         _rightTransitionCurtains.transform.DOScaleY(-32f, 1);
@@ -239,7 +235,7 @@ public class GameManager : MonoBehaviour
     private IEnumerator HideCurtains()
     {
         yield return new WaitForSeconds(1);
-        
+
         _transitionCurtains.SetActive(false);
     }
 
@@ -254,7 +250,7 @@ public class GameManager : MonoBehaviour
 
         if (current_emotion != emotion)
             return;
-        
+
         if (!_hasAngry && EmotionsEstimator.Emotion.EMOTION_ANGRY == current_emotion)
         {
             MakeACapture(current_emotion);

@@ -1,9 +1,7 @@
-using System;
 using System.Collections;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.WSA;
 using Application = UnityEngine.Application;
 
 public class MainMenu : MonoBehaviour
@@ -23,7 +21,7 @@ public class MainMenu : MonoBehaviour
         Quitbutton.SetActive(false);
         CreditButton.SetActive(false);
         Title.SetActive(false);
-        
+
         // Close curtain
         _leftCurtainsObject.transform.DOScaleY(32f, 1);
         _rightCurtainsObject.transform.DOScaleY(-32f, 1);
@@ -43,7 +41,7 @@ public class MainMenu : MonoBehaviour
         _leftCurtainsObject.transform.DOScaleY(32f, 1);
         _rightCurtainsObject.transform.DOScaleY(-32f, 1);
         _middleCurtainsObject.transform.DOScaleZ(53.6f, 1f);
-        
+
         StartCoroutine("displayCredits");
     }
 
@@ -56,19 +54,19 @@ public class MainMenu : MonoBehaviour
         _leftCurtainsObject.transform.DOScaleY(32f, 1);
         _rightCurtainsObject.transform.DOScaleY(-32f, 1);
         _middleCurtainsObject.transform.DOScaleZ(53.6f, 1f);
-        
+
         StartCoroutine("BackToMenu");
     }
 
     private IEnumerator BackToMenu()
     {
         yield return new WaitForSeconds(1);
-        
+
         // Open curtain
         _leftCurtainsObject.transform.DOScaleY(13f, 1);
         _rightCurtainsObject.transform.DOScaleY(-13f, 1);
         _middleCurtainsObject.transform.DOScaleZ(1f, 1f);
-        
+
         PlayButton.SetActive(true);
         Quitbutton.SetActive(true);
         CreditButton.SetActive(true);
@@ -78,12 +76,12 @@ public class MainMenu : MonoBehaviour
     private IEnumerator displayCredits()
     {
         yield return new WaitForSeconds(1);
-        
+
         // Open curtain
         _leftCurtainsObject.transform.DOScaleY(13f, 1);
         _rightCurtainsObject.transform.DOScaleY(-13f, 1);
         _middleCurtainsObject.transform.DOScaleZ(1f, 1f);
-        
+
         Credits.SetActive(true);
         Title.SetActive(true);
     }
@@ -91,7 +89,7 @@ public class MainMenu : MonoBehaviour
     private IEnumerator startGame()
     {
         yield return new WaitForSeconds(1);
-        
+
         SceneManager.LoadScene("Scenes/MainScene");
     }
 
