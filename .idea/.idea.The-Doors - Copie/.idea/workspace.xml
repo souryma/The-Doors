@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="edb936a3-a9b7-48f0-afb2-48dc694432d2" name="Changes" comment="head bob and fitter">
+    <list default="true" id="edb936a3-a9b7-48f0-afb2-48dc694432d2" name="Changes" comment="removed unused variation of head bobble">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.The-Doors - Copie/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.The-Doors - Copie/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/FaceMask/Scripts/FaceManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FaceMask/Scripts/FaceManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/FaceSDKLoader/Awake.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FaceSDKLoader/Awake.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Room.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Room.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -32,9 +28,14 @@
     <setting file="mock://E:/Projets/The-Doors - Copie/Assets/FaceMask/Scripts/FaceManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://E:/Projets/The-Doors - Copie/Assets/FaceMask/Scripts/FaceManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://E:/Projets/The-Doors - Copie/Assets/FaceMask/Scripts/FaceManager.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://E:/Projets/The-Doors - Copie/Assets/FaceMask/Scripts/FaceManager.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://E:/Projets/The-Doors - Copie/Assets/FaceSDKLoader/Awake.unity" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://E:/Projets/The-Doors - Copie/Assets/FaceSDKLoader/Awake.unity" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://E:/Projets/The-Doors - Copie/Assets/FaceSDKLoader/Awake.unity" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://E:/Projets/The-Doors - Copie/Assets/Prefabs/RoomWithCurtain.prefab" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://E:/Projets/The-Doors - Copie/Assets/Scenes/MainScene.unity" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://E:/Projets/The-Doors - Copie/Assets/Scenes/MainScene.unity" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://E:/Projets/The-Doors - Copie/Assets/Scenes/MainScene.unity" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://E:/Projets/The-Doors - Copie/Assets/Scenes/MainScene.unity" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://E:/Projets/The-Doors - Copie/Assets/Scenes/MainScene.unity" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://E:/Projets/The-Doors - Copie/Assets/Scripts/AudioManager.cs" root0="SKIP_HIGHLIGHTING" />
@@ -44,6 +45,8 @@
     <setting file="mock://E:/Projets/The-Doors - Copie/Assets/Scripts/GameManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://E:/Projets/The-Doors - Copie/Assets/Scripts/GameManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://E:/Projets/The-Doors - Copie/Assets/Scripts/GameManager.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://E:/Projets/The-Doors - Copie/Assets/Scripts/GameManager.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://E:/Projets/The-Doors - Copie/Assets/Scripts/HeadBobber.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/HeadBobber.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="mock://E:/Projets/The-Doors - Copie/Assets/Scripts/RoomManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://E:/Projets/The-Doors - Copie/Assets/StreamingAssets/FaceSDK/share/faceanalysis/age_heavy.enc.meta" root0="FORCE_HIGHLIGHTING" />
@@ -118,7 +121,7 @@
       <workItem from="1669376716071" duration="5553000" />
       <workItem from="1669388993841" duration="1681000" />
       <workItem from="1669391280078" duration="1388000" />
-      <workItem from="1669464156870" duration="29023000" />
+      <workItem from="1669464156870" duration="31649000" />
     </task>
     <task id="LOCAL-00001" summary="Removed Moodme">
       <created>1669201040601</created>
@@ -197,7 +200,21 @@
       <option name="project" value="LOCAL" />
       <updated>1669640780062</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="added more music">
+      <created>1669643382471</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1669643382471</updated>
+    </task>
+    <task id="LOCAL-00013" summary="removed unused variation of head bobble">
+      <created>1669646876113</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1669646876113</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -228,7 +245,9 @@
     <MESSAGE value="debug + sound rework" />
     <MESSAGE value="ajout musique" />
     <MESSAGE value="head bob and fitter" />
-    <option name="LAST_COMMIT_MESSAGE" value="head bob and fitter" />
+    <MESSAGE value="added more music" />
+    <MESSAGE value="removed unused variation of head bobble" />
+    <option name="LAST_COMMIT_MESSAGE" value="removed unused variation of head bobble" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

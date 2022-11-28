@@ -1412,14 +1412,14 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
   - name: musicangry2
-    clip: {fileID: 8300000, guid: a8d335a21e1a77747b57a3cc76e4e318, type: 3}
+    clip: {fileID: 8300000, guid: f02bbae97fc70ea4e9bdaa175638198b, type: 3}
     volume: 1
     pitch: 1
     outputAudioMixerGroup: {fileID: 4335580652040673449, guid: 399ed20f681aca54c82387bea0ad3d80, type: 2}
     loop: 0
     source: {fileID: 0}
   - name: musicangry3
-    clip: {fileID: 8300000, guid: a8d335a21e1a77747b57a3cc76e4e318, type: 3}
+    clip: {fileID: 8300000, guid: a30995f12653aff4383f4dedef0c58f3, type: 3}
     volume: 1
     pitch: 1
     outputAudioMixerGroup: {fileID: 4335580652040673449, guid: 399ed20f681aca54c82387bea0ad3d80, type: 2}
@@ -1433,14 +1433,14 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
   - name: musicsurprised2
-    clip: {fileID: 8300000, guid: 23a6acbc6d93a934fa0fccd7fb721896, type: 3}
+    clip: {fileID: 8300000, guid: c7b438f142246dd428518004f437d70b, type: 3}
     volume: 1
     pitch: 1
     outputAudioMixerGroup: {fileID: 4335580652040673449, guid: 399ed20f681aca54c82387bea0ad3d80, type: 2}
     loop: 0
     source: {fileID: 0}
   - name: musicsurprised3
-    clip: {fileID: 8300000, guid: 23a6acbc6d93a934fa0fccd7fb721896, type: 3}
+    clip: {fileID: 8300000, guid: f16f023cb4a51fa488332c8e018b3b39, type: 3}
     volume: 1
     pitch: 1
     outputAudioMixerGroup: {fileID: 4335580652040673449, guid: 399ed20f681aca54c82387bea0ad3d80, type: 2}
@@ -1467,6 +1467,13 @@ MonoBehaviour:
     outputAudioMixerGroup: {fileID: 4335580652040673449, guid: 399ed20f681aca54c82387bea0ad3d80, type: 2}
     loop: 0
     source: {fileID: 0}
+  - name: musicneutral2
+    clip: {fileID: 8300000, guid: 1bfe4ae76fe5e164a8aab9b8a86f6e19, type: 3}
+    volume: 1
+    pitch: 1
+    outputAudioMixerGroup: {fileID: 4335580652040673449, guid: 399ed20f681aca54c82387bea0ad3d80, type: 2}
+    loop: 0
+    source: {fileID: 0}
   - name: crowdmumbling
     clip: {fileID: 8300000, guid: a24ae1c7062a55546b2e04910ed3d1c1, type: 3}
     volume: 1
@@ -1483,14 +1490,14 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: cough_male
     clip: {fileID: 8300000, guid: e553f2f5362082b448defbcf868db40c, type: 3}
-    volume: 1
+    volume: 0.8
     pitch: 1
     outputAudioMixerGroup: {fileID: -1224757426727495226, guid: 399ed20f681aca54c82387bea0ad3d80, type: 2}
     loop: 0
     source: {fileID: 0}
   - name: cough_female
     clip: {fileID: 8300000, guid: e7d3f61b9186f4d4b91c96e500525a0f, type: 3}
-    volume: 1
+    volume: 0.8
     pitch: 1
     outputAudioMixerGroup: {fileID: -1224757426727495226, guid: 399ed20f681aca54c82387bea0ad3d80, type: 2}
     loop: 0
