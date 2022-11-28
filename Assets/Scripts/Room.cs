@@ -15,6 +15,7 @@ public class Room : MonoBehaviour
     [SerializeField] private TextMeshPro _emotionRoomText;
     [SerializeField] private GameObject _emotionImage;
 
+    private int _musicNumber = 0;
     public bool IsOpened => _isOpened;
     public EmotionsEstimator.Emotion EmotionForOpening=> _emotionForOpening;
     public int DoorId { get; set; }
@@ -115,16 +116,21 @@ public class Room : MonoBehaviour
 
     public string getRoomMusic()
     {
+        if (_musicNumber == 0)
+        {
+            _musicNumber = Random.Range(1, 4);
+        }
+        
         switch (this._emotionForOpening)
         {
             case EmotionsEstimator.Emotion.EMOTION_ANGRY:
-                return "musicangry";
+                return "musicangry" + _musicNumber;
             case EmotionsEstimator.Emotion.EMOTION_HAPPY:
-                return "musichappy";
+                return "musichappy" + _musicNumber;
             case EmotionsEstimator.Emotion.EMOTION_SURPRISE:
-                return "musicsurprised";
+                return "musicsurprised" + _musicNumber;
             case EmotionsEstimator.Emotion.EMOTION_NEUTRAL:
-                return "musicneutral";
+                return "musicneutral" + _musicNumber;
                 
         }
 

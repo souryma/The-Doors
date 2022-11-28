@@ -1404,32 +1404,67 @@ MonoBehaviour:
     outputAudioMixerGroup: {fileID: 2323703797519231150, guid: 399ed20f681aca54c82387bea0ad3d80, type: 2}
     loop: 0
     source: {fileID: 0}
-  - name: musicangry
+  - name: musicangry1
     clip: {fileID: 8300000, guid: a8d335a21e1a77747b57a3cc76e4e318, type: 3}
     volume: 1
     pitch: 1
     outputAudioMixerGroup: {fileID: 4335580652040673449, guid: 399ed20f681aca54c82387bea0ad3d80, type: 2}
     loop: 0
     source: {fileID: 0}
-  - name: musicsurprised
+  - name: musicangry2
+    clip: {fileID: 8300000, guid: a8d335a21e1a77747b57a3cc76e4e318, type: 3}
+    volume: 1
+    pitch: 1
+    outputAudioMixerGroup: {fileID: 4335580652040673449, guid: 399ed20f681aca54c82387bea0ad3d80, type: 2}
+    loop: 0
+    source: {fileID: 0}
+  - name: musicangry3
+    clip: {fileID: 8300000, guid: a8d335a21e1a77747b57a3cc76e4e318, type: 3}
+    volume: 1
+    pitch: 1
+    outputAudioMixerGroup: {fileID: 4335580652040673449, guid: 399ed20f681aca54c82387bea0ad3d80, type: 2}
+    loop: 0
+    source: {fileID: 0}
+  - name: musicsurprised1
     clip: {fileID: 8300000, guid: 23a6acbc6d93a934fa0fccd7fb721896, type: 3}
     volume: 1
     pitch: 1
     outputAudioMixerGroup: {fileID: 4335580652040673449, guid: 399ed20f681aca54c82387bea0ad3d80, type: 2}
     loop: 0
     source: {fileID: 0}
-  - name: musichappy
+  - name: musicsurprised2
+    clip: {fileID: 8300000, guid: 23a6acbc6d93a934fa0fccd7fb721896, type: 3}
+    volume: 1
+    pitch: 1
+    outputAudioMixerGroup: {fileID: 4335580652040673449, guid: 399ed20f681aca54c82387bea0ad3d80, type: 2}
+    loop: 0
+    source: {fileID: 0}
+  - name: musicsurprised3
+    clip: {fileID: 8300000, guid: 23a6acbc6d93a934fa0fccd7fb721896, type: 3}
+    volume: 1
+    pitch: 1
+    outputAudioMixerGroup: {fileID: 4335580652040673449, guid: 399ed20f681aca54c82387bea0ad3d80, type: 2}
+    loop: 0
+    source: {fileID: 0}
+  - name: musichappy1
     clip: {fileID: 8300000, guid: 0cee8e06c00c95546aebd3811c6f3049, type: 3}
     volume: 1
     pitch: 1
     outputAudioMixerGroup: {fileID: 4335580652040673449, guid: 399ed20f681aca54c82387bea0ad3d80, type: 2}
     loop: 0
     source: {fileID: 0}
-  - name: applause
-    clip: {fileID: 8300000, guid: 1aace7c0c016f5142aab6715a58ff4aa, type: 3}
+  - name: musichappy2
+    clip: {fileID: 8300000, guid: b993bb42152d0324d8abe4992c4289d1, type: 3}
     volume: 1
     pitch: 1
-    outputAudioMixerGroup: {fileID: -1224757426727495226, guid: 399ed20f681aca54c82387bea0ad3d80, type: 2}
+    outputAudioMixerGroup: {fileID: 4335580652040673449, guid: 399ed20f681aca54c82387bea0ad3d80, type: 2}
+    loop: 0
+    source: {fileID: 0}
+  - name: musichappy3
+    clip: {fileID: 8300000, guid: 5a1e915b8882f6d4e9d04f8c81628806, type: 3}
+    volume: 1
+    pitch: 1
+    outputAudioMixerGroup: {fileID: 4335580652040673449, guid: 399ed20f681aca54c82387bea0ad3d80, type: 2}
     loop: 0
     source: {fileID: 0}
   - name: crowdmumbling
@@ -1438,13 +1473,6 @@ MonoBehaviour:
     pitch: 1
     outputAudioMixerGroup: {fileID: -3210596850557032014, guid: 399ed20f681aca54c82387bea0ad3d80, type: 2}
     loop: 1
-    source: {fileID: 0}
-  - name: threestrikes
-    clip: {fileID: 8300000, guid: 31ab326535a85a446ae1442e4f0ed8f7, type: 3}
-    volume: 1
-    pitch: 1
-    outputAudioMixerGroup: {fileID: 2323703797519231150, guid: 399ed20f681aca54c82387bea0ad3d80, type: 2}
-    loop: 0
     source: {fileID: 0}
   - name: cheers
     clip: {fileID: 8300000, guid: 9dedc6e9cf0c28a4ab133855acc1ac8e, type: 3}
@@ -1462,6 +1490,20 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: cough_female
     clip: {fileID: 8300000, guid: e7d3f61b9186f4d4b91c96e500525a0f, type: 3}
+    volume: 1
+    pitch: 1
+    outputAudioMixerGroup: {fileID: -1224757426727495226, guid: 399ed20f681aca54c82387bea0ad3d80, type: 2}
+    loop: 0
+    source: {fileID: 0}
+  - name: threestrikes
+    clip: {fileID: 8300000, guid: 31ab326535a85a446ae1442e4f0ed8f7, type: 3}
+    volume: 1
+    pitch: 1
+    outputAudioMixerGroup: {fileID: 2323703797519231150, guid: 399ed20f681aca54c82387bea0ad3d80, type: 2}
+    loop: 0
+    source: {fileID: 0}
+  - name: applause
+    clip: {fileID: 8300000, guid: 1aace7c0c016f5142aab6715a58ff4aa, type: 3}
     volume: 1
     pitch: 1
     outputAudioMixerGroup: {fileID: -1224757426727495226, guid: 399ed20f681aca54c82387bea0ad3d80, type: 2}

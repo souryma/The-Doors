@@ -58,7 +58,10 @@ public class FaceManager : MonoBehaviour
     [Space]
     [SerializeField] ComputeShader convertShader;
 
-
+    [SerializeField] private AspectRatioFitter _happyFitter;
+    [SerializeField] private AspectRatioFitter _neutralFitter;
+    [SerializeField] private AspectRatioFitter _surprisedFitter;
+    [SerializeField] private AspectRatioFitter _angryFitter;
 
     [Header("UI")]
 
@@ -205,7 +208,8 @@ public class FaceManager : MonoBehaviour
         rect = new Rect(0, 0, convertedTexture.width, convertedTexture.height);
         // rect = new Rect(FaceRectangle.x, FaceRectangle.y, convertedTexture.width, convertedTexture.height);
 
-        aspectRatioFitter.aspectRatio = (float)convertedTexture.width / convertedTexture.height;
+       
+        InitAspectRatioFitters(convertedTexture.width,  convertedTexture.height);
 
         // Preparing ComputeShader
         // Compute Shader rotates the image and flips it horizontally to match the FaceSDK data format
@@ -426,4 +430,16 @@ public class FaceManager : MonoBehaviour
    
   
     #endregion
+    
+    private void InitAspectRatioFitters(float width, float height)
+    {
+        float ratio = (float)width / height;
+        aspectRatioFitter.aspectRatio = ratio;
+        _happyFitter.aspectRatio = ratio;
+        _angryFitter.aspectRatio = ratio;
+        _neutralFitter.aspectRatio = ratio;
+        _surprisedFitter.aspectRatio = ratio;
+
+    }
+
 }

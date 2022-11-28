@@ -30,10 +30,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Texture _angryFace;
     
     
-    [SerializeField] private AspectRatioFitter _happyFitter;
-    [SerializeField] private AspectRatioFitter _neutralFitter;
-    [SerializeField] private AspectRatioFitter _surprisedFitter;
-    [SerializeField] private AspectRatioFitter _angryFitter;
+  
 
     public bool GameHasStopped => _gameHasStopped;
 
@@ -106,20 +103,10 @@ public class GameManager : MonoBehaviour
 
         _isVerificationDone = false;
         _instance = this;
-        initAspectRatioFitters();
         AudioManager.instance.Play("crowdmumbling");
     }
 
-    private void initAspectRatioFitters()
-    {
-        float ratio = (float)faceManager.webcamTexture.width / faceManager.webcamTexture.height;
-        _happyFitter.aspectRatio = ratio;
-        _angryFitter.aspectRatio = ratio;
-        _neutralFitter.aspectRatio = ratio;
-        _surprisedFitter.aspectRatio = ratio;
 
-    }
-    
 
     private void Update()
     {
@@ -181,9 +168,15 @@ public class GameManager : MonoBehaviour
         _gameoverObject.SetActive(true);
         _gameoverObject.GetComponent<Gameover>().SetScore(RoomManager.Instance.CurrentRoom.DoorId - 1);
         _gameOverUi.text = "GAME OVER";
-        AudioManager.instance.StopSound(roomManager.CurrentRoom.getRoomMusic(), 0f);
         AudioManager.instance.GetSound("crowdmumbling").source.DOFade(1f, 4f);
-        AudioManager.instance.StopSound(roomManager.Rooms[0].getRoomMusic(), 0f);
+        for (int i = 1; i < 4; i++)
+        {
+            AudioManager.instance.StopSound("musicangry" + i, 0f);
+            AudioManager.instance.StopSound("musicneutral" + i, 0f);
+            AudioManager.instance.StopSound("musicsurprised" + i, 0f);
+            AudioManager.instance.StopSound("musichappy" + i, 0f);
+        }
+        
         AudioManager.instance.Play("cheers", 5f, 1f);
     }
 
