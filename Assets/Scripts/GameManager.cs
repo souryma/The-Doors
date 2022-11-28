@@ -28,7 +28,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Texture _neutralFace;
     [SerializeField] private Texture _surprisedFace;
     [SerializeField] private Texture _angryFace;
-    
+
+    private ImageLoaderSaver _imageLoaderSaver;
     
   
 
@@ -73,6 +74,8 @@ public class GameManager : MonoBehaviour
         set => _happyFace = value;
     }
 
+   
+
     public Texture NeutralFace
     {
         get => _neutralFace;
@@ -91,6 +94,10 @@ public class GameManager : MonoBehaviour
         set => _angryFace = value;
     }
 
+    public Texture GetFaceEmotion(EmotionsEstimator.Emotion emotion)
+    {
+        return _imageLoaderSaver.LoadPictureFromGallery(emotion);
+    }
     //public CameraManager CamManager => camManager;
 
     private void Start()
@@ -101,6 +108,7 @@ public class GameManager : MonoBehaviour
             return;
         }
 
+        _imageLoaderSaver = new ImageLoaderSaver();
         _isVerificationDone = false;
         _instance = this;
         AudioManager.instance.Play("crowdmumbling");
@@ -134,6 +142,7 @@ public class GameManager : MonoBehaviour
         }
         if (!_gameHasStopped && roomManager.CurrentRoom && !roomManager.CurrentRoom.IsOpened && CheckIfEmotionIsAttained())
         {
+            MakeACapture(roomManager.CurrentRoom.EmotionForOpening);
             roomManager.OpenCurrentDoor();
             UpdateGameSpeed();
         }
@@ -255,7 +264,7 @@ public class GameManager : MonoBehaviour
         // copyTexture.SetPixels(((Texture2D)faceManager.rawImage.texture).GetPixels());
         copyTexture.SetPixels(faceManager.webcamTexture.GetPixels());
         copyTexture.Apply();
-        
+        _imageLoaderSaver.SavePictureToGallery(copyTexture, emotion);
         switch (emotion)
         {
             case EmotionsEstimator.Emotion.EMOTION_NEUTRAL:

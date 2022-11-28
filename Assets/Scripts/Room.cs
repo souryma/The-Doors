@@ -48,21 +48,22 @@ public class Room : MonoBehaviour
     private void SetEmotionImage()
     {
         Texture text = new Texture2D(300, 300);
-        switch (_emotionForOpening)
-        {
-            case EmotionsEstimator.Emotion.EMOTION_NEUTRAL:
-                text = GameManager.Instance.NeutralFace;
-                break;
-            case EmotionsEstimator.Emotion.EMOTION_ANGRY:
-                text = GameManager.Instance.AngryFace;
-                break;
-            case EmotionsEstimator.Emotion.EMOTION_HAPPY:
-                text = GameManager.Instance.HappyFace;
-                break; 
-            case EmotionsEstimator.Emotion.EMOTION_SURPRISE:
-                text = GameManager.Instance.SurprisedFace;
-                break;
-        }
+        text = GameManager.Instance.GetFaceEmotion(_emotionForOpening);
+        // switch (_emotionForOpening)
+        // {
+        //     case EmotionsEstimator.Emotion.EMOTION_NEUTRAL:
+        //         text = GameManager.Instance.NeutralFace;
+        //         break;
+        //     case EmotionsEstimator.Emotion.EMOTION_ANGRY:
+        //         text = GameManager.Instance.AngryFace;
+        //         break;
+        //     case EmotionsEstimator.Emotion.EMOTION_HAPPY:
+        //         text = GameManager.Instance.HappyFace;
+        //         break; 
+        //     case EmotionsEstimator.Emotion.EMOTION_SURPRISE:
+        //         text = GameManager.Instance.SurprisedFace;
+        //         break;
+        // }
 
         _emotionImage.GetComponent<MeshRenderer>().material.mainTexture = text;
     }

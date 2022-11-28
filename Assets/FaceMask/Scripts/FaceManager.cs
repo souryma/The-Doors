@@ -112,9 +112,9 @@ public class FaceManager : MonoBehaviour
 
     void Start()
     {
-        Application.logMessageReceived += HandleLog;
+        // Application.logMessageReceived += HandleLog;
 
-        FaceRectangle = new Face.RawSample.Rectangle(0, 0, 0, 0);
+        // FaceRectangle = new Face.RawSample.Rectangle(0, 0, 0, 0);
 
         if (!InitSevices())
             return;
@@ -157,19 +157,19 @@ public class FaceManager : MonoBehaviour
     void OnDestroy()
     {
         job.Abort();
-        Application.logMessageReceived -= HandleLog;
+        // Application.logMessageReceived -= HandleLog;
     }
 
-    void HandleLog(string message, string stackTrace, LogType type)
-    {
-        if (type == LogType.Error || type == LogType.Assert || type == LogType.Exception)
-        {
-            if (errorDecoding.ContainsKey(message))
-                Debug.Log(errorDecoding[message]);
-            else
-                Debug.Log(message);
-        }
-    }
+    // void HandleLog(string message, string stackTrace, LogType type)
+    // {
+    //     if (type == LogType.Error || type == LogType.Assert || type == LogType.Exception)
+    //     {
+    //         if (errorDecoding.ContainsKey(message))
+    //             Debug.Log(errorDecoding[message]);
+    //         else
+    //             Debug.Log(message);
+    //     }
+    // }
 
     #region INIT
 
@@ -178,7 +178,7 @@ public class FaceManager : MonoBehaviour
         currentDevice = device;
         // Start streaming from the camera
 
-        webcamTexture = new WebCamTexture(currentDevice.name);
+        webcamTexture = new WebCamTexture(currentDevice.name, 1920, 1080, 60);
         webcamTexture.Play();
 
         
@@ -230,7 +230,7 @@ public class FaceManager : MonoBehaviour
         // since it is impossible to get an array of bytes from RenderTexture
         
         rgbTexture = new Texture2D(convertedTexture.width, convertedTexture.height, TextureFormat.RGB24, false);
-        cropImg = new Texture2D(FaceRectangle.width, FaceRectangle.height, TextureFormat.RGB24, false);
+        // cropImg = new Texture2D(FaceRectangle.width, FaceRectangle.height, TextureFormat.RGB24, false);
 
         // Due to the different aspect ratio of the screen and camera, you need to adjust the Mesh scale and spawn position
 
