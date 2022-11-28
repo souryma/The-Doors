@@ -3,6 +3,8 @@ using System.Collections;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.WSA;
+using Application = UnityEngine.Application;
 
 public class MainMenu : MonoBehaviour
 {
@@ -13,12 +15,14 @@ public class MainMenu : MonoBehaviour
     public GameObject Quitbutton;
     public GameObject CreditButton;
     public GameObject Credits;
+    public GameObject Title;
 
     public void PlayGame()
     {
         PlayButton.SetActive(false);
         Quitbutton.SetActive(false);
         CreditButton.SetActive(false);
+        Title.SetActive(false);
         
         // Close curtain
         _leftCurtainsObject.transform.DOScaleY(32f, 1);
@@ -33,7 +37,8 @@ public class MainMenu : MonoBehaviour
         PlayButton.SetActive(false);
         Quitbutton.SetActive(false);
         CreditButton.SetActive(false);
-        
+        Title.SetActive(false);
+
         // Close curtain
         _leftCurtainsObject.transform.DOScaleY(32f, 1);
         _rightCurtainsObject.transform.DOScaleY(-32f, 1);
@@ -45,6 +50,7 @@ public class MainMenu : MonoBehaviour
     public void backToMenu()
     {
         Credits.SetActive(false);
+        Title.SetActive(false);
 
         // Close curtain
         _leftCurtainsObject.transform.DOScaleY(32f, 1);
@@ -66,6 +72,7 @@ public class MainMenu : MonoBehaviour
         PlayButton.SetActive(true);
         Quitbutton.SetActive(true);
         CreditButton.SetActive(true);
+        Title.SetActive(true);
     }
 
     private IEnumerator displayCredits()
@@ -78,6 +85,7 @@ public class MainMenu : MonoBehaviour
         _middleCurtainsObject.transform.DOScaleZ(1f, 1f);
         
         Credits.SetActive(true);
+        Title.SetActive(true);
     }
 
     private IEnumerator startGame()

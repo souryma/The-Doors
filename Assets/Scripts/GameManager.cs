@@ -128,12 +128,6 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        timerForVerif += timerForVerif <= 1 ? Time.deltaTime : 0;
-        if (!AreAllEmotionsReady() && timerForVerif > 1)
-        {
-            GetEmotionsFace();
-        }
-
         if (_isVerificationDone == false)
         {
             return;
@@ -220,10 +214,24 @@ public class GameManager : MonoBehaviour
 
     public void OpenCurtains()
     {
+        _transitionCurtains.SetActive(true);
+        
         // Open curtain
         _leftTransitionCurtains.transform.DOScaleY(13f, 1);
         _rightTransitionCurtains.transform.DOScaleY(-13f, 1);
         _middleTransitionCurtains.transform.DOScaleZ(1f, 1f);
+
+        StartCoroutine("HideCurtains");
+    }
+    
+    public void CloseCurtains()
+    {
+        _transitionCurtains.SetActive(true);
+        
+        // Close curtain
+        _leftTransitionCurtains.transform.DOScaleY(32f, 1);
+        _rightTransitionCurtains.transform.DOScaleY(-32f, 1);
+        _middleTransitionCurtains.transform.DOScaleZ(53.6f, 1f);
 
         StartCoroutine("HideCurtains");
     }
@@ -235,9 +243,18 @@ public class GameManager : MonoBehaviour
         _transitionCurtains.SetActive(false);
     }
 
-    private void GetEmotionsFace()
+    public bool CheckForEmotion(EmotionsEstimator.Emotion emotion)
+    {
+        return emotion == faceManager._emotionsController.get_current_emotion();
+    }
+
+    public void GetEmotionsFace(EmotionsEstimator.Emotion emotion)
     {
         EmotionsEstimator.Emotion current_emotion = faceManager._emotionsController.get_current_emotion();
+
+        if (current_emotion != emotion)
+            return;
+        
         if (!_hasAngry && EmotionsEstimator.Emotion.EMOTION_ANGRY == current_emotion)
         {
             MakeACapture(current_emotion);

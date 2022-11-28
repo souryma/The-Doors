@@ -840,6 +840,7 @@ MonoBehaviour:
   Quitbutton: {fileID: 298912653}
   CreditButton: {fileID: 1702949815}
   Credits: {fileID: 1565726161}
+  Title: {fileID: 1295042387}
 --- !u!1 &447265455
 GameObject:
   m_ObjectHideFlags: 0
@@ -1228,7 +1229,7 @@ GameObject:
   - component: {fileID: 578014235}
   - component: {fileID: 578014234}
   m_Layer: 0
-  m_Name: Text (TMP)
+  m_Name: Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
