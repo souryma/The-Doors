@@ -11,7 +11,7 @@ public class Room : MonoBehaviour
     private GameObject _doorObject;
     private GameObject _leftCurtainsObject;
     private GameObject _rightCurtainsObject;
-    private GameObject _middleCurtainsObject;
+    private GameObject _blind000;
     [SerializeField] private TextMeshPro _emotionRoomText;
     [SerializeField] private GameObject _emotionImage;
 
@@ -26,13 +26,12 @@ public class Room : MonoBehaviour
         _doorObject = transform.Find("Door").gameObject;
         
         // Get the curtain gameobject
-        GameObject curtains = transform.Find("Curtain").gameObject;
-        _leftCurtainsObject = curtains.transform.Find("LeftCurtain").gameObject;
-        _rightCurtainsObject = curtains.transform.Find("RightCurtain").gameObject;
-        _middleCurtainsObject = curtains.transform.Find("MiddleCurtain").gameObject;
+        _leftCurtainsObject = transform.Find("LeftCurtain").gameObject;
+        _rightCurtainsObject = transform.Find("RightCurtain").gameObject;
+        _blind000 = transform.Find("blind").gameObject;
         
         // Get emotion text UI
-        _emotionRoomText = transform.Find("EmotionText").GetComponent<TextMeshPro>();
+        // _emotionRoomText = transform.Find("EmotionText").GetComponent<TextMeshPro>();
 
         _emotionImage = transform.Find("EmotionImage").gameObject;
 
@@ -41,7 +40,7 @@ public class Room : MonoBehaviour
         _emotionForOpening = (EmotionsEstimator.Emotion) emotionIndex;
 
         
-        SetEmotionText();
+        //SetEmotionText();
         SetEmotionImage();
     }
 
@@ -103,9 +102,9 @@ public class Room : MonoBehaviour
         _doorObject.SetActive(false);
         
         // Open curtain
-        _leftCurtainsObject.transform.DOScaleY(20f, 1);
-        _rightCurtainsObject.transform.DOScaleY(-20f, 1);
-        _middleCurtainsObject.transform.DOScaleZ(1f, 2f);
+        _leftCurtainsObject.transform.DOScaleX(-0.81197f, 1);
+        _rightCurtainsObject.transform.DOScaleX(-0.81197f, 1);
+        _blind000.transform.DOScaleZ(1.311611f, 2);
         
         AudioManager.instance.Play("curtainOpen", 1f);
 
