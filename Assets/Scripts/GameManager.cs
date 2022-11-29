@@ -14,10 +14,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] public FaceManager faceManager;
     [SerializeField] private RoomManager roomManager;
     [SerializeField] private TextMeshProUGUI _gameOverUi;
-
-    [SerializeField] private GameObject _gameoverObject;
-
-    // [SerializeField] private CameraVerification _camera;
+    [SerializeField] private Gameover _gameoverObject;
+    [SerializeField] private CameraVerification _cameraVerif;
     [SerializeField] private GameObject _transitionCurtains;
 
     [Space] [SerializeField] private const float EmotionThreshold = 0.70f;
@@ -42,6 +40,7 @@ public class GameManager : MonoBehaviour
 
     private bool _isVerificationDone = false;
     private bool _gameHasStopped = true;
+    private bool _isGameOver = false;
     private bool _gameIsStarted = false;
 
     private bool _hasHappy = false;
@@ -140,13 +139,26 @@ public class GameManager : MonoBehaviour
             string coughType = playingCough > 2 ? "cough_male" : "cough_female";
             AudioManager.instance.Play(coughType);
         }
-
-        if (!_gameHasStopped && roomManager.CurrentRoom && !roomManager.CurrentRoom.IsOpened &&
-            CheckIfEmotionIsAttained())
+        if (!_gameHasStopped && roomManager.CurrentRoom && !roomManager.CurrentRoom.IsOpened && 
+            CheckIfEmotionIsAttained(roomManager.CurrentRoom.EmotionForOpening))
         {
             MakeACapture(roomManager.CurrentRoom.EmotionForOpening);
             roomManager.OpenCurrentDoor();
             UpdateGameSpeed();
+        }
+
+        if (_isGameOver)
+        {
+            if (CheckIfEmotionIsAttained(EmotionsEstimator.Emotion.EMOTION_ANGRY))
+            {
+                _gameoverObject.OnTryAgain();
+                _isGameOver = false;
+            }
+            if (CheckIfEmotionIsAttained(EmotionsEstimator.Emotion.EMOTION_SURPRISE))
+            {
+                _gameoverObject.OnRestartGame();
+                _isGameOver = false;
+            }
         }
     }
 
@@ -173,11 +185,14 @@ public class GameManager : MonoBehaviour
 
     public void StopGame()
     {
-        _gameoverObject.GetComponent<Gameover>().SetGameoverBG(_surprisedFace);
+        StartCoroutine(SwitchToGameOverSearch());
         _gameHasStopped = true;
+        // _gameoverObject.gameObject.SetActive(true);
+        _gameoverObject.ShowGameOver();
+       
         _gameSpeed = 0;
-        _gameoverObject.SetActive(true);
-        _gameoverObject.GetComponent<Gameover>().SetScore(RoomManager.Instance.CurrentRoom.DoorId - 1);
+        // _gameoverObject.SetActive(true);
+        _gameoverObject.SetScore(RoomManager.Instance.CurrentRoom.DoorId - 1);
         _gameOverUi.text = "GAME OVER";
         AudioManager.instance.GetSound("crowdmumbling").source.DOFade(1f, 4f);
         for (int i = 1; i < 4; i++)
@@ -191,6 +206,13 @@ public class GameManager : MonoBehaviour
         AudioManager.instance.Play("cheers", 6f, 1f);
     }
 
+    private IEnumerator SwitchToGameOverSearch()
+    {
+        yield return new WaitForSeconds(10f);
+        _isGameOver = true;
+       
+    }
+
     public void RestartGame()
     {
         // _gameIsStarted = false;
@@ -198,6 +220,19 @@ public class GameManager : MonoBehaviour
         // _gameHasStopped = false;
         // _gameSpeed = 0.007f;
         LaunchGame();
+    }
+
+    public void RestartGameAndVerif()
+    {
+        CloseCurtains();
+        RoomManager.Instance.RestartRoom();
+        _neutralFace =_angryFace = _happyFace= _surprisedFace = null;
+        _hasAngry = _hasHappy = _hasNeutral = _hasSurprised = false;
+        _cameraVerif.ResetVerification();
+        _gameIsStarted = false;
+        
+        // _isGameOver = false
+
     }
 
     private void OnDestroy()
@@ -229,9 +264,14 @@ public class GameManager : MonoBehaviour
         _rightTransitionCurtains.transform.DOScaleY(-32f, 1);
         _middleTransitionCurtains.transform.DOScaleZ(53.6f, 1f);
 
-        StartCoroutine("HideCurtains");
+        StartCoroutine("OpenCurtainsAfterTime");
     }
 
+    public IEnumerator OpenCurtainsAfterTime()
+    {
+        yield return new WaitForSeconds(1f);
+        OpenCurtains();
+    }
     private IEnumerator HideCurtains()
     {
         yield return new WaitForSeconds(1);
@@ -278,17 +318,14 @@ public class GameManager : MonoBehaviour
         return _hasAngry && _hasHappy && _hasNeutral && _hasSurprised;
     }
 
-    private bool CheckIfEmotionIsAttained()
+    private bool CheckIfEmotionIsAttained(EmotionsEstimator.Emotion emotionToTest)
     {
-        bool checkEmotion = false;
+      
         EmotionsEstimator.Emotion current_emotion = faceManager._emotionsController.get_current_emotion();
-        if (current_emotion == roomManager.CurrentRoom.EmotionForOpening)
-        {
-            checkEmotion = true;
-        }
 
-        return checkEmotion;
+        return current_emotion == emotionToTest;
     }
+    
 
 
     private IEnumerator StartGameAfterTime()

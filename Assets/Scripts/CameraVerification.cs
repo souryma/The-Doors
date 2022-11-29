@@ -8,6 +8,7 @@ public class CameraVerification : MonoBehaviour
     [SerializeField] private GameObject _dressingRoomPrefab;
     [SerializeField] private Camera _camera;
     [SerializeField] private GameObject _playButton;
+    [SerializeField] private Material defaultMaterial;
 
     private GameObject _verificationRoom;
     private TextMeshPro _verificationRoomText;
@@ -132,6 +133,19 @@ public class CameraVerification : MonoBehaviour
 
         _step += 1;
         _stepDone = false;
+    }
+
+    public void ResetVerification()
+    {
+        GameManager.Instance.IsVerificationDone = false;
+        _step = 0;
+        _verificationRoom.SetActive(true);
+        gameObject.SetActive(true);
+        _camera.transform.position = new Vector3(0, 40, 0);
+        _angryQuad.material.mainTexture =
+            _happyQuad.material.mainTexture =
+                _surprisedQuad.material.mainTexture =
+                    _neutralQuad.material.mainTexture = defaultMaterial.mainTexture;
     }
 
     public void OnVerificationValid()

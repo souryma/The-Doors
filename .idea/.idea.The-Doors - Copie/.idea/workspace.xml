@@ -1,13 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="edb936a3-a9b7-48f0-afb2-48dc694432d2" name="Changes" comment="added loading images from disk">
+    <list default="true" id="edb936a3-a9b7-48f0-afb2-48dc694432d2" name="Changes" comment="update Loader + musics">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.The-Doors - Copie/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.The-Doors - Copie/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/FaceMask/Scripts/FaceManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FaceMask/Scripts/FaceManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Models/Italianno-Regular SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Italianno-Regular SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/HallPrefab1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/HallPrefab1.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/HallPrefab2.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/HallPrefab2.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/HallPrefab3.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/HallPrefab3.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/HallPrefab4.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/HallPrefab4.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/HallPrefab5.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/HallPrefab5.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/HallPrefabTemplate 5.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/HallPrefabTemplate 5.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Menu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Menu.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CameraVerification.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CameraVerification.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ImageLoaderSaver.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ImageLoaderSaver.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/RoomManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/RoomManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameover.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameover.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -27,6 +35,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/713111eef85a446fa716abbb474708a117e00/2d/9fa28d43/EmotionsEstimator.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/713111eef85a446fa716abbb474708a117e00/bf/2e2fccdd/RawSample.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/c399efc08928422d8828d74a2b19ffba158600/06/1240e7f4/ComputeShader.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/c399efc08928422d8828d74a2b19ffba158600/2c/ba4b7f68/MonoBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/c399efc08928422d8828d74a2b19ffba158600/9e/b2b143df/RenderTexture.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://E:/Projets/The-Doors - Copie/Assets/FaceMask/Scripts/FaceManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://E:/Projets/The-Doors - Copie/Assets/FaceMask/Scripts/FaceManager.cs" root0="SKIP_HIGHLIGHTING" />
@@ -46,12 +55,15 @@
     <setting file="mock://E:/Projets/The-Doors - Copie/Assets/Scenes/MainScene.unity" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://E:/Projets/The-Doors - Copie/Assets/Scripts/AudioManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/AudioManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://E:/Projets/The-Doors - Copie/Assets/Scripts/CameraVerification.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://E:/Projets/The-Doors - Copie/Assets/Scripts/GameManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://E:/Projets/The-Doors - Copie/Assets/Scripts/GameManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://E:/Projets/The-Doors - Copie/Assets/Scripts/GameManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://E:/Projets/The-Doors - Copie/Assets/Scripts/GameManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://E:/Projets/The-Doors - Copie/Assets/Scripts/GameManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://E:/Projets/The-Doors - Copie/Assets/Scripts/GameManager.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://E:/Projets/The-Doors - Copie/Assets/Scripts/Gameover.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://E:/Projets/The-Doors - Copie/Assets/Scripts/Gameover.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://E:/Projets/The-Doors - Copie/Assets/Scripts/HeadBobber.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/HeadBobber.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ImageLoaderSaver.cs" root0="FORCE_HIGHLIGHTING" />
@@ -61,6 +73,8 @@
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.collab-proxy@1.17.6/Editor/PlasticSCM/AssetsUtils/AssetsPath.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Editor/EventSystem/EventTriggerEditor.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/Layout/CanvasScaler.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://diff.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://diff.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -129,7 +143,7 @@
       <workItem from="1669376716071" duration="5553000" />
       <workItem from="1669388993841" duration="1681000" />
       <workItem from="1669391280078" duration="1388000" />
-      <workItem from="1669464156870" duration="43183000" />
+      <workItem from="1669464156870" duration="54119000" />
     </task>
     <task id="LOCAL-00001" summary="Removed Moodme">
       <created>1669201040601</created>
@@ -236,7 +250,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669664385232</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="update Loader + musics">
+      <created>1669671084364</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1669671084364</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -271,6 +292,52 @@
     <MESSAGE value="removed unused variation of head bobble" />
     <MESSAGE value="added new musics" />
     <MESSAGE value="added loading images from disk" />
-    <option name="LAST_COMMIT_MESSAGE" value="added loading images from disk" />
+    <MESSAGE value="update Loader + musics" />
+    <option name="LAST_COMMIT_MESSAGE" value="update Loader + musics" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Gameover.cs</url>
+          <line>19</line>
+          <properties documentPath="E:\Projets\The-Doors - Copie\Assets\Scripts\Gameover.cs" initialLine="19" containingFunctionPresentation="method 'Start'">
+            <startOffsets>
+              <option value="468" />
+            </startOffsets>
+            <endOffsets>
+              <option value="517" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Gameover.cs</url>
+          <line>58</line>
+          <properties documentPath="E:\Projets\The-Doors - Copie\Assets\Scripts\Gameover.cs" initialLine="57" containingFunctionPresentation="method 'ShowGameOver'">
+            <startOffsets>
+              <option value="1765" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1795" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/GameManager.cs</url>
+          <line>190</line>
+          <properties documentPath="E:\Projets\The-Doors - Copie\Assets\Scripts\GameManager.cs" initialLine="190" containingFunctionPresentation="method 'StopGame'">
+            <startOffsets>
+              <option value="5441" />
+            </startOffsets>
+            <endOffsets>
+              <option value="5472" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
