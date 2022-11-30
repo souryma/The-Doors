@@ -11,6 +11,8 @@ public class Gameover : MonoBehaviour
     private MeshRenderer _retryQuad;
     private MeshRenderer _restartQuad;
     private MeshRenderer _mirror;
+
+    [SerializeField] private GameObject gameOverCanvas;
     
     private TextMeshPro Score;
     // public GameObject BackGroundImage;
@@ -30,6 +32,7 @@ public class Gameover : MonoBehaviour
         _mirror = _gameOverRoom.transform.Find("Mirror").GetComponent<MeshRenderer>();
         
         _gameOverRoom.SetActive(false);
+        gameOverCanvas.SetActive(false);
         // gameObject.SetActive(false);
     }
 
@@ -42,21 +45,28 @@ public class Gameover : MonoBehaviour
     {
         _camera.transform.position = new Vector3(0, 1.5f, 0);
         _gameOverRoom.SetActive(false);
+        gameOverCanvas.SetActive(false);
+
         gameObject.SetActive(false);
         GameManager.Instance.RestartGame();
+        GameManager.Instance.isGameOver = false;
+
     }
 
     public void OnRestartGame()
     {
+        gameOverCanvas.SetActive(false);
         // _camera.transform.position = new Vector3(0, 1.5f, 0);
         _gameOverRoom.SetActive(false);
         // gameObject.SetActive(false);
         GameManager.Instance.RestartGameAndVerif();
+        GameManager.Instance.isGameOver = false;
     }
 
     public void ShowGameOver()
     {
         _gameOverRoom.SetActive(true);
+        gameOverCanvas.SetActive(true);
         // gameObject.SetActive(true);
         _retryQuad.material.mainTexture = GameManager.Instance.AngryFace;
         _restartQuad.material.mainTexture = GameManager.Instance.SurprisedFace;

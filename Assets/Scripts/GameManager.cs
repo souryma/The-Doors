@@ -40,7 +40,8 @@ public class GameManager : MonoBehaviour
 
     private bool _isVerificationDone = false;
     private bool _gameHasStopped = true;
-    private bool _isGameOver = false;
+    public bool isGameOver = false;
+    // public bool IsGameOver => _isGameOver;
     private bool _gameIsStarted = false;
 
     private bool _hasHappy = false;
@@ -146,20 +147,20 @@ public class GameManager : MonoBehaviour
             roomManager.OpenCurrentDoor();
             UpdateGameSpeed();
         }
-
-        if (_isGameOver)
-        {
-            if (CheckIfEmotionIsAttained(EmotionsEstimator.Emotion.EMOTION_ANGRY))
-            {
-                _gameoverObject.OnTryAgain();
-                _isGameOver = false;
-            }
-            if (CheckIfEmotionIsAttained(EmotionsEstimator.Emotion.EMOTION_SURPRISE))
-            {
-                _gameoverObject.OnRestartGame();
-                _isGameOver = false;
-            }
-        }
+        //
+        // if (_isGameOver)
+        // {
+        //     if (CheckIfEmotionIsAttained(EmotionsEstimator.Emotion.EMOTION_ANGRY))
+        //     {
+        //         _gameoverObject.OnTryAgain();
+        //         _isGameOver = false;
+        //     }
+        //     if (CheckIfEmotionIsAttained(EmotionsEstimator.Emotion.EMOTION_SURPRISE))
+        //     {
+        //         _gameoverObject.OnRestartGame();
+        //         _isGameOver = false;
+        //     }
+        // }
     }
 
     private void UpdateGameSpeed()
@@ -209,12 +210,19 @@ public class GameManager : MonoBehaviour
     private IEnumerator SwitchToGameOverSearch()
     {
         yield return new WaitForSeconds(10f);
-        _isGameOver = true;
+        isGameOver = true;
        
     }
 
     public void RestartGame()
     {
+        for (int i = 1; i < 4; i++)
+        {
+            AudioManager.instance.StopSound("musicangry" + i, 0f);
+            AudioManager.instance.StopSound("musicneutral" + i, 0f);
+            AudioManager.instance.StopSound("musicsurprised" + i, 0f);
+            AudioManager.instance.StopSound("musichappy" + i, 0f);
+        }
         // _gameIsStarted = false;
         RoomManager.Instance.RestartRoom();
         // _gameHasStopped = false;
@@ -225,6 +233,13 @@ public class GameManager : MonoBehaviour
     public void RestartGameAndVerif()
     {
         CloseCurtains();
+        for (int i = 1; i < 4; i++)
+        {
+            AudioManager.instance.StopSound("musicangry" + i, 0f);
+            AudioManager.instance.StopSound("musicneutral" + i, 0f);
+            AudioManager.instance.StopSound("musicsurprised" + i, 0f);
+            AudioManager.instance.StopSound("musichappy" + i, 0f);
+        }
         RoomManager.Instance.RestartRoom();
         _neutralFace =_angryFace = _happyFace= _surprisedFace = null;
         _hasAngry = _hasHappy = _hasNeutral = _hasSurprised = false;
