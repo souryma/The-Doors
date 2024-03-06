@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <License>
 	<name>3DiVi Face SDK License</name>
-	<cc>License#44101, pierre-baptiste.lefloch.auditeur@lecnam.net</cc>
+	<cc>License#54117 - FSDK Trial license #0, pierre-baptiste.lefloch.auditeur@lecnam.net</cc>
 	<version>3.0.1.2</version>
-	<max_sdk_version>3.16</max_sdk_version>
+	<max_sdk_version>3.19</max_sdk_version>
 	<Reg>0</Reg>
-	<online_license_id>license:44101:JVGV2o2aT9R7oMe1</online_license_id>
+	<VideoEngine>0</VideoEngine>
+	<online_license_id>license:54117:EwJhxsbV2jNjknC7</online_license_id>
 	<online_license_server>http://cognitive.3divi.com/license/processing/</online_license_server>
 	<online_license_update_timeout>3600</online_license_update_timeout>
 	<online_try_update_timeout>300</online_try_update_timeout>
@@ -40,33 +41,43 @@
 	<matcher11v100>1</matcher11v100>
 	<matcher11v300>1</matcher11v300>
 	<matcher11v1000>1</matcher11v1000>
-	<templatesindex6>1000</templatesindex6>
-	<templatesindex6v2>1000</templatesindex6v2>
-	<templatesindex6v3>1000</templatesindex6v3>
-	<templatesindex6v4>1000</templatesindex6v4>
-	<templatesindex6v5>1000</templatesindex6v5>
-	<templatesindex6v6>1000</templatesindex6v6>
-	<templatesindex6v7>1000</templatesindex6v7>
-	<templatesindex7>1000</templatesindex7>
-	<templatesindex7v2>1000</templatesindex7v2>
-	<templatesindex7v3>1000</templatesindex7v3>
-	<templatesindex7v6>1000</templatesindex7v6>
-	<templatesindex7v7>1000</templatesindex7v7>
-	<templatesindex8v6>1000</templatesindex8v6>
-	<templatesindex8v7>1000</templatesindex8v7>
-	<templatesindex9v30>1000</templatesindex9v30>
-	<templatesindex9v300>1000</templatesindex9v300>
-	<templatesindex9v1000>1000</templatesindex9v1000>
-	<templatesindex9v30mask>1000</templatesindex9v30mask>
-	<templatesindex9v300mask>1000</templatesindex9v300mask>
-	<templatesindex9v1000mask>1000</templatesindex9v1000mask>
-	<templatesindex10v30>1000</templatesindex10v30>
-	<templatesindex10v100>1000</templatesindex10v100>
-	<templatesindex10v1000>1000</templatesindex10v1000>
-	<templatesindex11v30>1000</templatesindex11v30>
-	<templatesindex11v100>1000</templatesindex11v100>
-	<templatesindex11v300>1000</templatesindex11v300>
-	<templatesindex11v1000>1000</templatesindex11v1000>
+	<matcher12v30>1</matcher12v30>
+	<matcher12v50>1</matcher12v50>
+	<matcher12v100>1</matcher12v100>
+	<matcher12v300>1</matcher12v300>
+	<matcher12v1000>1</matcher12v1000>
+	<templatesindex6>100</templatesindex6>
+	<templatesindex6v2>100</templatesindex6v2>
+	<templatesindex6v3>100</templatesindex6v3>
+	<templatesindex6v4>100</templatesindex6v4>
+	<templatesindex6v5>100</templatesindex6v5>
+	<templatesindex6v6>100</templatesindex6v6>
+	<templatesindex6v7>100</templatesindex6v7>
+	<templatesindex7>100</templatesindex7>
+	<templatesindex7v2>100</templatesindex7v2>
+	<templatesindex7v3>100</templatesindex7v3>
+	<templatesindex7v6>100</templatesindex7v6>
+	<templatesindex7v7>100</templatesindex7v7>
+	<templatesindex8v6>100</templatesindex8v6>
+	<templatesindex8v7>100</templatesindex8v7>
+	<templatesindex9v30>100</templatesindex9v30>
+	<templatesindex9v300>100</templatesindex9v300>
+	<templatesindex9v1000>100</templatesindex9v1000>
+	<templatesindex9v30mask>100</templatesindex9v30mask>
+	<templatesindex9v300mask>100</templatesindex9v300mask>
+	<templatesindex9v1000mask>100</templatesindex9v1000mask>
+	<templatesindex10v30>100</templatesindex10v30>
+	<templatesindex10v100>100</templatesindex10v100>
+	<templatesindex10v1000>100</templatesindex10v1000>
+	<templatesindex11v30>100</templatesindex11v30>
+	<templatesindex11v100>100</templatesindex11v100>
+	<templatesindex11v300>100</templatesindex11v300>
+	<templatesindex11v1000>100</templatesindex11v1000>
+	<templatesindex12v30>100</templatesindex12v30>
+	<templatesindex12v50>100</templatesindex12v50>
+	<templatesindex12v100>100</templatesindex12v100>
+	<templatesindex12v300>100</templatesindex12v300>
+	<templatesindex12v1000>100</templatesindex12v1000>
 	<quality_estimator>1</quality_estimator>
 	<face_quality_estimator>1</face_quality_estimator>
 	<capturer1>1</capturer1>
@@ -104,15 +115,16 @@
 	<processor11v100>1</processor11v100>
 	<processor11v300>1</processor11v300>
 	<processor11v1000>1</processor11v1000>
+	<processor12v30>1</processor12v30>
+	<processor12v50>1</processor12v50>
+	<processor12v100>1</processor12v100>
+	<processor12v300>1</processor12v300>
+	<processor12v1000>1</processor12v1000>
 	<depth_liveness_estimator>1</depth_liveness_estimator>
 	<ir_liveness_estimator>1</ir_liveness_estimator>
 	<liveness_2d_estimator>1</liveness_2d_estimator>
 	<active_liveness_estimator>1</active_liveness_estimator>
 	<desktop_gpu_support>1</desktop_gpu_support>
-	<human_body_detector>1</human_body_detector>
-	<human_pose_estimator>1</human_pose_estimator>
-	<object_detector>1</object_detector>
-	<gender_estimator>1</gender_estimator>
 	<Hardware>0f77c6ae59a1db75969fadef1937c151cb5a4c98db81735cb64cf3626109610d</Hardware>
-	<Signature>&#10;-----BEGIN SIGNATURE-----&#10;egZmiNKz/fYfC4PXt3AoIjz6I4IOrUslIyBhrWZSOrflpxcixcHQCdTmKcZgDH3g&#10;lqMR9mv+OrGlIZWIPG6cIkXmSojUY9LGHeXw4nP/VQ/VtnRiJ6Wmi2otc3In/1Zr&#10;c2nmcj9aqfW3H2rPv60Vz3tgiTe5LLZMpOSZX7bGlFxw+A/m+hMvNoRqFsz/ldJJ&#10;ODiw07VsLa/TzTv44zQ6LBLO8UFP/INNU5mbzpu70r9Q30Qnr/LsleEYmaKY6tv6&#10;DDJ4stl8u5wYGTNk+JFXXwQq1iJ6j/1OcrU0Uc+PZ1lJ0xELzmtZ7wMH5BMpJahe&#10;xDeHFPkYV4/T+ugtAQTt3g==&#10;-----END SIGNATURE-----&#10;</Signature>
+	<Signature>&#10;-----BEGIN SIGNATURE-----&#10;WDFkMA2liSaIuGVzEDCalxr91+R/Z5Q7VHNGWE1CgS07h7Mi3HgwOxGhgB+oQJZ6&#10;MJz0epePy3g121L+Fnyo7B8g4dq5LjbN6zUJriJN2/Wm/uA7iGux9qPmrRjuXcSX&#10;WARclKm9usYS3wb29PF84GSDK72c+tC5qJrasEHS3KdG1CzEIjwCkjhpXhsdGg7x&#10;ZlFFD1kl8Oh0nPEu6O4dMXPWgRll4GRR3JDJAg01Z9wM+YYESLfYq6bduh15sZJl&#10;7mvrqTdJxLC5q68hW6ojfMNP89/XmyWF5R2G4g5xHHxF53lBJaI/X8L5IA1b9Z3H&#10;tgyOCVVNExK7LhFBKjasuA==&#10;-----END SIGNATURE-----&#10;</Signature>
 </License>

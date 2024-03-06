@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
 
 using System.Linq;
@@ -132,18 +133,19 @@ public class FaceManager : MonoBehaviour
         WebCamDevice device;
         
         string deviceName = webcamName;
-
-        if (deviceName != null)
-        {
-            Dictionary<string, WebCamDevice> deviceDict = WebCamTexture.devices.ToDictionary(k => k.name, v => v);
-            // foreach (var VARIABLE in deviceDict.Keys)
-            // {
-            //     Debug.Log(VARIABLE);
-            // }
-            device = deviceDict.ContainsKey(deviceName) ? deviceDict[deviceName] : WebCamTexture.devices[0];
-        }
-        else
-            device = WebCamTexture.devices[0];
+        int prefCam = PlayerPrefs.GetInt("camera");
+        device = WebCamTexture.devices[0];
+        // if (deviceName != null)
+        // {
+        //     Dictionary<string, WebCamDevice> deviceDict = WebCamTexture.devices.ToDictionary(k => k.name, v => v);
+        //     // foreach (var VARIABLE in deviceDict.Keys)
+        //     // {
+        //     //     Debug.Log(VARIABLE);
+        //     // }
+        //     device = deviceDict.ContainsKey(deviceName) ? deviceDict[deviceName] : WebCamTexture.devices[0];
+        // }
+        // else
+        //     device = WebCamTexture.devices[0];
 
         
 
@@ -151,6 +153,7 @@ public class FaceManager : MonoBehaviour
         InitVisual();
         InitJob();
         _emotionsController = new EmotionsController();
+        Debug.Log(_emotionsController);
         firstInit = true;
     }
 

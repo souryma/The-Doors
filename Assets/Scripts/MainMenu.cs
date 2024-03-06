@@ -1,5 +1,8 @@
+using System;
 using System.Collections;
+using System.Collections.Generic;
 using DG.Tweening;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Application = UnityEngine.Application;
@@ -14,6 +17,27 @@ public class MainMenu : MonoBehaviour
     public GameObject CreditButton;
     public GameObject Credits;
     public GameObject Title;
+    public TMP_Dropdown Dropdown;
+
+    private void Start()
+    {
+        List<TMP_Dropdown.OptionData> list= new List<TMP_Dropdown.OptionData>();
+        for (int i = 0; i < WebCamTexture.devices.Length; i++)
+        {
+            TMP_Dropdown.OptionData data = new TMP_Dropdown.OptionData();
+            data.text = WebCamTexture.devices[i].name;
+            list.Add(data);
+        }
+
+        Dropdown.options = list;
+        //
+        // foreach (var dropdownOption in Dropdown.options)
+        // {
+        //     Debug.Log(WebCamTexture.devices[i].name);
+        //     dropdownOption.text = WebCamTexture.devices[i].name;
+        //     i++;
+        // }
+    }
 
     public void PlayGame()
     {
@@ -89,7 +113,7 @@ public class MainMenu : MonoBehaviour
     private IEnumerator startGame()
     {
         yield return new WaitForSeconds(1);
-
+        PlayerPrefs.SetInt("camera", Dropdown.value);
         SceneManager.LoadScene("Scenes/MainScene");
     }
 
