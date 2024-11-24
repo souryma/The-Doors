@@ -1,12 +1,13 @@
+using System;
+using System.Threading.Tasks;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
-using VDT.FaceRecognition.SDK;
 using Random = UnityEngine.Random;
 
 public class Room : MonoBehaviour
 {
-    private EmotionsEstimator.Emotion _emotionForOpening;
+    private EmotionManager.EMOTION _emotionForOpening;
     private bool _isOpened = false;
     private GameObject _doorObject;
     private GameObject _leftCurtainsObject;
@@ -17,7 +18,7 @@ public class Room : MonoBehaviour
 
     private int _musicNumber = 0;
     public bool IsOpened => _isOpened;
-    public EmotionsEstimator.Emotion EmotionForOpening=> _emotionForOpening;
+    public EmotionManager.EMOTION EmotionForOpening=> _emotionForOpening;
     public int DoorId { get; set; }
 
 
@@ -35,55 +36,43 @@ public class Room : MonoBehaviour
         // _emotionRoomText = transform.Find("EmotionText").GetComponent<TextMeshPro>();
 
         _emotionImage = transform.Find("EmotionImage").gameObject;
-
+        int emotionCount = Enum.GetValues(typeof(EmotionManager.EMOTION)).Length;
         // Give a random emotion to te door
-        int emotionIndex = Random.Range(0, 4);
-        _emotionForOpening = (EmotionsEstimator.Emotion) emotionIndex;
+        int emotionIndex = Random.Range(0,emotionCount);
+        _emotionForOpening = (EmotionManager.EMOTION) emotionIndex;
 
         
         //SetEmotionText();
         SetEmotionImage();
     }
 
-    private void SetEmotionImage()
+    private async void SetEmotionImage()
     {
-        Texture text = new Texture2D(300, 300);
-        text = GameManager.Instance.GetFaceEmotion(_emotionForOpening);
-        // switch (_emotionForOpening)
-        // {
-        //     case EmotionsEstimator.Emotion.EMOTION_NEUTRAL:
-        //         text = GameManager.Instance.NeutralFace;
-        //         break;
-        //     case EmotionsEstimator.Emotion.EMOTION_ANGRY:
-        //         text = GameManager.Instance.AngryFace;
-        //         break;
-        //     case EmotionsEstimator.Emotion.EMOTION_HAPPY:
-        //         text = GameManager.Instance.HappyFace;
-        //         break; 
-        //     case EmotionsEstimator.Emotion.EMOTION_SURPRISE:
-        //         text = GameManager.Instance.SurprisedFace;
-        //         break;
-        // }
+         Texture2D texture2D = await GameManager.Instance.GetFaceEmotion(_emotionForOpening);
+         _emotionImage.GetComponent<MeshRenderer>().material.mainTexture = texture2D;
 
-        _emotionImage.GetComponent<MeshRenderer>().material.mainTexture = text;
     }
+    
 
     private void SetEmotionText()
     {
         string text = "";
         switch (_emotionForOpening)
         {
-            case EmotionsEstimator.Emotion.EMOTION_NEUTRAL:
+            case EmotionManager.EMOTION.Neutral:
                 text = "Neutral";
                 break;
-            case EmotionsEstimator.Emotion.EMOTION_ANGRY:
+            case EmotionManager.EMOTION.Anger:
                 text = "Angry !";
                 break;
-            case EmotionsEstimator.Emotion.EMOTION_HAPPY:
+            case EmotionManager.EMOTION.Happy:
                 text = "Happy :)";
                 break; 
-            case EmotionsEstimator.Emotion.EMOTION_SURPRISE:
+            case EmotionManager.EMOTION.Surprise:
                 text = "Surprised :0";
+                break;
+            case EmotionManager.EMOTION.Sadness:
+                text = "Sad :'(";
                 break;
         }
         _emotionRoomText.text = text;
@@ -124,14 +113,16 @@ public class Room : MonoBehaviour
         
         switch (this._emotionForOpening)
         {
-            case EmotionsEstimator.Emotion.EMOTION_ANGRY:
+            case EmotionManager.EMOTION.Anger:
                 return "musicangry" + _musicNumber;
-            case EmotionsEstimator.Emotion.EMOTION_HAPPY:
+            case EmotionManager.EMOTION.Happy:
                 return "musichappy" + _musicNumber;
-            case EmotionsEstimator.Emotion.EMOTION_SURPRISE:
+            case EmotionManager.EMOTION.Surprise:
                 return "musicsurprised" + _musicNumber;
-            case EmotionsEstimator.Emotion.EMOTION_NEUTRAL:
+            case EmotionManager.EMOTION.Neutral:
                 return "musicneutral" + _musicNumber;
+            case EmotionManager.EMOTION.Sadness:
+                return "musicsad" + _musicNumber;
                 
         }
 

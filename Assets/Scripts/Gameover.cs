@@ -70,7 +70,7 @@ public class Gameover : MonoBehaviour
         // gameObject.SetActive(true);
         _retryQuad.material.mainTexture = GameManager.Instance.AngryFace;
         _restartQuad.material.mainTexture = GameManager.Instance.SurprisedFace;
-        _mirror.material.mainTexture = GameManager.Instance.faceManager.webcamTexture;
+        _mirror.material.mainTexture = WebcamManager.instance.Webcam1;
 
         
         _camera.transform.position = new Vector3(0, 40, 0);

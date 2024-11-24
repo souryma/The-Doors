@@ -17,6 +17,7 @@ public class MainMenu : MonoBehaviour
     public GameObject CreditButton;
     public GameObject Credits;
     public GameObject Title;
+    public GameObject DropdownParent;
     public TMP_Dropdown Dropdown;
 
     private void Start()
@@ -37,6 +38,10 @@ public class MainMenu : MonoBehaviour
         //     dropdownOption.text = WebCamTexture.devices[i].name;
         //     i++;
         // }
+        //open curtains
+        _leftCurtainsObject.transform.DOScaleY(13f, 1);
+        _rightCurtainsObject.transform.DOScaleY(-13f, 1);
+        _middleCurtainsObject.transform.DOScaleZ(1f, 1f);
     }
 
     public void PlayGame()
@@ -45,13 +50,14 @@ public class MainMenu : MonoBehaviour
         Quitbutton.SetActive(false);
         CreditButton.SetActive(false);
         Title.SetActive(false);
+        DropdownParent.SetActive(false);
 
         // Close curtain
         _leftCurtainsObject.transform.DOScaleY(32f, 1);
         _rightCurtainsObject.transform.DOScaleY(-32f, 1);
         _middleCurtainsObject.transform.DOScaleZ(53.6f, 1f);
 
-        StartCoroutine("startGame");
+        StartCoroutine(nameof(startGame));
     }
 
     public void ShowCredits()
@@ -60,13 +66,13 @@ public class MainMenu : MonoBehaviour
         Quitbutton.SetActive(false);
         CreditButton.SetActive(false);
         Title.SetActive(false);
-
+        DropdownParent.SetActive(false);
         // Close curtain
         _leftCurtainsObject.transform.DOScaleY(32f, 1);
         _rightCurtainsObject.transform.DOScaleY(-32f, 1);
         _middleCurtainsObject.transform.DOScaleZ(53.6f, 1f);
 
-        StartCoroutine("displayCredits");
+        StartCoroutine(nameof(displayCredits));
     }
 
     public void backToMenu()
@@ -79,7 +85,7 @@ public class MainMenu : MonoBehaviour
         _rightCurtainsObject.transform.DOScaleY(-32f, 1);
         _middleCurtainsObject.transform.DOScaleZ(53.6f, 1f);
 
-        StartCoroutine("BackToMenu");
+        StartCoroutine(nameof(BackToMenu));
     }
 
     private IEnumerator BackToMenu()
@@ -95,6 +101,7 @@ public class MainMenu : MonoBehaviour
         Quitbutton.SetActive(true);
         CreditButton.SetActive(true);
         Title.SetActive(true);
+        DropdownParent.SetActive(true);
     }
 
     private IEnumerator displayCredits()
@@ -114,6 +121,7 @@ public class MainMenu : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
         PlayerPrefs.SetInt("camera", Dropdown.value);
+        PlayerPrefs.Save();
         SceneManager.LoadScene("Scenes/MainScene");
     }
 

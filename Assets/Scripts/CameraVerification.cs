@@ -1,7 +1,6 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
-using VDT.FaceRecognition.SDK;
 
 public class CameraVerification : MonoBehaviour
 {
@@ -15,6 +14,7 @@ public class CameraVerification : MonoBehaviour
 
     private MeshRenderer _happyQuad;
     private MeshRenderer _angryQuad;
+    private MeshRenderer _sadQuad;
     private MeshRenderer _surprisedQuad;
     private MeshRenderer _neutralQuad;
     private MeshRenderer _mirror;
@@ -36,7 +36,8 @@ public class CameraVerification : MonoBehaviour
             .GetComponent<MeshRenderer>();
         _neutralQuad = _verificationRoom.transform.Find("NeutralShelf").transform.Find("NeutralQuad")
             .GetComponent<MeshRenderer>();
-
+        _sadQuad = _verificationRoom.transform.Find("SadShelf").transform.Find("SadQuad")
+            .GetComponent<MeshRenderer>();
         _verificationRoomText = _verificationRoom.transform.Find("UpText").GetComponent<TextMeshPro>();
 
         _mirror = _verificationRoom.transform.Find("Mirror").GetComponent<MeshRenderer>();
@@ -49,7 +50,7 @@ public class CameraVerification : MonoBehaviour
 
     private void Update()
     {
-        _mirror.material.mainTexture = GameManager.Instance.faceManager.webcamTexture;
+        _mirror.material.mainTexture = WebcamManager.instance.Webcam1;
 
         switch (_step)
         {
@@ -57,70 +58,83 @@ public class CameraVerification : MonoBehaviour
                 if (_stepDone)
                     break;
                 _verificationRoomText.text = "Prepare your acting talents";
-                StartCoroutine("IncreaseStep");
+                StartCoroutine(nameof(IncreaseStep));
                 _stepDone = true;
                 break;
             case 1:
 
                 _verificationRoomText.text = "Make a neutral expression";
-                GameManager.Instance.GetEmotionsFace(EmotionsEstimator.Emotion.EMOTION_NEUTRAL);
+                GameManager.Instance.GetEmotionsFace(EmotionManager.EMOTION.Neutral);
                 if (GameManager.Instance.HasNeutral)
                 {
                     _neutralQuad.material.mainTexture = GameManager.Instance.NeutralFace;
                     if (_stepDone)
                         break;
-                    StartCoroutine("IncreaseStep");
+                    StartCoroutine(nameof(IncreaseStep));
                     _stepDone = true;
                 }
 
                 break;
             case 2:
                 _verificationRoomText.text = "Make a happy expression";
-                GameManager.Instance.GetEmotionsFace(EmotionsEstimator.Emotion.EMOTION_HAPPY);
+                GameManager.Instance.GetEmotionsFace(EmotionManager.EMOTION.Happy);
                 if (GameManager.Instance.HasHappy)
                 {
                     _happyQuad.material.mainTexture = GameManager.Instance.HappyFace;
                     if (_stepDone)
                         break;
-                    StartCoroutine("IncreaseStep");
+                    StartCoroutine(nameof(IncreaseStep));
                     _stepDone = true;
                 }
 
                 break;
             case 3:
                 _verificationRoomText.text = "Make a surprised expression";
-                GameManager.Instance.GetEmotionsFace(EmotionsEstimator.Emotion.EMOTION_SURPRISE);
+                GameManager.Instance.GetEmotionsFace(EmotionManager.EMOTION.Surprise);
                 if (GameManager.Instance.HasSurprised)
                 {
                     _surprisedQuad.material.mainTexture = GameManager.Instance.SurprisedFace;
                     if (_stepDone)
                         break;
-                    StartCoroutine("IncreaseStep");
+                    StartCoroutine(nameof(IncreaseStep));
                     _stepDone = true;
                 }
 
                 break;
             case 4:
                 _verificationRoomText.text = "Make an angry expression";
-                GameManager.Instance.GetEmotionsFace(EmotionsEstimator.Emotion.EMOTION_ANGRY);
+                GameManager.Instance.GetEmotionsFace(EmotionManager.EMOTION.Anger);
                 if (GameManager.Instance.HasAngry)
                 {
                     _angryQuad.material.mainTexture = GameManager.Instance.AngryFace;
                     if (_stepDone)
                         break;
-                    StartCoroutine("IncreaseStep");
+                    StartCoroutine(nameof(IncreaseStep));
                     _stepDone = true;
                 }
 
                 break;
             case 5:
+                _verificationRoomText.text = "Make a sad expression";
+                GameManager.Instance.GetEmotionsFace(EmotionManager.EMOTION.Sadness);
+                if (GameManager.Instance.HasSad)
+                {
+                    _sadQuad.material.mainTexture = GameManager.Instance.SadFace;
+                    if (_stepDone)
+                        break;
+                    StartCoroutine(nameof(IncreaseStep));
+                    _stepDone = true;
+                }
+
+                break;
+            case 6:
                 _verificationRoomText.text = "Smile to start the game :)";
-                StartCoroutine("IncreaseStep");
+                StartCoroutine(nameof(IncreaseStep));
                 break;
         }
 
         if (GameManager.Instance.AreAllEmotionsReady() && _step > 5 &&
-            GameManager.Instance.CheckForEmotion(EmotionsEstimator.Emotion.EMOTION_HAPPY))
+            GameManager.Instance.CheckForEmotion(EmotionManager.EMOTION.Happy))
         {
             // _playButton.SetActive(true);
             OnVerificationValid();

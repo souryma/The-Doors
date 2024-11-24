@@ -1,17 +1,16 @@
 using System.Collections;
+using System.Threading.Tasks;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
-using VDT.FaceRecognition.SDK;
+using UnityEngine.Serialization;
 
 public class GameManager : MonoBehaviour
 {
     // Static instance of the GameManager
     private static GameManager _instance;
-
-    // [SerializeField] private CameraManager camManager;
-    // [SerializeField] private EmotionsManager emotionsManager;
-    [SerializeField] public FaceManager faceManager;
+    
+    [FormerlySerializedAs("faceManager")] [SerializeField] public EmotionManager emotionManager;
     [SerializeField] private RoomManager roomManager;
     [SerializeField] private TextMeshProUGUI _gameOverUi;
     [SerializeField] private Gameover _gameoverObject;
@@ -27,6 +26,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Texture _neutralFace;
     [SerializeField] private Texture _surprisedFace;
     [SerializeField] private Texture _angryFace;
+    [SerializeField] private Texture _sadFace;
 
     private ImageLoaderSaver _imageLoaderSaver;
     
@@ -48,10 +48,12 @@ public class GameManager : MonoBehaviour
     private bool _hasAngry = false;
     private bool _hasNeutral = false;
     private bool _hasSurprised = false;
+    private bool _hasSad = false;
 
     public bool HasHappy => _hasHappy;
 
     public bool HasAngry => _hasAngry;
+    public bool HasSad => _hasSad;
 
     public bool HasNeutral => _hasNeutral;
 
@@ -96,8 +98,14 @@ public class GameManager : MonoBehaviour
         get => _angryFace;
         set => _angryFace = value;
     }
+    
+    public Texture SadFace
+    {
+        get => _sadFace;
+        set => _sadFace = value;
+    }
 
-    public Texture GetFaceEmotion(EmotionsEstimator.Emotion emotion)
+    public Task<Texture2D> GetFaceEmotion(EmotionManager.EMOTION emotion)
     {
         return _imageLoaderSaver.LoadPictureFromGallery(emotion);
     }
@@ -150,12 +158,12 @@ public class GameManager : MonoBehaviour
         //
         // if (_isGameOver)
         // {
-        //     if (CheckIfEmotionIsAttained(EmotionsEstimator.Emotion.EMOTION_ANGRY))
+        //     if (CheckIfEmotionIsAttained(EmotionManager.EMOTION.EMOTION_ANGRY))
         //     {
         //         _gameoverObject.OnTryAgain();
         //         _isGameOver = false;
         //     }
-        //     if (CheckIfEmotionIsAttained(EmotionsEstimator.Emotion.EMOTION_SURPRISE))
+        //     if (CheckIfEmotionIsAttained(EmotionManager.EMOTION.EMOTION_SURPRISE))
         //     {
         //         _gameoverObject.OnRestartGame();
         //         _isGameOver = false;
@@ -180,7 +188,7 @@ public class GameManager : MonoBehaviour
 
         AudioManager.instance.Play("threestrikes");
         // Debug.Log(RoomManager.Instance.CurrentRoom.getRoomMusic());
-        AudioManager.instance.PlayAfterTime(RoomManager.Instance.CurrentRoom.getRoomMusic(), 7f);
+        AudioManager.instance.PlayAfterTime(RoomManager.Instance.CurrentRoom.getRoomMusic(), 6f);
         StartCoroutine(StartGameAfterTime());
     }
 
@@ -294,37 +302,42 @@ public class GameManager : MonoBehaviour
         _transitionCurtains.SetActive(false);
     }
 
-    public bool CheckForEmotion(EmotionsEstimator.Emotion emotion)
+    public bool CheckForEmotion(EmotionManager.EMOTION emotion)
     {
-        return emotion == faceManager._emotionsController.get_current_emotion();
+        return emotion == emotionManager.GetPlayer1Emotion();
     }
 
-    public void GetEmotionsFace(EmotionsEstimator.Emotion emotion)
+    public void GetEmotionsFace(EmotionManager.EMOTION emotion)
     {
-        EmotionsEstimator.Emotion current_emotion = faceManager._emotionsController.get_current_emotion();
+        EmotionManager.EMOTION current_emotion = emotionManager.GetPlayer1Emotion();
 
         if (current_emotion != emotion)
             return;
 
-        if (!_hasAngry && EmotionsEstimator.Emotion.EMOTION_ANGRY == current_emotion)
+        if (!_hasAngry && EmotionManager.EMOTION.Anger == current_emotion)
         {
             MakeACapture(current_emotion);
             _hasAngry = true;
         }
-        else if (!_hasHappy && EmotionsEstimator.Emotion.EMOTION_HAPPY == current_emotion)
+        else if (!_hasHappy && EmotionManager.EMOTION.Happy == current_emotion)
         {
             MakeACapture(current_emotion);
             _hasHappy = true;
         }
-        else if (!_hasNeutral && EmotionsEstimator.Emotion.EMOTION_NEUTRAL == current_emotion)
+        else if (!_hasNeutral && EmotionManager.EMOTION.Neutral == current_emotion)
         {
             MakeACapture(current_emotion);
             _hasNeutral = true;
         }
-        else if (!_hasSurprised && EmotionsEstimator.Emotion.EMOTION_SURPRISE == current_emotion)
+        else if (!_hasSurprised && EmotionManager.EMOTION.Surprise == current_emotion)
         {
             MakeACapture(current_emotion);
             _hasSurprised = true;
+        }
+        else if (!_hasSad && EmotionManager.EMOTION.Sadness == current_emotion)
+        {
+            MakeACapture(current_emotion);
+            _hasSad = true;
         }
     }
 
@@ -333,10 +346,10 @@ public class GameManager : MonoBehaviour
         return _hasAngry && _hasHappy && _hasNeutral && _hasSurprised;
     }
 
-    private bool CheckIfEmotionIsAttained(EmotionsEstimator.Emotion emotionToTest)
+    private bool CheckIfEmotionIsAttained(EmotionManager.EMOTION emotionToTest)
     {
       
-        EmotionsEstimator.Emotion current_emotion = faceManager._emotionsController.get_current_emotion();
+        EmotionManager.EMOTION current_emotion = emotionManager.GetPlayer1Emotion();
 
         return current_emotion == emotionToTest;
     }
@@ -350,28 +363,31 @@ public class GameManager : MonoBehaviour
         _gameSpeed = 1f;
     }
 
-    private void MakeACapture(EmotionsEstimator.Emotion emotion)
+    private void MakeACapture(EmotionManager.EMOTION emotion)
     {
         // Get a shot copy of the camera texture into our happy texture
-        Texture2D copyTexture = new Texture2D(faceManager.rawImage.texture.width, faceManager.rawImage.texture.height);
+        Texture2D copyTexture = new Texture2D(WebcamManager.instance.Webcam1.width, WebcamManager.instance.Webcam1.height);
         // copyTexture.SetPixels(((Texture2D)faceManager.rawImage.texture).GetPixels());
-        copyTexture.SetPixels(faceManager.webcamTexture.GetPixels());
+        copyTexture.SetPixels(WebcamManager.instance.Webcam1.GetPixels());
         copyTexture.Apply();
 
         _imageLoaderSaver.SavePictureToGallery(copyTexture, emotion);
         switch (emotion)
         {
-            case EmotionsEstimator.Emotion.EMOTION_NEUTRAL:
+            case EmotionManager.EMOTION.Neutral:
                 _neutralFace = copyTexture;
                 break;
-            case EmotionsEstimator.Emotion.EMOTION_ANGRY:
+            case EmotionManager.EMOTION.Anger:
                 _angryFace = copyTexture;
                 break;
-            case EmotionsEstimator.Emotion.EMOTION_HAPPY:
+            case EmotionManager.EMOTION.Happy:
                 _happyFace = copyTexture;
                 break;
-            case EmotionsEstimator.Emotion.EMOTION_SURPRISE:
+            case EmotionManager.EMOTION.Surprise:
                 _surprisedFace = copyTexture;
+                break;
+            case EmotionManager.EMOTION.Sadness:
+                _sadFace = copyTexture;
                 break;
         }
     }
