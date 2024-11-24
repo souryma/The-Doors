@@ -159,7 +159,8 @@ public class CameraVerification : MonoBehaviour
         _angryQuad.material.mainTexture =
             _happyQuad.material.mainTexture =
                 _surprisedQuad.material.mainTexture =
-                    _neutralQuad.material.mainTexture = defaultMaterial.mainTexture;
+                    _neutralQuad.material.mainTexture =
+                        _sadQuad.material.mainTexture = defaultMaterial.mainTexture;
     }
 
     public void OnVerificationValid()
